@@ -3241,20 +3241,10 @@ margin-bottom: 20px;
       "$ref" : "#/definitions/meta"
     },
     "data" : {
-      "$ref" : "#/definitions/channelSuccess_data"
+      "$ref" : "#/definitions/trendSuccess_data"
     }
   },
   "description" : "渠道分析成功响应结果"
-};
-  defs.channelSuccess_data = {
-  "properties" : {
-    "chart_report" : {
-      "$ref" : "#/definitions/chart_report"
-    },
-    "detail_report" : {
-      "$ref" : "#/definitions/detail_report"
-    }
-  }
 };
   defs.chart_report = {
   "type" : "object",
@@ -3285,26 +3275,10 @@ margin-bottom: 20px;
       "$ref" : "#/definitions/meta"
     },
     "data" : {
-      "$ref" : "#/definitions/dataSuccess_data"
+      "$ref" : "#/definitions/trendSuccess_data"
     }
   },
   "description" : "账号分析成功响应结果"
-};
-  defs.dataSuccess_data = {
-  "properties" : {
-    "chart_report" : {
-      "$ref" : "#/definitions/chart_report"
-    },
-    "detail_report" : {
-      "$ref" : "#/definitions/detail_report"
-    },
-    "top_data" : {
-      "$ref" : "#/definitions/top"
-    },
-    "total_report" : {
-      "$ref" : "#/definitions/total_report"
-    }
-  }
 };
   defs.detail_report = {
   "type" : "array",

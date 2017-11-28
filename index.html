@@ -3384,12 +3384,8 @@ margin-bottom: 20px;
   }
 };
   defs.granularity = {
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "default" : "daily",
-    "enum" : [ "daily", "weekly", "monthly" ]
-  }
+  "type" : "string",
+  "enum" : [ "daily", "weekly", "monthly" ]
 };
   defs.meta = {
   "type" : "object",
@@ -3411,12 +3407,9 @@ margin-bottom: 20px;
   "enum" : [ ">", ">=", "==", "!=", "<", "<=", "=@", "!@", "=^", "=$" ]
 };
   defs.order_item = {
-  "type" : "array",
+  "type" : "string",
   "description" : "排序字段",
-  "items" : {
-    "type" : "object",
-    "properties" : { }
-  }
+  "enum" : [ "impression", "visit_count", "click", "reg_count", "spend" ]
 };
   defs.selecter = {
   "type" : "object",
@@ -3855,7 +3848,7 @@ margin-bottom: 20px;
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/v2/account</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">v2/account</span></code></pre>
 
                                             <p>
                                                 <h3>API调用示例代码</h3>
@@ -3894,7 +3887,7 @@ margin-bottom: 20px;
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2AccountPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080//v2/account?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/account?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order="
 
 
 </code></pre>
@@ -3915,15 +3908,15 @@ public class ReportApiExample {
     public static void main(String[] args) {
         
         ReportApi apiInstance = new ReportApi();
-        array[String] data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+        String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
         String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-        array[String] granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+        String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-        array[String] order = ; // array[String] | 排序字段
+        String order = order_example; // String | 排序字段
         try {
             dataSuccess result = apiInstance.v2AccountPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
             System.out.println(result);
@@ -3946,15 +3939,15 @@ public class ReportApiExample {
 
     public static void main(String[] args) {
         ReportApi apiInstance = new ReportApi();
-        array[String] data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+        String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
         String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-        array[String] granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+        String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-        array[String] order = ; // array[String] | 排序字段
+        String order = order_example; // String | 排序字段
         try {
             dataSuccess result = apiInstance.v2AccountPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
             System.out.println(result);
@@ -3977,15 +3970,15 @@ public class ReportApiExample {
                                                 <div class="tab-pane" id="examples-Report-v2AccountPost-0-objc">
                                                     <pre class="prettyprint"><code class="language-cpp">
 
-array[String] *data_type = ; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
 String *selecter = selecter_example; // 逗号,表示或。分号; 表示与 (optional)
-array[String] *granularity = ; // 数据统计图表时间粒度，默认daily (optional)
+String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
 String *fields = fields_example; // 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional)
-array[String] *order = ; // 排序字段 (optional)
+String *order = order_example; // 排序字段 (optional)
 
 ReportApi *apiInstance = [[ReportApi alloc] init];
 
@@ -4016,7 +4009,7 @@ var  = require('');
 
 var api = new .ReportApi()
 
-var data_type = ; // {array[String]} 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+var data_type = dataType_example; // {String} 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 
 var start_time = startTime_example; // {String} 开始时间
 
@@ -4024,11 +4017,11 @@ var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
   'selecter': selecter_example, // {String} 逗号,表示或。分号; 表示与
-  'granularity': , // {array[String]} 数据统计图表时间粒度，默认daily
+  'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
   'fields': fields_example, // {String} 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-  'order':  // {array[String]} 排序字段
+  'order': order_example // {String} 排序字段
 };
 
 var callback = function(error, data, response) {
@@ -4063,15 +4056,15 @@ namespace Example
         {
             
             var apiInstance = new ReportApi();
-            var data_type = new array[String](); // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+            var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
             var selecter = selecter_example;  // String | 逗号,表示或。分号; 表示与 (optional) 
-            var granularity = new array[String](); // array[String] | 数据统计图表时间粒度，默认daily (optional) 
+            var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
             var fields = fields_example;  // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional) 
-            var order = new array[String](); // array[String] | 排序字段 (optional) 
+            var order = order_example;  // String | 排序字段 (optional) 
 
             try
             {
@@ -4097,15 +4090,15 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new io.swagger.client\Api\ReportApi();
-$data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+$data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
 $selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-$granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+$granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
 $fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-$order = ; // array[String] | 排序字段
+$order = order_example; // String | 排序字段
 
 try {
     $result = $api_instance->v2AccountPost($data_type, $start_time, $end_time, $selecter, $granularity, $current_page, $page_size, $fields, $order);
@@ -4150,12 +4143,8 @@ try {
   "in" : "query",
   "description" : "指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据",
   "required" : true,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "default" : "detail",
-    "enum" : [ "total", "chart", "detail", "top" ]
-  }
+  "type" : "string",
+  "enum" : [ "total", "chart", "detail", "top" ]
 };
                 var schema = schemaWrapper;
 
@@ -4271,12 +4260,8 @@ try {
   "in" : "query",
   "description" : "数据统计图表时间粒度，默认daily",
   "required" : false,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "default" : "daily",
-    "enum" : [ "daily", "weekly", "monthly" ]
-  }
+  "type" : "string",
+  "enum" : [ "daily", "weekly", "monthly" ]
 };
                 var schema = schemaWrapper;
 
@@ -4394,11 +4379,8 @@ try {
   "in" : "query",
   "description" : "排序字段",
   "required" : false,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "enum" : [ "impression", "visit_count", "click", "reg_count", "spend" ]
-  }
+  "type" : "string",
+  "enum" : [ "impression", "visit_count", "click", "reg_count", "spend" ]
 };
                 var schema = schemaWrapper;
 
@@ -4532,7 +4514,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/v2/adgroup</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">v2/adgroup</span></code></pre>
 
                                             <p>
                                                 <h3>API调用示例代码</h3>
@@ -4571,7 +4553,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2AdgroupPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080//v2/adgroup?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/adgroup?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order="
 
 
 </code></pre>
@@ -4592,15 +4574,15 @@ public class ReportApiExample {
     public static void main(String[] args) {
         
         ReportApi apiInstance = new ReportApi();
-        array[String] data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+        String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
         String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-        array[String] granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+        String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-        array[String] order = ; // array[String] | 排序字段
+        String order = order_example; // String | 排序字段
         try {
             dataSuccess result = apiInstance.v2AdgroupPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
             System.out.println(result);
@@ -4623,15 +4605,15 @@ public class ReportApiExample {
 
     public static void main(String[] args) {
         ReportApi apiInstance = new ReportApi();
-        array[String] data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+        String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
         String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-        array[String] granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+        String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-        array[String] order = ; // array[String] | 排序字段
+        String order = order_example; // String | 排序字段
         try {
             dataSuccess result = apiInstance.v2AdgroupPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
             System.out.println(result);
@@ -4654,15 +4636,15 @@ public class ReportApiExample {
                                                 <div class="tab-pane" id="examples-Report-v2AdgroupPost-0-objc">
                                                     <pre class="prettyprint"><code class="language-cpp">
 
-array[String] *data_type = ; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
 String *selecter = selecter_example; // 逗号,表示或。分号; 表示与 (optional)
-array[String] *granularity = ; // 数据统计图表时间粒度，默认daily (optional)
+String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
 String *fields = fields_example; // 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional)
-array[String] *order = ; // 排序字段 (optional)
+String *order = order_example; // 排序字段 (optional)
 
 ReportApi *apiInstance = [[ReportApi alloc] init];
 
@@ -4693,7 +4675,7 @@ var  = require('');
 
 var api = new .ReportApi()
 
-var data_type = ; // {array[String]} 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+var data_type = dataType_example; // {String} 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 
 var start_time = startTime_example; // {String} 开始时间
 
@@ -4701,11 +4683,11 @@ var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
   'selecter': selecter_example, // {String} 逗号,表示或。分号; 表示与
-  'granularity': , // {array[String]} 数据统计图表时间粒度，默认daily
+  'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
   'fields': fields_example, // {String} 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-  'order':  // {array[String]} 排序字段
+  'order': order_example // {String} 排序字段
 };
 
 var callback = function(error, data, response) {
@@ -4740,15 +4722,15 @@ namespace Example
         {
             
             var apiInstance = new ReportApi();
-            var data_type = new array[String](); // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+            var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
             var selecter = selecter_example;  // String | 逗号,表示或。分号; 表示与 (optional) 
-            var granularity = new array[String](); // array[String] | 数据统计图表时间粒度，默认daily (optional) 
+            var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
             var fields = fields_example;  // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional) 
-            var order = new array[String](); // array[String] | 排序字段 (optional) 
+            var order = order_example;  // String | 排序字段 (optional) 
 
             try
             {
@@ -4774,15 +4756,15 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new io.swagger.client\Api\ReportApi();
-$data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+$data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
 $selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-$granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+$granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
 $fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-$order = ; // array[String] | 排序字段
+$order = order_example; // String | 排序字段
 
 try {
     $result = $api_instance->v2AdgroupPost($data_type, $start_time, $end_time, $selecter, $granularity, $current_page, $page_size, $fields, $order);
@@ -4827,12 +4809,8 @@ try {
   "in" : "query",
   "description" : "指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据",
   "required" : true,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "default" : "detail",
-    "enum" : [ "total", "chart", "detail", "top" ]
-  }
+  "type" : "string",
+  "enum" : [ "total", "chart", "detail", "top" ]
 };
                 var schema = schemaWrapper;
 
@@ -4948,12 +4926,8 @@ try {
   "in" : "query",
   "description" : "数据统计图表时间粒度，默认daily",
   "required" : false,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "default" : "daily",
-    "enum" : [ "daily", "weekly", "monthly" ]
-  }
+  "type" : "string",
+  "enum" : [ "daily", "weekly", "monthly" ]
 };
                 var schema = schemaWrapper;
 
@@ -5071,11 +5045,8 @@ try {
   "in" : "query",
   "description" : "排序字段",
   "required" : false,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "enum" : [ "impression", "visit_count", "click", "reg_count", "spend" ]
-  }
+  "type" : "string",
+  "enum" : [ "impression", "visit_count", "click", "reg_count", "spend" ]
 };
                 var schema = schemaWrapper;
 
@@ -5209,7 +5180,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/v2/campaign</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">v2/campaign</span></code></pre>
 
                                             <p>
                                                 <h3>API调用示例代码</h3>
@@ -5248,7 +5219,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2CampaignPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080//v2/campaign?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/campaign?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order="
 
 
 </code></pre>
@@ -5269,15 +5240,15 @@ public class ReportApiExample {
     public static void main(String[] args) {
         
         ReportApi apiInstance = new ReportApi();
-        array[String] data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+        String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
         String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-        array[String] granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+        String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-        array[String] order = ; // array[String] | 排序字段
+        String order = order_example; // String | 排序字段
         try {
             dataSuccess result = apiInstance.v2CampaignPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
             System.out.println(result);
@@ -5300,15 +5271,15 @@ public class ReportApiExample {
 
     public static void main(String[] args) {
         ReportApi apiInstance = new ReportApi();
-        array[String] data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+        String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
         String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-        array[String] granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+        String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-        array[String] order = ; // array[String] | 排序字段
+        String order = order_example; // String | 排序字段
         try {
             dataSuccess result = apiInstance.v2CampaignPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
             System.out.println(result);
@@ -5331,15 +5302,15 @@ public class ReportApiExample {
                                                 <div class="tab-pane" id="examples-Report-v2CampaignPost-0-objc">
                                                     <pre class="prettyprint"><code class="language-cpp">
 
-array[String] *data_type = ; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
 String *selecter = selecter_example; // 逗号,表示或。分号; 表示与 (optional)
-array[String] *granularity = ; // 数据统计图表时间粒度，默认daily (optional)
+String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
 String *fields = fields_example; // 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional)
-array[String] *order = ; // 排序字段 (optional)
+String *order = order_example; // 排序字段 (optional)
 
 ReportApi *apiInstance = [[ReportApi alloc] init];
 
@@ -5370,7 +5341,7 @@ var  = require('');
 
 var api = new .ReportApi()
 
-var data_type = ; // {array[String]} 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+var data_type = dataType_example; // {String} 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 
 var start_time = startTime_example; // {String} 开始时间
 
@@ -5378,11 +5349,11 @@ var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
   'selecter': selecter_example, // {String} 逗号,表示或。分号; 表示与
-  'granularity': , // {array[String]} 数据统计图表时间粒度，默认daily
+  'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
   'fields': fields_example, // {String} 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-  'order':  // {array[String]} 排序字段
+  'order': order_example // {String} 排序字段
 };
 
 var callback = function(error, data, response) {
@@ -5417,15 +5388,15 @@ namespace Example
         {
             
             var apiInstance = new ReportApi();
-            var data_type = new array[String](); // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+            var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
             var selecter = selecter_example;  // String | 逗号,表示或。分号; 表示与 (optional) 
-            var granularity = new array[String](); // array[String] | 数据统计图表时间粒度，默认daily (optional) 
+            var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
             var fields = fields_example;  // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional) 
-            var order = new array[String](); // array[String] | 排序字段 (optional) 
+            var order = order_example;  // String | 排序字段 (optional) 
 
             try
             {
@@ -5451,15 +5422,15 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new io.swagger.client\Api\ReportApi();
-$data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+$data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
 $selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-$granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+$granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
 $fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-$order = ; // array[String] | 排序字段
+$order = order_example; // String | 排序字段
 
 try {
     $result = $api_instance->v2CampaignPost($data_type, $start_time, $end_time, $selecter, $granularity, $current_page, $page_size, $fields, $order);
@@ -5504,12 +5475,8 @@ try {
   "in" : "query",
   "description" : "指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据",
   "required" : true,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "default" : "detail",
-    "enum" : [ "total", "chart", "detail", "top" ]
-  }
+  "type" : "string",
+  "enum" : [ "total", "chart", "detail", "top" ]
 };
                 var schema = schemaWrapper;
 
@@ -5625,12 +5592,8 @@ try {
   "in" : "query",
   "description" : "数据统计图表时间粒度，默认daily",
   "required" : false,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "default" : "daily",
-    "enum" : [ "daily", "weekly", "monthly" ]
-  }
+  "type" : "string",
+  "enum" : [ "daily", "weekly", "monthly" ]
 };
                 var schema = schemaWrapper;
 
@@ -5748,11 +5711,8 @@ try {
   "in" : "query",
   "description" : "排序字段",
   "required" : false,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "enum" : [ "impression", "visit_count", "click", "reg_count", "spend" ]
-  }
+  "type" : "string",
+  "enum" : [ "impression", "visit_count", "click", "reg_count", "spend" ]
 };
                 var schema = schemaWrapper;
 
@@ -5886,7 +5846,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/v2/channel</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">v2/channel</span></code></pre>
 
                                             <p>
                                                 <h3>API调用示例代码</h3>
@@ -5925,7 +5885,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2ChannelPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080//v2/channel?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/channel?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order="
 
 
 </code></pre>
@@ -5946,15 +5906,15 @@ public class ReportApiExample {
     public static void main(String[] args) {
         
         ReportApi apiInstance = new ReportApi();
-        array[String] data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+        String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
         String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-        array[String] granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+        String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-        array[String] order = ; // array[String] | 排序字段
+        String order = order_example; // String | 排序字段
         try {
             channelSuccess result = apiInstance.v2ChannelPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
             System.out.println(result);
@@ -5977,15 +5937,15 @@ public class ReportApiExample {
 
     public static void main(String[] args) {
         ReportApi apiInstance = new ReportApi();
-        array[String] data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+        String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
         String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-        array[String] granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+        String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-        array[String] order = ; // array[String] | 排序字段
+        String order = order_example; // String | 排序字段
         try {
             channelSuccess result = apiInstance.v2ChannelPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
             System.out.println(result);
@@ -6008,15 +5968,15 @@ public class ReportApiExample {
                                                 <div class="tab-pane" id="examples-Report-v2ChannelPost-0-objc">
                                                     <pre class="prettyprint"><code class="language-cpp">
 
-array[String] *data_type = ; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
 String *selecter = selecter_example; // 逗号,表示或。分号; 表示与 (optional)
-array[String] *granularity = ; // 数据统计图表时间粒度，默认daily (optional)
+String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
 String *fields = fields_example; // 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional)
-array[String] *order = ; // 排序字段 (optional)
+String *order = order_example; // 排序字段 (optional)
 
 ReportApi *apiInstance = [[ReportApi alloc] init];
 
@@ -6047,7 +6007,7 @@ var  = require('');
 
 var api = new .ReportApi()
 
-var data_type = ; // {array[String]} 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+var data_type = dataType_example; // {String} 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 
 var start_time = startTime_example; // {String} 开始时间
 
@@ -6055,11 +6015,11 @@ var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
   'selecter': selecter_example, // {String} 逗号,表示或。分号; 表示与
-  'granularity': , // {array[String]} 数据统计图表时间粒度，默认daily
+  'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
   'fields': fields_example, // {String} 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-  'order':  // {array[String]} 排序字段
+  'order': order_example // {String} 排序字段
 };
 
 var callback = function(error, data, response) {
@@ -6094,15 +6054,15 @@ namespace Example
         {
             
             var apiInstance = new ReportApi();
-            var data_type = new array[String](); // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+            var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
             var selecter = selecter_example;  // String | 逗号,表示或。分号; 表示与 (optional) 
-            var granularity = new array[String](); // array[String] | 数据统计图表时间粒度，默认daily (optional) 
+            var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
             var fields = fields_example;  // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional) 
-            var order = new array[String](); // array[String] | 排序字段 (optional) 
+            var order = order_example;  // String | 排序字段 (optional) 
 
             try
             {
@@ -6128,15 +6088,15 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new io.swagger.client\Api\ReportApi();
-$data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+$data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
 $selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-$granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+$granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
 $fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-$order = ; // array[String] | 排序字段
+$order = order_example; // String | 排序字段
 
 try {
     $result = $api_instance->v2ChannelPost($data_type, $start_time, $end_time, $selecter, $granularity, $current_page, $page_size, $fields, $order);
@@ -6181,12 +6141,8 @@ try {
   "in" : "query",
   "description" : "指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据",
   "required" : true,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "default" : "detail",
-    "enum" : [ "total", "chart", "detail", "top" ]
-  }
+  "type" : "string",
+  "enum" : [ "total", "chart", "detail", "top" ]
 };
                 var schema = schemaWrapper;
 
@@ -6302,12 +6258,8 @@ try {
   "in" : "query",
   "description" : "数据统计图表时间粒度，默认daily",
   "required" : false,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "default" : "daily",
-    "enum" : [ "daily", "weekly", "monthly" ]
-  }
+  "type" : "string",
+  "enum" : [ "daily", "weekly", "monthly" ]
 };
                 var schema = schemaWrapper;
 
@@ -6425,11 +6377,8 @@ try {
   "in" : "query",
   "description" : "排序字段",
   "required" : false,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "enum" : [ "impression", "visit_count", "click", "reg_count", "spend" ]
-  }
+  "type" : "string",
+  "enum" : [ "impression", "visit_count", "click", "reg_count", "spend" ]
 };
                 var schema = schemaWrapper;
 
@@ -6563,7 +6512,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/v2/creative</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">v2/creative</span></code></pre>
 
                                             <p>
                                                 <h3>API调用示例代码</h3>
@@ -6602,7 +6551,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2CreativePost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080//v2/creative?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/creative?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order="
 
 
 </code></pre>
@@ -6623,15 +6572,15 @@ public class ReportApiExample {
     public static void main(String[] args) {
         
         ReportApi apiInstance = new ReportApi();
-        array[String] data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+        String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
         String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-        array[String] granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+        String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-        array[String] order = ; // array[String] | 排序字段
+        String order = order_example; // String | 排序字段
         try {
             dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
             System.out.println(result);
@@ -6654,15 +6603,15 @@ public class ReportApiExample {
 
     public static void main(String[] args) {
         ReportApi apiInstance = new ReportApi();
-        array[String] data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+        String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
         String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-        array[String] granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+        String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-        array[String] order = ; // array[String] | 排序字段
+        String order = order_example; // String | 排序字段
         try {
             dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
             System.out.println(result);
@@ -6685,15 +6634,15 @@ public class ReportApiExample {
                                                 <div class="tab-pane" id="examples-Report-v2CreativePost-0-objc">
                                                     <pre class="prettyprint"><code class="language-cpp">
 
-array[String] *data_type = ; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
 String *selecter = selecter_example; // 逗号,表示或。分号; 表示与 (optional)
-array[String] *granularity = ; // 数据统计图表时间粒度，默认daily (optional)
+String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
 String *fields = fields_example; // 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional)
-array[String] *order = ; // 排序字段 (optional)
+String *order = order_example; // 排序字段 (optional)
 
 ReportApi *apiInstance = [[ReportApi alloc] init];
 
@@ -6724,7 +6673,7 @@ var  = require('');
 
 var api = new .ReportApi()
 
-var data_type = ; // {array[String]} 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+var data_type = dataType_example; // {String} 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 
 var start_time = startTime_example; // {String} 开始时间
 
@@ -6732,11 +6681,11 @@ var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
   'selecter': selecter_example, // {String} 逗号,表示或。分号; 表示与
-  'granularity': , // {array[String]} 数据统计图表时间粒度，默认daily
+  'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
   'fields': fields_example, // {String} 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-  'order':  // {array[String]} 排序字段
+  'order': order_example // {String} 排序字段
 };
 
 var callback = function(error, data, response) {
@@ -6771,15 +6720,15 @@ namespace Example
         {
             
             var apiInstance = new ReportApi();
-            var data_type = new array[String](); // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+            var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
             var selecter = selecter_example;  // String | 逗号,表示或。分号; 表示与 (optional) 
-            var granularity = new array[String](); // array[String] | 数据统计图表时间粒度，默认daily (optional) 
+            var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
             var fields = fields_example;  // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional) 
-            var order = new array[String](); // array[String] | 排序字段 (optional) 
+            var order = order_example;  // String | 排序字段 (optional) 
 
             try
             {
@@ -6805,15 +6754,15 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new io.swagger.client\Api\ReportApi();
-$data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+$data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
 $selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-$granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+$granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
 $fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-$order = ; // array[String] | 排序字段
+$order = order_example; // String | 排序字段
 
 try {
     $result = $api_instance->v2CreativePost($data_type, $start_time, $end_time, $selecter, $granularity, $current_page, $page_size, $fields, $order);
@@ -6858,12 +6807,7 @@ try {
   "in" : "query",
   "description" : "指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据",
   "required" : true,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "default" : "detail",
-    "enum" : [ "total", "chart", "detail", "top" ]
-  }
+  "enum" : [ "total", "chart", "detail", "top" ]
 };
                 var schema = schemaWrapper;
 
@@ -6979,12 +6923,8 @@ try {
   "in" : "query",
   "description" : "数据统计图表时间粒度，默认daily",
   "required" : false,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "default" : "daily",
-    "enum" : [ "daily", "weekly", "monthly" ]
-  }
+  "type" : "string",
+  "enum" : [ "daily", "weekly", "monthly" ]
 };
                 var schema = schemaWrapper;
 
@@ -7102,11 +7042,8 @@ try {
   "in" : "query",
   "description" : "排序字段",
   "required" : false,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "enum" : [ "impression", "visit_count", "click", "reg_count", "spend" ]
-  }
+  "type" : "string",
+  "enum" : [ "impression", "visit_count", "click", "reg_count", "spend" ]
 };
                 var schema = schemaWrapper;
 
@@ -7240,7 +7177,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/v2/keyword</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">v2/keyword</span></code></pre>
 
                                             <p>
                                                 <h3>API调用示例代码</h3>
@@ -7279,7 +7216,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2KeywordPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080//v2/keyword?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order=&search_text="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/keyword?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order=&search_text="
 
 
 </code></pre>
@@ -7300,15 +7237,15 @@ public class ReportApiExample {
     public static void main(String[] args) {
         
         ReportApi apiInstance = new ReportApi();
-        array[String] data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+        String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
         String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-        array[String] granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+        String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-        array[String] order = ; // array[String] | 排序字段
+        String order = order_example; // String | 排序字段
         String search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
         try {
             dataSuccess result = apiInstance.v2KeywordPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order, search_text);
@@ -7332,15 +7269,15 @@ public class ReportApiExample {
 
     public static void main(String[] args) {
         ReportApi apiInstance = new ReportApi();
-        array[String] data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+        String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
         String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-        array[String] granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+        String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-        array[String] order = ; // array[String] | 排序字段
+        String order = order_example; // String | 排序字段
         String search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
         try {
             dataSuccess result = apiInstance.v2KeywordPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order, search_text);
@@ -7364,15 +7301,15 @@ public class ReportApiExample {
                                                 <div class="tab-pane" id="examples-Report-v2KeywordPost-0-objc">
                                                     <pre class="prettyprint"><code class="language-cpp">
 
-array[String] *data_type = ; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
 String *selecter = selecter_example; // 逗号,表示或。分号; 表示与 (optional)
-array[String] *granularity = ; // 数据统计图表时间粒度，默认daily (optional)
+String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
 String *fields = fields_example; // 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional)
-array[String] *order = ; // 排序字段 (optional)
+String *order = order_example; // 排序字段 (optional)
 String *search_text = searchText_example; // 搜索关键词 搜索范围：关键词name (optional)
 
 ReportApi *apiInstance = [[ReportApi alloc] init];
@@ -7405,7 +7342,7 @@ var  = require('');
 
 var api = new .ReportApi()
 
-var data_type = ; // {array[String]} 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+var data_type = dataType_example; // {String} 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 
 var start_time = startTime_example; // {String} 开始时间
 
@@ -7413,11 +7350,11 @@ var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
   'selecter': selecter_example, // {String} 逗号,表示或。分号; 表示与
-  'granularity': , // {array[String]} 数据统计图表时间粒度，默认daily
+  'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
   'fields': fields_example, // {String} 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-  'order': , // {array[String]} 排序字段
+  'order': order_example, // {String} 排序字段
   'search_text': searchText_example // {String} 搜索关键词 搜索范围：关键词name
 };
 
@@ -7453,15 +7390,15 @@ namespace Example
         {
             
             var apiInstance = new ReportApi();
-            var data_type = new array[String](); // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+            var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
             var selecter = selecter_example;  // String | 逗号,表示或。分号; 表示与 (optional) 
-            var granularity = new array[String](); // array[String] | 数据统计图表时间粒度，默认daily (optional) 
+            var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
             var fields = fields_example;  // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional) 
-            var order = new array[String](); // array[String] | 排序字段 (optional) 
+            var order = order_example;  // String | 排序字段 (optional) 
             var search_text = searchText_example;  // String | 搜索关键词 搜索范围：关键词name (optional) 
 
             try
@@ -7488,15 +7425,15 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new io.swagger.client\Api\ReportApi();
-$data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+$data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
 $selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-$granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+$granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
 $fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-$order = ; // array[String] | 排序字段
+$order = order_example; // String | 排序字段
 $search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
 
 try {
@@ -7542,12 +7479,8 @@ try {
   "in" : "query",
   "description" : "指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据",
   "required" : true,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "default" : "detail",
-    "enum" : [ "total", "chart", "detail", "top" ]
-  }
+  "type" : "string",
+  "enum" : [ "total", "chart", "detail", "top" ]
 };
                 var schema = schemaWrapper;
 
@@ -7663,12 +7596,8 @@ try {
   "in" : "query",
   "description" : "数据统计图表时间粒度，默认daily",
   "required" : false,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "default" : "daily",
-    "enum" : [ "daily", "weekly", "monthly" ]
-  }
+  "type" : "string",
+  "enum" : [ "daily", "weekly", "monthly" ]
 };
                 var schema = schemaWrapper;
 
@@ -7786,11 +7715,8 @@ try {
   "in" : "query",
   "description" : "排序字段",
   "required" : false,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "enum" : [ "impression", "visit_count", "click", "reg_count", "spend" ]
-  }
+  "type" : "string",
+  "enum" : [ "impression", "visit_count", "click", "reg_count", "spend" ]
 };
                 var schema = schemaWrapper;
 
@@ -7953,7 +7879,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/v2/landing_page</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">v2/landing_page</span></code></pre>
 
                                             <p>
                                                 <h3>API调用示例代码</h3>
@@ -7992,7 +7918,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2LandingPagePost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080//v2/landing_page?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order=&search_text="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/landing_page?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order=&search_text="
 
 
 </code></pre>
@@ -8013,15 +7939,15 @@ public class ReportApiExample {
     public static void main(String[] args) {
         
         ReportApi apiInstance = new ReportApi();
-        array[String] data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+        String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
         String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-        array[String] granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+        String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-        array[String] order = ; // array[String] | 排序字段
+        String order = order_example; // String | 排序字段
         String search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
         try {
             dataSuccess result = apiInstance.v2LandingPagePost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order, search_text);
@@ -8045,15 +7971,15 @@ public class ReportApiExample {
 
     public static void main(String[] args) {
         ReportApi apiInstance = new ReportApi();
-        array[String] data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+        String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
         String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-        array[String] granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+        String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-        array[String] order = ; // array[String] | 排序字段
+        String order = order_example; // String | 排序字段
         String search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
         try {
             dataSuccess result = apiInstance.v2LandingPagePost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order, search_text);
@@ -8077,15 +8003,15 @@ public class ReportApiExample {
                                                 <div class="tab-pane" id="examples-Report-v2LandingPagePost-0-objc">
                                                     <pre class="prettyprint"><code class="language-cpp">
 
-array[String] *data_type = ; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
 String *selecter = selecter_example; // 逗号,表示或。分号; 表示与 (optional)
-array[String] *granularity = ; // 数据统计图表时间粒度，默认daily (optional)
+String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
 String *fields = fields_example; // 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional)
-array[String] *order = ; // 排序字段 (optional)
+String *order = order_example; // 排序字段 (optional)
 String *search_text = searchText_example; // 搜索关键词 搜索范围：关键词name (optional)
 
 ReportApi *apiInstance = [[ReportApi alloc] init];
@@ -8118,7 +8044,7 @@ var  = require('');
 
 var api = new .ReportApi()
 
-var data_type = ; // {array[String]} 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+var data_type = dataType_example; // {String} 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 
 var start_time = startTime_example; // {String} 开始时间
 
@@ -8126,11 +8052,11 @@ var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
   'selecter': selecter_example, // {String} 逗号,表示或。分号; 表示与
-  'granularity': , // {array[String]} 数据统计图表时间粒度，默认daily
+  'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
   'fields': fields_example, // {String} 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-  'order': , // {array[String]} 排序字段
+  'order': order_example, // {String} 排序字段
   'search_text': searchText_example // {String} 搜索关键词 搜索范围：关键词name
 };
 
@@ -8166,15 +8092,15 @@ namespace Example
         {
             
             var apiInstance = new ReportApi();
-            var data_type = new array[String](); // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+            var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
             var selecter = selecter_example;  // String | 逗号,表示或。分号; 表示与 (optional) 
-            var granularity = new array[String](); // array[String] | 数据统计图表时间粒度，默认daily (optional) 
+            var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
             var fields = fields_example;  // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional) 
-            var order = new array[String](); // array[String] | 排序字段 (optional) 
+            var order = order_example;  // String | 排序字段 (optional) 
             var search_text = searchText_example;  // String | 搜索关键词 搜索范围：关键词name (optional) 
 
             try
@@ -8201,15 +8127,15 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new io.swagger.client\Api\ReportApi();
-$data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+$data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
 $selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-$granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+$granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
 $fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-$order = ; // array[String] | 排序字段
+$order = order_example; // String | 排序字段
 $search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
 
 try {
@@ -8255,12 +8181,8 @@ try {
   "in" : "query",
   "description" : "指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据",
   "required" : true,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "default" : "detail",
-    "enum" : [ "total", "chart", "detail", "top" ]
-  }
+  "type" : "string",
+  "enum" : [ "total", "chart", "detail", "top" ]
 };
                 var schema = schemaWrapper;
 
@@ -8376,12 +8298,8 @@ try {
   "in" : "query",
   "description" : "数据统计图表时间粒度，默认daily",
   "required" : false,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "default" : "daily",
-    "enum" : [ "daily", "weekly", "monthly" ]
-  }
+  "type" : "string",
+  "enum" : [ "daily", "weekly", "monthly" ]
 };
                 var schema = schemaWrapper;
 
@@ -8499,11 +8417,8 @@ try {
   "in" : "query",
   "description" : "排序字段",
   "required" : false,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "enum" : [ "impression", "visit_count", "click", "reg_count", "spend" ]
-  }
+  "type" : "string",
+  "enum" : [ "impression", "visit_count", "click", "reg_count", "spend" ]
 };
                 var schema = schemaWrapper;
 
@@ -8666,7 +8581,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/v2/trend</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">v2/trend</span></code></pre>
 
                                             <p>
                                                 <h3>API调用示例代码</h3>
@@ -8705,7 +8620,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2TrendPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080//v2/trend?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order=&chart_limit="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/trend?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order=&chart_limit="
 
 
 </code></pre>
@@ -8726,15 +8641,15 @@ public class ReportApiExample {
     public static void main(String[] args) {
         
         ReportApi apiInstance = new ReportApi();
-        array[String] data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+        String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
         String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-        array[String] granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+        String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-        array[String] order = ; // array[String] | 排序字段
+        String order = order_example; // String | 排序字段
         String chart_limit = chartLimit_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         try {
             trendSuccess result = apiInstance.v2TrendPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order, chart_limit);
@@ -8758,15 +8673,15 @@ public class ReportApiExample {
 
     public static void main(String[] args) {
         ReportApi apiInstance = new ReportApi();
-        array[String] data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+        String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
         String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-        array[String] granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+        String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-        array[String] order = ; // array[String] | 排序字段
+        String order = order_example; // String | 排序字段
         String chart_limit = chartLimit_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         try {
             trendSuccess result = apiInstance.v2TrendPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order, chart_limit);
@@ -8790,15 +8705,15 @@ public class ReportApiExample {
                                                 <div class="tab-pane" id="examples-Report-v2TrendPost-0-objc">
                                                     <pre class="prettyprint"><code class="language-cpp">
 
-array[String] *data_type = ; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
 String *selecter = selecter_example; // 逗号,表示或。分号; 表示与 (optional)
-array[String] *granularity = ; // 数据统计图表时间粒度，默认daily (optional)
+String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
 String *fields = fields_example; // 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional)
-array[String] *order = ; // 排序字段 (optional)
+String *order = order_example; // 排序字段 (optional)
 String *chart_limit = chartLimit_example; // 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional) (default to )
 
 ReportApi *apiInstance = [[ReportApi alloc] init];
@@ -8831,7 +8746,7 @@ var  = require('');
 
 var api = new .ReportApi()
 
-var data_type = ; // {array[String]} 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+var data_type = dataType_example; // {String} 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 
 var start_time = startTime_example; // {String} 开始时间
 
@@ -8839,11 +8754,11 @@ var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
   'selecter': selecter_example, // {String} 逗号,表示或。分号; 表示与
-  'granularity': , // {array[String]} 数据统计图表时间粒度，默认daily
+  'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
   'fields': fields_example, // {String} 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-  'order': , // {array[String]} 排序字段
+  'order': order_example, // {String} 排序字段
   'chart_limit': chartLimit_example // {String} 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
 };
 
@@ -8879,15 +8794,15 @@ namespace Example
         {
             
             var apiInstance = new ReportApi();
-            var data_type = new array[String](); // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+            var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
             var selecter = selecter_example;  // String | 逗号,表示或。分号; 表示与 (optional) 
-            var granularity = new array[String](); // array[String] | 数据统计图表时间粒度，默认daily (optional) 
+            var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
             var fields = fields_example;  // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional) 
-            var order = new array[String](); // array[String] | 排序字段 (optional) 
+            var order = order_example;  // String | 排序字段 (optional) 
             var chart_limit = chartLimit_example;  // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional)  (default to )
 
             try
@@ -8914,15 +8829,15 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new io.swagger.client\Api\ReportApi();
-$data_type = ; // array[String] | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
+$data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
 $selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
-$granularity = ; // array[String] | 数据统计图表时间粒度，默认daily
+$granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
 $fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-$order = ; // array[String] | 排序字段
+$order = order_example; // String | 排序字段
 $chart_limit = chartLimit_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
 
 try {
@@ -8968,12 +8883,8 @@ try {
   "in" : "query",
   "description" : "指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据",
   "required" : true,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "default" : "detail",
-    "enum" : [ "total", "chart", "detail", "top" ]
-  }
+  "type" : "string",
+  "enum" : [ "total", "chart", "detail", "top" ]
 };
                 var schema = schemaWrapper;
 
@@ -9089,12 +9000,8 @@ try {
   "in" : "query",
   "description" : "数据统计图表时间粒度，默认daily",
   "required" : false,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "default" : "daily",
-    "enum" : [ "daily", "weekly", "monthly" ]
-  }
+  "type" : "string",
+  "enum" : [ "daily", "weekly", "monthly" ]
 };
                 var schema = schemaWrapper;
 
@@ -9212,11 +9119,8 @@ try {
   "in" : "query",
   "description" : "排序字段",
   "required" : false,
-  "type" : "array",
-  "items" : {
-    "type" : "string",
-    "enum" : [ "impression", "visit_count", "click", "reg_count", "spend" ]
-  }
+  "type" : "string",
+  "enum" : [ "impression", "visit_count", "click", "reg_count", "spend" ]
 };
                 var schema = schemaWrapper;
 
@@ -9383,7 +9287,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/v2/selecter</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">v2/selecter</span></code></pre>
 
                                             <p>
                                                 <h3>API调用示例代码</h3>
@@ -9422,7 +9326,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Tool-v2SelecterGet-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> "http://cim.lbadvisor.com:8080//v2/selecter?user_id=&selecter="
+curl -X <span style="text-transform: uppercase;">get</span> "http://cim.lbadvisor.com:8080/v2/selecter?user_id=&selecter="
 
 
 </code></pre>
@@ -9789,7 +9693,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/v2/selecter</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">v2/selecter</span></code></pre>
 
                                             <p>
                                                 <h3>API调用示例代码</h3>
@@ -9828,7 +9732,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Tool-v2SelecterPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080//v2/selecter?user_id=&selecter_id=&selecter="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/selecter?user_id=&selecter_id=&selecter="
 
 
 </code></pre>
@@ -10232,7 +10136,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/v2/sem_account</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">v2/sem_account</span></code></pre>
 
                                             <p>
                                                 <h3>API调用示例代码</h3>
@@ -10271,7 +10175,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Tool-v2SemAccountPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080//v2/sem_account?channel=&account_id=&user_name=&password=&token=&sub_account="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/sem_account?channel=&account_id=&user_name=&password=&token=&sub_account="
 
 
 </code></pre>
@@ -10786,7 +10690,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/v2/url_tool</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">v2/url_tool</span></code></pre>
 
                                             <p>
                                                 <h3>API调用示例代码</h3>
@@ -10825,7 +10729,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Tool-v2UrlToolPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080//v2/url_tool?url=&channel="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/url_tool?url=&channel="
 
 
 </code></pre>
@@ -11197,7 +11101,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/v2/login</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">v2/login</span></code></pre>
 
                                             <p>
                                                 <h3>API调用示例代码</h3>
@@ -11236,7 +11140,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-User-v2LoginPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080//v2/login?user_name=&password=&yzm=&unique_str="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/login?user_name=&password=&yzm=&unique_str="
 
 
 </code></pre>
@@ -11756,7 +11660,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/v2/logout</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">v2/logout</span></code></pre>
 
                                             <p>
                                                 <h3>API调用示例代码</h3>
@@ -11795,7 +11699,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-User-v2LogoutPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080//v2/logout"
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/logout"
 
 
 </code></pre>
@@ -12080,7 +11984,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/v2/user</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">v2/user</span></code></pre>
 
                                             <p>
                                                 <h3>API调用示例代码</h3>
@@ -12119,7 +12023,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-User-v2UserPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080//v2/user"
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/user"
 
 
 </code></pre>
@@ -12483,7 +12387,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/v2/yzm</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">v2/yzm</span></code></pre>
 
                                             <p>
                                                 <h3>API调用示例代码</h3>
@@ -12522,7 +12426,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-User-v2YzmGet-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> "http://cim.lbadvisor.com:8080//v2/yzm"
+curl -X <span style="text-transform: uppercase;">get</span> "http://cim.lbadvisor.com:8080/v2/yzm"
 
 
 </code></pre>

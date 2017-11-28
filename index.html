@@ -3380,6 +3380,28 @@ margin-bottom: 20px;
     }
   }
 };
+  defs.filterTreeSuccess = {
+  "type" : "object",
+  "properties" : {
+    "meta" : {
+      "$ref" : "#/definitions/meta"
+    },
+    "data" : {
+      "$ref" : "#/definitions/filterTreeSuccess_data"
+    }
+  },
+  "description" : "查询条件成功响应结果"
+};
+  defs.filterTreeSuccess_data = {
+  "properties" : {
+    "filter_tree" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/tree_item"
+      }
+    }
+  }
+};
   defs.granularity = {
   "type" : "string",
   "enum" : [ "daily", "weekly", "monthly" ]
@@ -3562,6 +3584,21 @@ margin-bottom: 20px;
       "format" : "double"
     }
   }
+};
+  defs.tree_item = {
+  "type" : "object",
+  "properties" : {
+    "id" : {
+      "type" : "integer"
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "account" : {
+      "type" : "array"
+    }
+  },
+  "description" : "过滤树单元"
 };
   defs.trendSuccess = {
   "type" : "object",
@@ -3769,6 +3806,9 @@ margin-bottom: 20px;
                                     </li>
                                 <!--baseName to note-->
                                 <li class="nav-header" data-group="Tool"><a href="#api-Tool">Tool</a></li>
+                                    <li data-group="Tool" data-name="v2FilterTreeGet" class="">
+                                    <a href="#api-Tool-v2FilterTreeGet">获取查询过滤的树结构</a>
+                                    </li>
                                     <li data-group="Tool" data-name="v2SelecterGet" class="">
                                     <a href="#api-Tool-v2SelecterGet">获取查询条件列表</a>
                                     </li>
@@ -9264,6 +9304,377 @@ try {
 
                             <section id="api-Tool">
                                 <h1>Tool</h1>
+
+
+
+
+
+
+
+                                    <div id="api-Tool-v2FilterTreeGet">
+
+                                        <article id="api-Tool-v2FilterTreeGet-0" data-group="User" data-name="v2FilterTreeGet" data-version="0">
+                                            <div class="pull-left">
+                                                <h1>获取查询过滤的树结构</h1>
+                                            </div>
+                                            <div class="pull-right">
+
+                                            </div>
+                                            <div class="clearfix"></div>
+
+                                            <p></p>
+                                            <p>获取查询过滤的树结构</p>
+                                            <p></p>
+                                            <br />
+
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">v2/filter_tree</span></code></pre>
+
+                                            <p>
+                                                <h3>API调用示例代码</h3>
+                                            </p>
+
+                                            <ul class="nav nav-tabs nav-tabs-examples">
+                                                <li class="active">
+                                                    <a href="#examples-Tool-v2FilterTreeGet-0-curl">Curl</a>
+                                                </li>
+                                                <li class="">
+              <a href="#examples-Tool-v2FilterTreeGet-0-java">Java</a>
+            </li>
+            <li class="">
+              <a href="#examples-Tool-v2FilterTreeGet-0-android">Android</a>
+            </li>
+            <!--<li class="">
+              <a href="#examples-Tool-v2FilterTreeGet-0-groovy">Groovy</a>
+            </li>-->
+                                                <li class="">
+                                                    <a href="#examples-Tool-v2FilterTreeGet-0-objc">Obj-C</a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="#examples-Tool-v2FilterTreeGet-0-javascript">JavaScript</a>
+                                                </li>
+                                                <!--<li class="">
+              <a href="#examples-Tool-v2FilterTreeGet-0-angular">Angular</a>
+            </li>-->
+                                                <li class="">
+                                                    <a href="#examples-Tool-v2FilterTreeGet-0-csharp">C#</a>
+                                                </li>
+                                                <li class="">
+              <a href="#examples-Tool-v2FilterTreeGet-0-php">PHP</a>
+            </li>
+                                            </ul>
+
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="examples-Tool-v2FilterTreeGet-0-curl">
+                                                    <pre class="prettyprint"><code class="language-bsh">
+curl -X <span style="text-transform: uppercase;">get</span> "http://cim.lbadvisor.com:8080/v2/filter_tree?level="
+
+
+</code></pre>
+                                                </div>
+
+                                                <div class="tab-pane" id="examples-Tool-v2FilterTreeGet-0-java">
+                                                  <pre class="prettyprint"><code class="language-java">
+import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import .ToolApi;
+
+import java.io.File;
+import java.util.*;
+
+public class ToolApiExample {
+
+    public static void main(String[] args) {
+        
+        ToolApi apiInstance = new ToolApi();
+        String level = level_example; // String | 过滤级别,或者叫树的深度 默认 adgroup
+        try {
+            filterTreeSuccess result = apiInstance.v2FilterTreeGet(level);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ToolApi#v2FilterTreeGet");
+            e.printStackTrace();
+        }
+    }
+}
+
+                                                  </code></pre>
+          </div>
+
+
+                                                <div class="tab-pane" id="examples-Tool-v2FilterTreeGet-0-android">
+                                                  <pre class="prettyprint"><code class="language-java">
+import .ToolApi;
+
+public class ToolApiExample {
+
+    public static void main(String[] args) {
+        ToolApi apiInstance = new ToolApi();
+        String level = level_example; // String | 过滤级别,或者叫树的深度 默认 adgroup
+        try {
+            filterTreeSuccess result = apiInstance.v2FilterTreeGet(level);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ToolApi#v2FilterTreeGet");
+            e.printStackTrace();
+        }
+    }
+}
+
+                                                  </code></pre>
+          </div>
+
+          <!--
+          <div class="tab-pane" id="examples-Tool-v2FilterTreeGet-0-groovy">
+            <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+          </div> -->
+
+
+                                                <div class="tab-pane" id="examples-Tool-v2FilterTreeGet-0-objc">
+                                                    <pre class="prettyprint"><code class="language-cpp">
+
+String *level = level_example; // 过滤级别,或者叫树的深度 默认 adgroup (optional)
+
+ToolApi *apiInstance = [[ToolApi alloc] init];
+
+// 获取查询过滤的树结构
+[apiInstance v2FilterTreeGetWith:level
+              completionHandler: ^(filterTreeSuccess output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+
+                                                    </code></pre>
+                                                </div>
+                                                <div class="tab-pane" id="examples-Tool-v2FilterTreeGet-0-javascript">
+                                                    <pre class="prettyprint"><code class="language-js">
+var  = require('');
+
+var api = new .ToolApi()
+
+var opts = { 
+  'level': level_example // {String} 过滤级别,或者叫树的深度 默认 adgroup
+};
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.v2FilterTreeGet(opts, callback);
+
+                                                    </code></pre>
+                                                </div>
+
+                                                <!--<div class="tab-pane" id="examples-Tool-v2FilterTreeGet-0-angular">
+            <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+          </div>-->
+
+                                                <div class="tab-pane" id="examples-Tool-v2FilterTreeGet-0-csharp">
+                                                    <pre class="prettyprint"><code class="language-cs">
+using System;
+using System.Diagnostics;
+using .Api;
+using .Client;
+using ;
+
+namespace Example
+{
+    public class v2FilterTreeGetExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new ToolApi();
+            var level = level_example;  // String | 过滤级别,或者叫树的深度 默认 adgroup (optional) 
+
+            try
+            {
+                // 获取查询过滤的树结构
+                filterTreeSuccess result = apiInstance.v2FilterTreeGet(level);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ToolApi.v2FilterTreeGet: " + e.Message );
+            }
+        }
+    }
+}
+
+                                                    </code></pre>
+                                                </div>
+
+
+                                                <div class="tab-pane" id="examples-Tool-v2FilterTreeGet-0-php">
+                                                  <pre class="prettyprint"><code class="language-php">
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new io.swagger.client\Api\ToolApi();
+$level = level_example; // String | 过滤级别,或者叫树的深度 默认 adgroup
+
+try {
+    $result = $api_instance->v2FilterTreeGet($level);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ToolApi->v2FilterTreeGet: ', $e->getMessage(), PHP_EOL;
+}
+
+                                                  </code></pre>
+          </div>
+
+                                            </div>
+
+
+
+
+
+                                            <h2>参数</h2>
+
+
+
+
+
+
+
+                                                <div class="methodsubtabletitle">查询参数</div>
+                                                <table id="methodsubtable">
+                                                    <tr>
+                                                        <th width="150px">名称</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                    <!---->
+                                                        <tr>
+    <td style="width:150px;">level</td>
+    <td>
+
+
+        <script>
+            $(document).ready(function () {
+                var schemaWrapper = {
+  "name" : "level",
+  "in" : "query",
+  "description" : "过滤级别,或者叫树的深度 默认 adgroup",
+  "required" : false,
+  "type" : "string",
+  "enum" : [ "channel", "account", "campaign", "adgroup" ]
+};
+                var schema = schemaWrapper;
+
+
+                var view = new JSONSchemaView(schema, 0);
+                var result = $('#d2e199_v2FilterTreeGet_level');
+                result.empty();
+                result.append(view.render());
+
+
+            });
+        </script>
+        <div id="d2e199_v2FilterTreeGet_level"></div>
+    </td>
+</tr>
+
+                                                </table>
+
+                                            <h2>响应</h2>
+
+                                                <h3> 状态码: 200 - Success </h3>
+
+                                                <ul class="nav nav-tabs nav-tabs-examples" >
+
+                                                    <li class="active">
+                                                        <a href="#examples-Tool-v2FilterTreeGet-schema">返回类型</a>
+                                                    </li>
+
+
+                                                </ul>
+
+
+
+
+
+
+
+                                                <div class="tab-content" style='margin-bottom: 10px;'>
+
+
+
+                                                    <div class="tab-pane active" id="examples-Tool-v2FilterTreeGet-schema">
+
+
+
+
+                                                        <div id='examples-Tool-v2FilterTreeGet-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+
+                                                            <script>
+                                                                $(document).ready(function() {
+                                                                    var schemaWrapper = {
+  "description" : "Success",
+  "schema" : {
+    "$ref" : "#/definitions/filterTreeSuccess"
+  }
+};
+                                                                    var schema = schemaWrapper.schema;
+                                                                    schemaWrapper.definitions = defs;
+                                                                    //console.log(JSON.stringify(schema))
+                                                                    JsonRefs.resolveRefs(schemaWrapper, {
+                                                                        "depth": 3,
+                                                                        "resolveRemoteRefs": false,
+                                                                        "resolveFileRefs": false
+                                                                    }, function(err, resolved, metadata) {
+
+                                                                        //console.log(JSON.stringify(resolved));
+
+
+
+                                                                        var view = new JSONSchemaView(resolved.schema, 3);
+                                                                        $('#examples-Tool-v2FilterTreeGet-schema-data').val(JSON.stringify(resolved.schema));
+                                                                        var result = $('#examples-Tool-v2FilterTreeGet-schema-200');
+                                                                        result.empty();
+                                                                        result.append(view.render());
+                                                                    });
+
+
+
+
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                        <input id='examples-Tool-v2FilterTreeGet-schema-data' type='hidden' value=''></input>
+
+
+
+
+
+
+                                                    </div>
+
+
+
+
+                                                </div>
+
+
+
+
+
+
+
+
+
+                                        </article>
+
+                                    </div>
+
+                                    <hr>
+
 
 
 

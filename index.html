@@ -3254,6 +3254,18 @@ margin-bottom: 20px;
       "items" : {
         "$ref" : "#/definitions/chart_report_impression"
       }
+    },
+    "click" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/chart_report_impression"
+      }
+    },
+    "spend" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/chart_report_spend"
+      }
     }
   },
   "description" : "图表区域数据"
@@ -3264,7 +3276,18 @@ margin-bottom: 20px;
       "type" : "string"
     },
     "value" : {
+      "type" : "integer"
+    }
+  }
+};
+  defs.chart_report_spend = {
+  "properties" : {
+    "label" : {
       "type" : "string"
+    },
+    "value" : {
+      "type" : "number",
+      "format" : "double"
     }
   }
 };
@@ -3515,6 +3538,9 @@ margin-bottom: 20px;
       "$ref" : "#/definitions/total_report_yesterday"
     },
     "total" : {
+      "$ref" : "#/definitions/total_report_yesterday"
+    },
+    "average" : {
       "$ref" : "#/definitions/total_report_yesterday"
     }
   },

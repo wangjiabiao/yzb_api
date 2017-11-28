@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>优装保CIM API</title>
+  <title>CIM API</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="UTF-8" />
@@ -3911,7 +3911,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+        String selecter = selecter_example; // String | selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -3942,7 +3942,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+        String selecter = selecter_example; // String | selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -3973,7 +3973,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
-String *selecter = selecter_example; // 逗号,表示或。分号; 表示与 (optional)
+String *selecter = selecter_example; // selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
@@ -4016,7 +4016,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
-  'selecter': selecter_example, // {String} 逗号,表示或。分号; 表示与
+  'selecter': selecter_example, // {String} selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
@@ -4059,7 +4059,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
-            var selecter = selecter_example;  // String | 逗号,表示或。分号; 表示与 (optional) 
+            var selecter = selecter_example;  // String | selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
@@ -4093,7 +4093,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
-$selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+$selecter = selecter_example; // String | selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
@@ -4229,7 +4229,7 @@ try {
                 var schemaWrapper = {
   "name" : "selecter",
   "in" : "query",
-  "description" : "逗号,表示或。分号; 表示与",
+  "description" : "selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
   "required" : false,
   "type" : "string"
 };
@@ -4577,7 +4577,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -4608,7 +4608,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -4639,7 +4639,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
-String *selecter = selecter_example; // 逗号,表示或。分号; 表示与 (optional)
+String *selecter = selecter_example; // selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
@@ -4682,7 +4682,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
-  'selecter': selecter_example, // {String} 逗号,表示或。分号; 表示与
+  'selecter': selecter_example, // {String} selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
@@ -4725,7 +4725,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
-            var selecter = selecter_example;  // String | 逗号,表示或。分号; 表示与 (optional) 
+            var selecter = selecter_example;  // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
@@ -4759,7 +4759,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
-$selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+$selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
@@ -4895,7 +4895,7 @@ try {
                 var schemaWrapper = {
   "name" : "selecter",
   "in" : "query",
-  "description" : "逗号,表示或。分号; 表示与",
+  "description" : "selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
   "required" : false,
   "type" : "string"
 };
@@ -5243,7 +5243,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+        String selecter = selecter_example; // String | selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -5274,7 +5274,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+        String selecter = selecter_example; // String | selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -5305,7 +5305,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
-String *selecter = selecter_example; // 逗号,表示或。分号; 表示与 (optional)
+String *selecter = selecter_example; // selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
@@ -5348,7 +5348,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
-  'selecter': selecter_example, // {String} 逗号,表示或。分号; 表示与
+  'selecter': selecter_example, // {String} selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
@@ -5391,7 +5391,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
-            var selecter = selecter_example;  // String | 逗号,表示或。分号; 表示与 (optional) 
+            var selecter = selecter_example;  // String | selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
@@ -5425,7 +5425,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
-$selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+$selecter = selecter_example; // String | selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
@@ -5561,7 +5561,7 @@ try {
                 var schemaWrapper = {
   "name" : "selecter",
   "in" : "query",
-  "description" : "逗号,表示或。分号; 表示与",
+  "description" : "selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
   "required" : false,
   "type" : "string"
 };
@@ -5909,7 +5909,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -5940,7 +5940,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -5971,7 +5971,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
-String *selecter = selecter_example; // 逗号,表示或。分号; 表示与 (optional)
+String *selecter = selecter_example; // selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
@@ -6014,7 +6014,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
-  'selecter': selecter_example, // {String} 逗号,表示或。分号; 表示与
+  'selecter': selecter_example, // {String} selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
@@ -6057,7 +6057,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
-            var selecter = selecter_example;  // String | 逗号,表示或。分号; 表示与 (optional) 
+            var selecter = selecter_example;  // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
@@ -6091,7 +6091,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
-$selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+$selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
@@ -6227,7 +6227,7 @@ try {
                 var schemaWrapper = {
   "name" : "selecter",
   "in" : "query",
-  "description" : "逗号,表示或。分号; 表示与",
+  "description" : "selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
   "required" : false,
   "type" : "string"
 };
@@ -6575,7 +6575,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -6606,7 +6606,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -6637,7 +6637,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
-String *selecter = selecter_example; // 逗号,表示或。分号; 表示与 (optional)
+String *selecter = selecter_example; // selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
@@ -6680,7 +6680,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
-  'selecter': selecter_example, // {String} 逗号,表示或。分号; 表示与
+  'selecter': selecter_example, // {String} selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
@@ -6723,7 +6723,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
-            var selecter = selecter_example;  // String | 逗号,表示或。分号; 表示与 (optional) 
+            var selecter = selecter_example;  // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
@@ -6757,7 +6757,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
-$selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+$selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
@@ -6892,7 +6892,7 @@ try {
                 var schemaWrapper = {
   "name" : "selecter",
   "in" : "query",
-  "description" : "逗号,表示或。分号; 表示与",
+  "description" : "selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
   "required" : false,
   "type" : "string"
 };
@@ -7240,7 +7240,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -7272,7 +7272,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -7304,7 +7304,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
-String *selecter = selecter_example; // 逗号,表示或。分号; 表示与 (optional)
+String *selecter = selecter_example; // selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
@@ -7349,7 +7349,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
-  'selecter': selecter_example, // {String} 逗号,表示或。分号; 表示与
+  'selecter': selecter_example, // {String} selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
@@ -7393,7 +7393,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
-            var selecter = selecter_example;  // String | 逗号,表示或。分号; 表示与 (optional) 
+            var selecter = selecter_example;  // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
@@ -7428,7 +7428,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
-$selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+$selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
@@ -7565,7 +7565,7 @@ try {
                 var schemaWrapper = {
   "name" : "selecter",
   "in" : "query",
-  "description" : "逗号,表示或。分号; 表示与",
+  "description" : "selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
   "required" : false,
   "type" : "string"
 };
@@ -7942,7 +7942,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -7974,7 +7974,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -8006,7 +8006,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
-String *selecter = selecter_example; // 逗号,表示或。分号; 表示与 (optional)
+String *selecter = selecter_example; // selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
@@ -8051,7 +8051,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
-  'selecter': selecter_example, // {String} 逗号,表示或。分号; 表示与
+  'selecter': selecter_example, // {String} selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
@@ -8095,7 +8095,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
-            var selecter = selecter_example;  // String | 逗号,表示或。分号; 表示与 (optional) 
+            var selecter = selecter_example;  // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
@@ -8130,7 +8130,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
-$selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+$selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
@@ -8267,7 +8267,7 @@ try {
                 var schemaWrapper = {
   "name" : "selecter",
   "in" : "query",
-  "description" : "逗号,表示或。分号; 表示与",
+  "description" : "selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
   "required" : false,
   "type" : "string"
 };
@@ -8644,7 +8644,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -8676,7 +8676,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -8708,7 +8708,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
-String *selecter = selecter_example; // 逗号,表示或。分号; 表示与 (optional)
+String *selecter = selecter_example; // selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
@@ -8753,7 +8753,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
-  'selecter': selecter_example, // {String} 逗号,表示或。分号; 表示与
+  'selecter': selecter_example, // {String} selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
@@ -8797,7 +8797,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
-            var selecter = selecter_example;  // String | 逗号,表示或。分号; 表示与 (optional) 
+            var selecter = selecter_example;  // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
@@ -8832,7 +8832,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
-$selecter = selecter_example; // String | 逗号,表示或。分号; 表示与
+$selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
@@ -8969,7 +8969,7 @@ try {
                 var schemaWrapper = {
   "name" : "selecter",
   "in" : "query",
-  "description" : "逗号,表示或。分号; 表示与",
+  "description" : "selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
   "required" : false,
   "type" : "string"
 };
@@ -9755,7 +9755,7 @@ public class ToolApiExample {
         ToolApi apiInstance = new ToolApi();
         Integer user_id = 56; // Integer | 用户ID
         Integer selecter_id = 56; // Integer | 查询条件ID 更新时必须
-        String selecter = selecter_example; // String | 查询条件字符串
+        String selecter = selecter_example; // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         try {
             success result = apiInstance.v2SelecterPost(user_id, selecter_id, selecter);
             System.out.println(result);
@@ -9780,7 +9780,7 @@ public class ToolApiExample {
         ToolApi apiInstance = new ToolApi();
         Integer user_id = 56; // Integer | 用户ID
         Integer selecter_id = 56; // Integer | 查询条件ID 更新时必须
-        String selecter = selecter_example; // String | 查询条件字符串
+        String selecter = selecter_example; // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         try {
             success result = apiInstance.v2SelecterPost(user_id, selecter_id, selecter);
             System.out.println(result);
@@ -9805,7 +9805,7 @@ public class ToolApiExample {
 
 Integer *user_id = 56; // 用户ID
 Integer *selecter_id = 56; // 查询条件ID 更新时必须
-String *selecter = selecter_example; // 查询条件字符串
+String *selecter = selecter_example; // 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 
 ToolApi *apiInstance = [[ToolApi alloc] init];
 
@@ -9834,7 +9834,7 @@ var user_id = 56; // {Integer} 用户ID
 
 var selecter_id = 56; // {Integer} 查询条件ID 更新时必须
 
-var selecter = selecter_example; // {String} 查询条件字符串
+var selecter = selecter_example; // {String} 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 
 
 var callback = function(error, data, response) {
@@ -9871,7 +9871,7 @@ namespace Example
             var apiInstance = new ToolApi();
             var user_id = 56;  // Integer | 用户ID
             var selecter_id = 56;  // Integer | 查询条件ID 更新时必须
-            var selecter = selecter_example;  // String | 查询条件字符串
+            var selecter = selecter_example;  // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 
             try
             {
@@ -9899,7 +9899,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $api_instance = new io.swagger.client\Api\ToolApi();
 $user_id = 56; // Integer | 用户ID
 $selecter_id = 56; // Integer | 查询条件ID 更新时必须
-$selecter = selecter_example; // String | 查询条件字符串
+$selecter = selecter_example; // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 
 try {
     $result = $api_instance->v2SelecterPost($user_id, $selecter_id, $selecter);
@@ -10000,7 +10000,7 @@ try {
                 var schemaWrapper = {
   "name" : "selecter",
   "in" : "query",
-  "description" : "查询条件字符串",
+  "description" : "查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
   "required" : true,
   "type" : "string"
 };

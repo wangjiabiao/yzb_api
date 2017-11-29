@@ -3313,7 +3313,12 @@ margin-bottom: 20px;
   defs.detail_report_inner = {
   "properties" : {
     "label" : {
-      "type" : "string"
+      "type" : "string",
+      "description" : "数据项名称 如关键词 的文本信息，渠道名称，计划名称等"
+    },
+    "data_id" : {
+      "type" : "integer",
+      "description" : "当需要下钻时 会提供数据项ID"
     },
     "visit_count" : {
       "type" : "integer"
@@ -3355,7 +3360,7 @@ margin-bottom: 20px;
       "type" : "integer",
       "description" : "点击数"
     },
-    "click_rate" : {
+    "ctr" : {
       "type" : "number",
       "format" : "double",
       "description" : "点击率"

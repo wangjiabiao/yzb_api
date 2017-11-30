@@ -3435,7 +3435,7 @@ margin-bottom: 20px;
   "description" : "排序字段",
   "enum" : [ "impression", "visit_count", "click", "reg_count", "spend" ]
 };
-  defs.selecter = {
+  defs.selector = {
   "type" : "object",
   "properties" : {
     "id" : {
@@ -3447,12 +3447,12 @@ margin-bottom: 20px;
       "description" : "查询条件标题"
     },
     "definition" : {
-      "$ref" : "#/definitions/selecter_definition"
+      "$ref" : "#/definitions/selector_definition"
     }
   },
   "description" : "查询条件"
 };
-  defs.selecterSuccess = {
+  defs.selectorSuccess = {
   "type" : "object",
   "properties" : {
     "meta" : {
@@ -3461,29 +3461,29 @@ margin-bottom: 20px;
     "data" : {
       "type" : "array",
       "items" : {
-        "$ref" : "#/definitions/selecter"
+        "$ref" : "#/definitions/selector"
       }
     }
   },
   "description" : "查询条件成功响应结果"
 };
-  defs.selecter_definition = {
+  defs.selector_definition = {
   "properties" : {
     "and" : {
       "type" : "array",
       "items" : {
-        "$ref" : "#/definitions/selecter_item"
+        "$ref" : "#/definitions/selector_item"
       }
     },
     "or" : {
       "type" : "array",
       "items" : {
-        "$ref" : "#/definitions/selecter_item"
+        "$ref" : "#/definitions/selector_item"
       }
     }
   }
 };
-  defs.selecter_item = {
+  defs.selector_item = {
   "type" : "object",
   "properties" : {
     "field" : {
@@ -3815,11 +3815,11 @@ margin-bottom: 20px;
                                     <li data-group="Tool" data-name="v2FilterTreeGet" class="">
                                     <a href="#api-Tool-v2FilterTreeGet">树结构</a>
                                     </li>
-                                    <li data-group="Tool" data-name="v2SelecterGet" class="">
-                                    <a href="#api-Tool-v2SelecterGet">获取查询条件列表</a>
+                                    <li data-group="Tool" data-name="v2SelectorGet" class="">
+                                    <a href="#api-Tool-v2SelectorGet">获取查询条件列表</a>
                                     </li>
-                                    <li data-group="Tool" data-name="v2SelecterPost" class="">
-                                    <a href="#api-Tool-v2SelecterPost">保存/更新查询条件</a>
+                                    <li data-group="Tool" data-name="v2SelectorPost" class="">
+                                    <a href="#api-Tool-v2SelectorPost">保存/更新查询条件</a>
                                     </li>
                                     <li data-group="Tool" data-name="v2SemAccountPost" class="">
                                     <a href="#api-Tool-v2SemAccountPost">平台账户管理接口</a>
@@ -3933,7 +3933,7 @@ margin-bottom: 20px;
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2AccountPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/account?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/account?data_type=&start_time=&end_time=&selector=&granularity=&current_page=&page_size=&fields=&order="
 
 
 </code></pre>
@@ -3957,14 +3957,14 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+        String selector = selector_example; // String | selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
         try {
-            dataSuccess result = apiInstance.v2AccountPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
+            dataSuccess result = apiInstance.v2AccountPost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2AccountPost");
@@ -3988,14 +3988,14 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+        String selector = selector_example; // String | selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
         try {
-            dataSuccess result = apiInstance.v2AccountPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
+            dataSuccess result = apiInstance.v2AccountPost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2AccountPost");
@@ -4019,7 +4019,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
-String *selecter = selecter_example; // selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
+String *selector = selector_example; // selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
@@ -4032,7 +4032,7 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
 [apiInstance v2AccountPostWith:data_type
     start_time:start_time
     end_time:end_time
-    selecter:selecter
+    selector:selector
     granularity:granularity
     current_page:current_page
     page_size:page_size
@@ -4062,7 +4062,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
-  'selecter': selecter_example, // {String} selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+  'selector': selector_example, // {String} selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
@@ -4105,7 +4105,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
-            var selecter = selecter_example;  // String | selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
+            var selector = selector_example;  // String | selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
@@ -4115,7 +4115,7 @@ namespace Example
             try
             {
                 // 账号分析页面接口
-                dataSuccess result = apiInstance.v2AccountPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
+                dataSuccess result = apiInstance.v2AccountPost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -4139,7 +4139,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
-$selecter = selecter_example; // String | selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+$selector = selector_example; // String | selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
@@ -4147,7 +4147,7 @@ $fields = fields_example; // String | 数据表格需要获取的字段,默认�
 $order = order_example; // String | 排序字段
 
 try {
-    $result = $api_instance->v2AccountPost($data_type, $start_time, $end_time, $selecter, $granularity, $current_page, $page_size, $fields, $order);
+    $result = $api_instance->v2AccountPost($data_type, $start_time, $end_time, $selector, $granularity, $current_page, $page_size, $fields, $order);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportApi->v2AccountPost: ', $e->getMessage(), PHP_EOL;
@@ -4266,16 +4266,16 @@ try {
 </tr>
 
                                                         <tr>
-    <td style="width:150px;">selecter</td>
+    <td style="width:150px;">selector</td>
     <td>
 
 
         <script>
             $(document).ready(function () {
                 var schemaWrapper = {
-  "name" : "selecter",
+  "name" : "selector",
   "in" : "query",
-  "description" : "selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
+  "description" : "selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
   "required" : false,
   "type" : "string"
 };
@@ -4283,14 +4283,14 @@ try {
 
 
                 var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2AccountPost_selecter');
+                var result = $('#d2e199_v2AccountPost_selector');
                 result.empty();
                 result.append(view.render());
 
 
             });
         </script>
-        <div id="d2e199_v2AccountPost_selecter"></div>
+        <div id="d2e199_v2AccountPost_selector"></div>
     </td>
 </tr>
 
@@ -4599,7 +4599,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2AdgroupPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/adgroup?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/adgroup?data_type=&start_time=&end_time=&selector=&granularity=&current_page=&page_size=&fields=&order="
 
 
 </code></pre>
@@ -4623,14 +4623,14 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+        String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
         try {
-            dataSuccess result = apiInstance.v2AdgroupPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
+            dataSuccess result = apiInstance.v2AdgroupPost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2AdgroupPost");
@@ -4654,14 +4654,14 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+        String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
         try {
-            dataSuccess result = apiInstance.v2AdgroupPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
+            dataSuccess result = apiInstance.v2AdgroupPost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2AdgroupPost");
@@ -4685,7 +4685,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
-String *selecter = selecter_example; // selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
+String *selector = selector_example; // selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
@@ -4698,7 +4698,7 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
 [apiInstance v2AdgroupPostWith:data_type
     start_time:start_time
     end_time:end_time
-    selecter:selecter
+    selector:selector
     granularity:granularity
     current_page:current_page
     page_size:page_size
@@ -4728,7 +4728,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
-  'selecter': selecter_example, // {String} selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+  'selector': selector_example, // {String} selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
@@ -4771,7 +4771,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
-            var selecter = selecter_example;  // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
+            var selector = selector_example;  // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
@@ -4781,7 +4781,7 @@ namespace Example
             try
             {
                 // 单元分析页面接口
-                dataSuccess result = apiInstance.v2AdgroupPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
+                dataSuccess result = apiInstance.v2AdgroupPost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -4805,7 +4805,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
-$selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+$selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
@@ -4813,7 +4813,7 @@ $fields = fields_example; // String | 数据表格需要获取的字段,默认�
 $order = order_example; // String | 排序字段
 
 try {
-    $result = $api_instance->v2AdgroupPost($data_type, $start_time, $end_time, $selecter, $granularity, $current_page, $page_size, $fields, $order);
+    $result = $api_instance->v2AdgroupPost($data_type, $start_time, $end_time, $selector, $granularity, $current_page, $page_size, $fields, $order);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportApi->v2AdgroupPost: ', $e->getMessage(), PHP_EOL;
@@ -4932,16 +4932,16 @@ try {
 </tr>
 
                                                         <tr>
-    <td style="width:150px;">selecter</td>
+    <td style="width:150px;">selector</td>
     <td>
 
 
         <script>
             $(document).ready(function () {
                 var schemaWrapper = {
-  "name" : "selecter",
+  "name" : "selector",
   "in" : "query",
-  "description" : "selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
+  "description" : "selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
   "required" : false,
   "type" : "string"
 };
@@ -4949,14 +4949,14 @@ try {
 
 
                 var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2AdgroupPost_selecter');
+                var result = $('#d2e199_v2AdgroupPost_selector');
                 result.empty();
                 result.append(view.render());
 
 
             });
         </script>
-        <div id="d2e199_v2AdgroupPost_selecter"></div>
+        <div id="d2e199_v2AdgroupPost_selector"></div>
     </td>
 </tr>
 
@@ -5265,7 +5265,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2CampaignPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/campaign?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/campaign?data_type=&start_time=&end_time=&selector=&granularity=&current_page=&page_size=&fields=&order="
 
 
 </code></pre>
@@ -5289,14 +5289,14 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+        String selector = selector_example; // String | selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
         try {
-            dataSuccess result = apiInstance.v2CampaignPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
+            dataSuccess result = apiInstance.v2CampaignPost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2CampaignPost");
@@ -5320,14 +5320,14 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+        String selector = selector_example; // String | selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
         try {
-            dataSuccess result = apiInstance.v2CampaignPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
+            dataSuccess result = apiInstance.v2CampaignPost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2CampaignPost");
@@ -5351,7 +5351,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
-String *selecter = selecter_example; // selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
+String *selector = selector_example; // selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
@@ -5364,7 +5364,7 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
 [apiInstance v2CampaignPostWith:data_type
     start_time:start_time
     end_time:end_time
-    selecter:selecter
+    selector:selector
     granularity:granularity
     current_page:current_page
     page_size:page_size
@@ -5394,7 +5394,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
-  'selecter': selecter_example, // {String} selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+  'selector': selector_example, // {String} selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
@@ -5437,7 +5437,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
-            var selecter = selecter_example;  // String | selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
+            var selector = selector_example;  // String | selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
@@ -5447,7 +5447,7 @@ namespace Example
             try
             {
                 // 计划分析页面接口
-                dataSuccess result = apiInstance.v2CampaignPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
+                dataSuccess result = apiInstance.v2CampaignPost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -5471,7 +5471,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
-$selecter = selecter_example; // String | selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+$selector = selector_example; // String | selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
@@ -5479,7 +5479,7 @@ $fields = fields_example; // String | 数据表格需要获取的字段,默认�
 $order = order_example; // String | 排序字段
 
 try {
-    $result = $api_instance->v2CampaignPost($data_type, $start_time, $end_time, $selecter, $granularity, $current_page, $page_size, $fields, $order);
+    $result = $api_instance->v2CampaignPost($data_type, $start_time, $end_time, $selector, $granularity, $current_page, $page_size, $fields, $order);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportApi->v2CampaignPost: ', $e->getMessage(), PHP_EOL;
@@ -5598,16 +5598,16 @@ try {
 </tr>
 
                                                         <tr>
-    <td style="width:150px;">selecter</td>
+    <td style="width:150px;">selector</td>
     <td>
 
 
         <script>
             $(document).ready(function () {
                 var schemaWrapper = {
-  "name" : "selecter",
+  "name" : "selector",
   "in" : "query",
-  "description" : "selecter json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
+  "description" : "selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
   "required" : false,
   "type" : "string"
 };
@@ -5615,14 +5615,14 @@ try {
 
 
                 var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2CampaignPost_selecter');
+                var result = $('#d2e199_v2CampaignPost_selector');
                 result.empty();
                 result.append(view.render());
 
 
             });
         </script>
-        <div id="d2e199_v2CampaignPost_selecter"></div>
+        <div id="d2e199_v2CampaignPost_selector"></div>
     </td>
 </tr>
 
@@ -5931,7 +5931,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2ChannelPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/channel?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/channel?data_type=&start_time=&end_time=&selector=&granularity=&current_page=&page_size=&fields=&order="
 
 
 </code></pre>
@@ -5955,14 +5955,14 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+        String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
         try {
-            channelSuccess result = apiInstance.v2ChannelPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
+            channelSuccess result = apiInstance.v2ChannelPost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2ChannelPost");
@@ -5986,14 +5986,14 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+        String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
         try {
-            channelSuccess result = apiInstance.v2ChannelPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
+            channelSuccess result = apiInstance.v2ChannelPost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2ChannelPost");
@@ -6017,7 +6017,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
-String *selecter = selecter_example; // selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
+String *selector = selector_example; // selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
@@ -6030,7 +6030,7 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
 [apiInstance v2ChannelPostWith:data_type
     start_time:start_time
     end_time:end_time
-    selecter:selecter
+    selector:selector
     granularity:granularity
     current_page:current_page
     page_size:page_size
@@ -6060,7 +6060,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
-  'selecter': selecter_example, // {String} selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+  'selector': selector_example, // {String} selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
@@ -6103,7 +6103,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
-            var selecter = selecter_example;  // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
+            var selector = selector_example;  // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
@@ -6113,7 +6113,7 @@ namespace Example
             try
             {
                 // 渠道分析页面接口
-                channelSuccess result = apiInstance.v2ChannelPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
+                channelSuccess result = apiInstance.v2ChannelPost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -6137,7 +6137,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
-$selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+$selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
@@ -6145,7 +6145,7 @@ $fields = fields_example; // String | 数据表格需要获取的字段,默认�
 $order = order_example; // String | 排序字段
 
 try {
-    $result = $api_instance->v2ChannelPost($data_type, $start_time, $end_time, $selecter, $granularity, $current_page, $page_size, $fields, $order);
+    $result = $api_instance->v2ChannelPost($data_type, $start_time, $end_time, $selector, $granularity, $current_page, $page_size, $fields, $order);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportApi->v2ChannelPost: ', $e->getMessage(), PHP_EOL;
@@ -6264,16 +6264,16 @@ try {
 </tr>
 
                                                         <tr>
-    <td style="width:150px;">selecter</td>
+    <td style="width:150px;">selector</td>
     <td>
 
 
         <script>
             $(document).ready(function () {
                 var schemaWrapper = {
-  "name" : "selecter",
+  "name" : "selector",
   "in" : "query",
-  "description" : "selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
+  "description" : "selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
   "required" : false,
   "type" : "string"
 };
@@ -6281,14 +6281,14 @@ try {
 
 
                 var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2ChannelPost_selecter');
+                var result = $('#d2e199_v2ChannelPost_selector');
                 result.empty();
                 result.append(view.render());
 
 
             });
         </script>
-        <div id="d2e199_v2ChannelPost_selecter"></div>
+        <div id="d2e199_v2ChannelPost_selector"></div>
     </td>
 </tr>
 
@@ -6597,7 +6597,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2CreativePost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/creative?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/creative?data_type=&start_time=&end_time=&selector=&granularity=&current_page=&page_size=&fields=&order="
 
 
 </code></pre>
@@ -6621,14 +6621,14 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+        String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
         try {
-            dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
+            dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2CreativePost");
@@ -6652,14 +6652,14 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+        String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
         try {
-            dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
+            dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2CreativePost");
@@ -6683,7 +6683,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
-String *selecter = selecter_example; // selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
+String *selector = selector_example; // selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
@@ -6696,7 +6696,7 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
 [apiInstance v2CreativePostWith:data_type
     start_time:start_time
     end_time:end_time
-    selecter:selecter
+    selector:selector
     granularity:granularity
     current_page:current_page
     page_size:page_size
@@ -6726,7 +6726,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
-  'selecter': selecter_example, // {String} selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+  'selector': selector_example, // {String} selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
@@ -6769,7 +6769,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
-            var selecter = selecter_example;  // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
+            var selector = selector_example;  // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
@@ -6779,7 +6779,7 @@ namespace Example
             try
             {
                 // 创意分析页面接口
-                dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order);
+                dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -6803,7 +6803,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
-$selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+$selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
@@ -6811,7 +6811,7 @@ $fields = fields_example; // String | 数据表格需要获取的字段,默认�
 $order = order_example; // String | 排序字段
 
 try {
-    $result = $api_instance->v2CreativePost($data_type, $start_time, $end_time, $selecter, $granularity, $current_page, $page_size, $fields, $order);
+    $result = $api_instance->v2CreativePost($data_type, $start_time, $end_time, $selector, $granularity, $current_page, $page_size, $fields, $order);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportApi->v2CreativePost: ', $e->getMessage(), PHP_EOL;
@@ -6929,16 +6929,16 @@ try {
 </tr>
 
                                                         <tr>
-    <td style="width:150px;">selecter</td>
+    <td style="width:150px;">selector</td>
     <td>
 
 
         <script>
             $(document).ready(function () {
                 var schemaWrapper = {
-  "name" : "selecter",
+  "name" : "selector",
   "in" : "query",
-  "description" : "selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
+  "description" : "selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
   "required" : false,
   "type" : "string"
 };
@@ -6946,14 +6946,14 @@ try {
 
 
                 var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2CreativePost_selecter');
+                var result = $('#d2e199_v2CreativePost_selector');
                 result.empty();
                 result.append(view.render());
 
 
             });
         </script>
-        <div id="d2e199_v2CreativePost_selecter"></div>
+        <div id="d2e199_v2CreativePost_selector"></div>
     </td>
 </tr>
 
@@ -7262,7 +7262,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2KeywordPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/keyword?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order=&search_text="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/keyword?data_type=&start_time=&end_time=&selector=&granularity=&current_page=&page_size=&fields=&order=&search_text="
 
 
 </code></pre>
@@ -7286,7 +7286,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+        String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -7294,7 +7294,7 @@ public class ReportApiExample {
         String order = order_example; // String | 排序字段
         String search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
         try {
-            dataSuccess result = apiInstance.v2KeywordPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order, search_text);
+            dataSuccess result = apiInstance.v2KeywordPost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order, search_text);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2KeywordPost");
@@ -7318,7 +7318,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+        String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -7326,7 +7326,7 @@ public class ReportApiExample {
         String order = order_example; // String | 排序字段
         String search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
         try {
-            dataSuccess result = apiInstance.v2KeywordPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order, search_text);
+            dataSuccess result = apiInstance.v2KeywordPost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order, search_text);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2KeywordPost");
@@ -7350,7 +7350,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
-String *selecter = selecter_example; // selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
+String *selector = selector_example; // selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
@@ -7364,7 +7364,7 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
 [apiInstance v2KeywordPostWith:data_type
     start_time:start_time
     end_time:end_time
-    selecter:selecter
+    selector:selector
     granularity:granularity
     current_page:current_page
     page_size:page_size
@@ -7395,7 +7395,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
-  'selecter': selecter_example, // {String} selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+  'selector': selector_example, // {String} selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
@@ -7439,7 +7439,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
-            var selecter = selecter_example;  // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
+            var selector = selector_example;  // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
@@ -7450,7 +7450,7 @@ namespace Example
             try
             {
                 // 关键词分析页面接口
-                dataSuccess result = apiInstance.v2KeywordPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order, search_text);
+                dataSuccess result = apiInstance.v2KeywordPost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order, search_text);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -7474,7 +7474,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
-$selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+$selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
@@ -7483,7 +7483,7 @@ $order = order_example; // String | 排序字段
 $search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
 
 try {
-    $result = $api_instance->v2KeywordPost($data_type, $start_time, $end_time, $selecter, $granularity, $current_page, $page_size, $fields, $order, $search_text);
+    $result = $api_instance->v2KeywordPost($data_type, $start_time, $end_time, $selector, $granularity, $current_page, $page_size, $fields, $order, $search_text);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportApi->v2KeywordPost: ', $e->getMessage(), PHP_EOL;
@@ -7602,16 +7602,16 @@ try {
 </tr>
 
                                                         <tr>
-    <td style="width:150px;">selecter</td>
+    <td style="width:150px;">selector</td>
     <td>
 
 
         <script>
             $(document).ready(function () {
                 var schemaWrapper = {
-  "name" : "selecter",
+  "name" : "selector",
   "in" : "query",
-  "description" : "selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
+  "description" : "selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
   "required" : false,
   "type" : "string"
 };
@@ -7619,14 +7619,14 @@ try {
 
 
                 var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2KeywordPost_selecter');
+                var result = $('#d2e199_v2KeywordPost_selector');
                 result.empty();
                 result.append(view.render());
 
 
             });
         </script>
-        <div id="d2e199_v2KeywordPost_selecter"></div>
+        <div id="d2e199_v2KeywordPost_selector"></div>
     </td>
 </tr>
 
@@ -7964,7 +7964,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2LandingPagePost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/landing_page?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order=&search_text="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/landing_page?data_type=&start_time=&end_time=&selector=&granularity=&current_page=&page_size=&fields=&order=&search_text="
 
 
 </code></pre>
@@ -7988,7 +7988,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+        String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -7996,7 +7996,7 @@ public class ReportApiExample {
         String order = order_example; // String | 排序字段
         String search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
         try {
-            dataSuccess result = apiInstance.v2LandingPagePost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order, search_text);
+            dataSuccess result = apiInstance.v2LandingPagePost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order, search_text);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2LandingPagePost");
@@ -8020,7 +8020,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+        String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -8028,7 +8028,7 @@ public class ReportApiExample {
         String order = order_example; // String | 排序字段
         String search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
         try {
-            dataSuccess result = apiInstance.v2LandingPagePost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order, search_text);
+            dataSuccess result = apiInstance.v2LandingPagePost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order, search_text);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2LandingPagePost");
@@ -8052,7 +8052,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
-String *selecter = selecter_example; // selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
+String *selector = selector_example; // selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
@@ -8066,7 +8066,7 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
 [apiInstance v2LandingPagePostWith:data_type
     start_time:start_time
     end_time:end_time
-    selecter:selecter
+    selector:selector
     granularity:granularity
     current_page:current_page
     page_size:page_size
@@ -8097,7 +8097,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
-  'selecter': selecter_example, // {String} selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+  'selector': selector_example, // {String} selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
@@ -8141,7 +8141,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
-            var selecter = selecter_example;  // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
+            var selector = selector_example;  // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
@@ -8152,7 +8152,7 @@ namespace Example
             try
             {
                 // 落地页分析页面接口
-                dataSuccess result = apiInstance.v2LandingPagePost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order, search_text);
+                dataSuccess result = apiInstance.v2LandingPagePost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order, search_text);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -8176,7 +8176,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
-$selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+$selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
@@ -8185,7 +8185,7 @@ $order = order_example; // String | 排序字段
 $search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
 
 try {
-    $result = $api_instance->v2LandingPagePost($data_type, $start_time, $end_time, $selecter, $granularity, $current_page, $page_size, $fields, $order, $search_text);
+    $result = $api_instance->v2LandingPagePost($data_type, $start_time, $end_time, $selector, $granularity, $current_page, $page_size, $fields, $order, $search_text);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportApi->v2LandingPagePost: ', $e->getMessage(), PHP_EOL;
@@ -8304,16 +8304,16 @@ try {
 </tr>
 
                                                         <tr>
-    <td style="width:150px;">selecter</td>
+    <td style="width:150px;">selector</td>
     <td>
 
 
         <script>
             $(document).ready(function () {
                 var schemaWrapper = {
-  "name" : "selecter",
+  "name" : "selector",
   "in" : "query",
-  "description" : "selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
+  "description" : "selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
   "required" : false,
   "type" : "string"
 };
@@ -8321,14 +8321,14 @@ try {
 
 
                 var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2LandingPagePost_selecter');
+                var result = $('#d2e199_v2LandingPagePost_selector');
                 result.empty();
                 result.append(view.render());
 
 
             });
         </script>
-        <div id="d2e199_v2LandingPagePost_selecter"></div>
+        <div id="d2e199_v2LandingPagePost_selector"></div>
     </td>
 </tr>
 
@@ -8666,7 +8666,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2TrendPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/trend?data_type=&start_time=&end_time=&selecter=&granularity=&current_page=&page_size=&fields=&order=&chart_limit="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/trend?data_type=&start_time=&end_time=&selector=&granularity=&current_page=&page_size=&fields=&order=&chart_limit="
 
 
 </code></pre>
@@ -8690,7 +8690,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+        String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -8698,7 +8698,7 @@ public class ReportApiExample {
         String order = order_example; // String | 排序字段
         String chart_limit = chartLimit_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         try {
-            trendSuccess result = apiInstance.v2TrendPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order, chart_limit);
+            trendSuccess result = apiInstance.v2TrendPost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order, chart_limit);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2TrendPost");
@@ -8722,7 +8722,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
-        String selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+        String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
@@ -8730,7 +8730,7 @@ public class ReportApiExample {
         String order = order_example; // String | 排序字段
         String chart_limit = chartLimit_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         try {
-            trendSuccess result = apiInstance.v2TrendPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order, chart_limit);
+            trendSuccess result = apiInstance.v2TrendPost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order, chart_limit);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2TrendPost");
@@ -8754,7 +8754,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
-String *selecter = selecter_example; // selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
+String *selector = selector_example; // selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
@@ -8768,7 +8768,7 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
 [apiInstance v2TrendPostWith:data_type
     start_time:start_time
     end_time:end_time
-    selecter:selecter
+    selector:selector
     granularity:granularity
     current_page:current_page
     page_size:page_size
@@ -8799,7 +8799,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
-  'selecter': selecter_example, // {String} selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+  'selector': selector_example, // {String} selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
@@ -8843,7 +8843,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
-            var selecter = selecter_example;  // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
+            var selector = selector_example;  // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
@@ -8854,7 +8854,7 @@ namespace Example
             try
             {
                 // 趋势分析页面接口
-                trendSuccess result = apiInstance.v2TrendPost(data_type, start_time, end_time, selecter, granularity, current_page, page_size, fields, order, chart_limit);
+                trendSuccess result = apiInstance.v2TrendPost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order, chart_limit);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -8878,7 +8878,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
-$selecter = selecter_example; // String | selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+$selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
@@ -8887,7 +8887,7 @@ $order = order_example; // String | 排序字段
 $chart_limit = chartLimit_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
 
 try {
-    $result = $api_instance->v2TrendPost($data_type, $start_time, $end_time, $selecter, $granularity, $current_page, $page_size, $fields, $order, $chart_limit);
+    $result = $api_instance->v2TrendPost($data_type, $start_time, $end_time, $selector, $granularity, $current_page, $page_size, $fields, $order, $chart_limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportApi->v2TrendPost: ', $e->getMessage(), PHP_EOL;
@@ -9006,16 +9006,16 @@ try {
 </tr>
 
                                                         <tr>
-    <td style="width:150px;">selecter</td>
+    <td style="width:150px;">selector</td>
     <td>
 
 
         <script>
             $(document).ready(function () {
                 var schemaWrapper = {
-  "name" : "selecter",
+  "name" : "selector",
   "in" : "query",
-  "description" : "selecter json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
+  "description" : "selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
   "required" : false,
   "type" : "string"
 };
@@ -9023,14 +9023,14 @@ try {
 
 
                 var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2TrendPost_selecter');
+                var result = $('#d2e199_v2TrendPost_selector');
                 result.empty();
                 result.append(view.render());
 
 
             });
         </script>
-        <div id="d2e199_v2TrendPost_selecter"></div>
+        <div id="d2e199_v2TrendPost_selector"></div>
     </td>
 </tr>
 
@@ -9688,9 +9688,9 @@ try {
 
 
 
-                                    <div id="api-Tool-v2SelecterGet">
+                                    <div id="api-Tool-v2SelectorGet">
 
-                                        <article id="api-Tool-v2SelecterGet-0" data-group="User" data-name="v2SelecterGet" data-version="0">
+                                        <article id="api-Tool-v2SelectorGet-0" data-group="User" data-name="v2SelectorGet" data-version="0">
                                             <div class="pull-left">
                                                 <h1>获取查询条件列表</h1>
                                             </div>
@@ -9704,7 +9704,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">v2/selecter</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">v2/selector</span></code></pre>
 
                                             <p>
                                                 <h3>API调用示例代码</h3>
@@ -9712,44 +9712,44 @@ try {
 
                                             <ul class="nav nav-tabs nav-tabs-examples">
                                                 <li class="active">
-                                                    <a href="#examples-Tool-v2SelecterGet-0-curl">Curl</a>
+                                                    <a href="#examples-Tool-v2SelectorGet-0-curl">Curl</a>
                                                 </li>
                                                 <li class="">
-              <a href="#examples-Tool-v2SelecterGet-0-java">Java</a>
+              <a href="#examples-Tool-v2SelectorGet-0-java">Java</a>
             </li>
             <li class="">
-              <a href="#examples-Tool-v2SelecterGet-0-android">Android</a>
+              <a href="#examples-Tool-v2SelectorGet-0-android">Android</a>
             </li>
             <!--<li class="">
-              <a href="#examples-Tool-v2SelecterGet-0-groovy">Groovy</a>
+              <a href="#examples-Tool-v2SelectorGet-0-groovy">Groovy</a>
             </li>-->
                                                 <li class="">
-                                                    <a href="#examples-Tool-v2SelecterGet-0-objc">Obj-C</a>
+                                                    <a href="#examples-Tool-v2SelectorGet-0-objc">Obj-C</a>
                                                 </li>
                                                 <li class="">
-                                                    <a href="#examples-Tool-v2SelecterGet-0-javascript">JavaScript</a>
+                                                    <a href="#examples-Tool-v2SelectorGet-0-javascript">JavaScript</a>
                                                 </li>
                                                 <!--<li class="">
-              <a href="#examples-Tool-v2SelecterGet-0-angular">Angular</a>
+              <a href="#examples-Tool-v2SelectorGet-0-angular">Angular</a>
             </li>-->
                                                 <li class="">
-                                                    <a href="#examples-Tool-v2SelecterGet-0-csharp">C#</a>
+                                                    <a href="#examples-Tool-v2SelectorGet-0-csharp">C#</a>
                                                 </li>
                                                 <li class="">
-              <a href="#examples-Tool-v2SelecterGet-0-php">PHP</a>
+              <a href="#examples-Tool-v2SelectorGet-0-php">PHP</a>
             </li>
                                             </ul>
 
                                             <div class="tab-content">
-                                                <div class="tab-pane active" id="examples-Tool-v2SelecterGet-0-curl">
+                                                <div class="tab-pane active" id="examples-Tool-v2SelectorGet-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> "http://cim.lbadvisor.com:8080/v2/selecter?user_id=&selecter="
+curl -X <span style="text-transform: uppercase;">get</span> "http://cim.lbadvisor.com:8080/v2/selector?user_id=&selector="
 
 
 </code></pre>
                                                 </div>
 
-                                                <div class="tab-pane" id="examples-Tool-v2SelecterGet-0-java">
+                                                <div class="tab-pane" id="examples-Tool-v2SelectorGet-0-java">
                                                   <pre class="prettyprint"><code class="language-java">
 import io.swagger.client.*;
 import io.swagger.client.auth.*;
@@ -9765,12 +9765,12 @@ public class ToolApiExample {
         
         ToolApi apiInstance = new ToolApi();
         Integer user_id = 56; // Integer | 用户ID
-        String selecter = selecter_example; // String | 查询条件字符串
+        String selector = selector_example; // String | 查询条件字符串
         try {
-            success result = apiInstance.v2SelecterGet(user_id, selecter);
+            success result = apiInstance.v2SelectorGet(user_id, selector);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ToolApi#v2SelecterGet");
+            System.err.println("Exception when calling ToolApi#v2SelectorGet");
             e.printStackTrace();
         }
     }
@@ -9780,7 +9780,7 @@ public class ToolApiExample {
           </div>
 
 
-                                                <div class="tab-pane" id="examples-Tool-v2SelecterGet-0-android">
+                                                <div class="tab-pane" id="examples-Tool-v2SelectorGet-0-android">
                                                   <pre class="prettyprint"><code class="language-java">
 import .ToolApi;
 
@@ -9789,12 +9789,12 @@ public class ToolApiExample {
     public static void main(String[] args) {
         ToolApi apiInstance = new ToolApi();
         Integer user_id = 56; // Integer | 用户ID
-        String selecter = selecter_example; // String | 查询条件字符串
+        String selector = selector_example; // String | 查询条件字符串
         try {
-            success result = apiInstance.v2SelecterGet(user_id, selecter);
+            success result = apiInstance.v2SelectorGet(user_id, selector);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ToolApi#v2SelecterGet");
+            System.err.println("Exception when calling ToolApi#v2SelectorGet");
             e.printStackTrace();
         }
     }
@@ -9804,22 +9804,22 @@ public class ToolApiExample {
           </div>
 
           <!--
-          <div class="tab-pane" id="examples-Tool-v2SelecterGet-0-groovy">
+          <div class="tab-pane" id="examples-Tool-v2SelectorGet-0-groovy">
             <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
           </div> -->
 
 
-                                                <div class="tab-pane" id="examples-Tool-v2SelecterGet-0-objc">
+                                                <div class="tab-pane" id="examples-Tool-v2SelectorGet-0-objc">
                                                     <pre class="prettyprint"><code class="language-cpp">
 
 Integer *user_id = 56; // 用户ID
-String *selecter = selecter_example; // 查询条件字符串
+String *selector = selector_example; // 查询条件字符串
 
 ToolApi *apiInstance = [[ToolApi alloc] init];
 
 // 获取查询条件列表
-[apiInstance v2SelecterGetWith:user_id
-    selecter:selecter
+[apiInstance v2SelectorGetWith:user_id
+    selector:selector
               completionHandler: ^(success output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -9831,7 +9831,7 @@ ToolApi *apiInstance = [[ToolApi alloc] init];
 
                                                     </code></pre>
                                                 </div>
-                                                <div class="tab-pane" id="examples-Tool-v2SelecterGet-0-javascript">
+                                                <div class="tab-pane" id="examples-Tool-v2SelectorGet-0-javascript">
                                                     <pre class="prettyprint"><code class="language-js">
 var  = require('');
 
@@ -9839,7 +9839,7 @@ var api = new .ToolApi()
 
 var user_id = 56; // {Integer} 用户ID
 
-var selecter = selecter_example; // {String} 查询条件字符串
+var selector = selector_example; // {String} 查询条件字符串
 
 
 var callback = function(error, data, response) {
@@ -9849,16 +9849,16 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.v2SelecterGet(user_id, selecter, callback);
+api.v2SelectorGet(user_id, selector, callback);
 
                                                     </code></pre>
                                                 </div>
 
-                                                <!--<div class="tab-pane" id="examples-Tool-v2SelecterGet-0-angular">
+                                                <!--<div class="tab-pane" id="examples-Tool-v2SelectorGet-0-angular">
             <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
           </div>-->
 
-                                                <div class="tab-pane" id="examples-Tool-v2SelecterGet-0-csharp">
+                                                <div class="tab-pane" id="examples-Tool-v2SelectorGet-0-csharp">
                                                     <pre class="prettyprint"><code class="language-cs">
 using System;
 using System.Diagnostics;
@@ -9868,24 +9868,24 @@ using ;
 
 namespace Example
 {
-    public class v2SelecterGetExample
+    public class v2SelectorGetExample
     {
         public void main()
         {
             
             var apiInstance = new ToolApi();
             var user_id = 56;  // Integer | 用户ID
-            var selecter = selecter_example;  // String | 查询条件字符串
+            var selector = selector_example;  // String | 查询条件字符串
 
             try
             {
                 // 获取查询条件列表
-                success result = apiInstance.v2SelecterGet(user_id, selecter);
+                success result = apiInstance.v2SelectorGet(user_id, selector);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling ToolApi.v2SelecterGet: " + e.Message );
+                Debug.Print("Exception when calling ToolApi.v2SelectorGet: " + e.Message );
             }
         }
     }
@@ -9895,20 +9895,20 @@ namespace Example
                                                 </div>
 
 
-                                                <div class="tab-pane" id="examples-Tool-v2SelecterGet-0-php">
+                                                <div class="tab-pane" id="examples-Tool-v2SelectorGet-0-php">
                                                   <pre class="prettyprint"><code class="language-php">
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new io.swagger.client\Api\ToolApi();
 $user_id = 56; // Integer | 用户ID
-$selecter = selecter_example; // String | 查询条件字符串
+$selector = selector_example; // String | 查询条件字符串
 
 try {
-    $result = $api_instance->v2SelecterGet($user_id, $selecter);
+    $result = $api_instance->v2SelectorGet($user_id, $selector);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ToolApi->v2SelecterGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ToolApi->v2SelectorGet: ', $e->getMessage(), PHP_EOL;
 }
 
                                                   </code></pre>
@@ -9953,26 +9953,26 @@ try {
 
 
                 var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2SelecterGet_user_id');
+                var result = $('#d2e199_v2SelectorGet_user_id');
                 result.empty();
                 result.append(view.render());
 
 
             });
         </script>
-        <div id="d2e199_v2SelecterGet_user_id"></div>
+        <div id="d2e199_v2SelectorGet_user_id"></div>
     </td>
 </tr>
 
                                                         <tr>
-    <td style="width:150px;">selecter*</td>
+    <td style="width:150px;">selector*</td>
     <td>
 
 
         <script>
             $(document).ready(function () {
                 var schemaWrapper = {
-  "name" : "selecter",
+  "name" : "selector",
   "in" : "query",
   "description" : "查询条件字符串",
   "required" : true,
@@ -9982,14 +9982,14 @@ try {
 
 
                 var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2SelecterGet_selecter');
+                var result = $('#d2e199_v2SelectorGet_selector');
                 result.empty();
                 result.append(view.render());
 
 
             });
         </script>
-        <div id="d2e199_v2SelecterGet_selecter"></div>
+        <div id="d2e199_v2SelectorGet_selector"></div>
     </td>
 </tr>
 
@@ -10002,7 +10002,7 @@ try {
                                                 <ul class="nav nav-tabs nav-tabs-examples" >
 
                                                     <li class="active">
-                                                        <a href="#examples-Tool-v2SelecterGet-schema">返回类型</a>
+                                                        <a href="#examples-Tool-v2SelectorGet-schema">返回类型</a>
                                                     </li>
 
 
@@ -10018,12 +10018,12 @@ try {
 
 
 
-                                                    <div class="tab-pane active" id="examples-Tool-v2SelecterGet-schema">
+                                                    <div class="tab-pane active" id="examples-Tool-v2SelectorGet-schema">
 
 
 
 
-                                                        <div id='examples-Tool-v2SelecterGet-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                                        <div id='examples-Tool-v2SelectorGet-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
 
                                                             <script>
                                                                 $(document).ready(function() {
@@ -10047,8 +10047,8 @@ try {
 
 
                                                                         var view = new JSONSchemaView(resolved.schema, 3);
-                                                                        $('#examples-Tool-v2SelecterGet-schema-data').val(JSON.stringify(resolved.schema));
-                                                                        var result = $('#examples-Tool-v2SelecterGet-schema-200');
+                                                                        $('#examples-Tool-v2SelectorGet-schema-data').val(JSON.stringify(resolved.schema));
+                                                                        var result = $('#examples-Tool-v2SelectorGet-schema-200');
                                                                         result.empty();
                                                                         result.append(view.render());
                                                                     });
@@ -10059,7 +10059,7 @@ try {
                                                                 });
                                                             </script>
                                                         </div>
-                                                        <input id='examples-Tool-v2SelecterGet-schema-data' type='hidden' value=''></input>
+                                                        <input id='examples-Tool-v2SelectorGet-schema-data' type='hidden' value=''></input>
 
 
 
@@ -10094,9 +10094,9 @@ try {
 
 
 
-                                    <div id="api-Tool-v2SelecterPost">
+                                    <div id="api-Tool-v2SelectorPost">
 
-                                        <article id="api-Tool-v2SelecterPost-0" data-group="User" data-name="v2SelecterPost" data-version="0">
+                                        <article id="api-Tool-v2SelectorPost-0" data-group="User" data-name="v2SelectorPost" data-version="0">
                                             <div class="pull-left">
                                                 <h1>保存/更新查询条件</h1>
                                             </div>
@@ -10110,7 +10110,7 @@ try {
                                             <p></p>
                                             <br />
 
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">v2/selecter</span></code></pre>
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">v2/selector</span></code></pre>
 
                                             <p>
                                                 <h3>API调用示例代码</h3>
@@ -10118,44 +10118,44 @@ try {
 
                                             <ul class="nav nav-tabs nav-tabs-examples">
                                                 <li class="active">
-                                                    <a href="#examples-Tool-v2SelecterPost-0-curl">Curl</a>
+                                                    <a href="#examples-Tool-v2SelectorPost-0-curl">Curl</a>
                                                 </li>
                                                 <li class="">
-              <a href="#examples-Tool-v2SelecterPost-0-java">Java</a>
+              <a href="#examples-Tool-v2SelectorPost-0-java">Java</a>
             </li>
             <li class="">
-              <a href="#examples-Tool-v2SelecterPost-0-android">Android</a>
+              <a href="#examples-Tool-v2SelectorPost-0-android">Android</a>
             </li>
             <!--<li class="">
-              <a href="#examples-Tool-v2SelecterPost-0-groovy">Groovy</a>
+              <a href="#examples-Tool-v2SelectorPost-0-groovy">Groovy</a>
             </li>-->
                                                 <li class="">
-                                                    <a href="#examples-Tool-v2SelecterPost-0-objc">Obj-C</a>
+                                                    <a href="#examples-Tool-v2SelectorPost-0-objc">Obj-C</a>
                                                 </li>
                                                 <li class="">
-                                                    <a href="#examples-Tool-v2SelecterPost-0-javascript">JavaScript</a>
+                                                    <a href="#examples-Tool-v2SelectorPost-0-javascript">JavaScript</a>
                                                 </li>
                                                 <!--<li class="">
-              <a href="#examples-Tool-v2SelecterPost-0-angular">Angular</a>
+              <a href="#examples-Tool-v2SelectorPost-0-angular">Angular</a>
             </li>-->
                                                 <li class="">
-                                                    <a href="#examples-Tool-v2SelecterPost-0-csharp">C#</a>
+                                                    <a href="#examples-Tool-v2SelectorPost-0-csharp">C#</a>
                                                 </li>
                                                 <li class="">
-              <a href="#examples-Tool-v2SelecterPost-0-php">PHP</a>
+              <a href="#examples-Tool-v2SelectorPost-0-php">PHP</a>
             </li>
                                             </ul>
 
                                             <div class="tab-content">
-                                                <div class="tab-pane active" id="examples-Tool-v2SelecterPost-0-curl">
+                                                <div class="tab-pane active" id="examples-Tool-v2SelectorPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/selecter?user_id=&selecter_id=&selecter="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/selector?user_id=&selector_id=&selector="
 
 
 </code></pre>
                                                 </div>
 
-                                                <div class="tab-pane" id="examples-Tool-v2SelecterPost-0-java">
+                                                <div class="tab-pane" id="examples-Tool-v2SelectorPost-0-java">
                                                   <pre class="prettyprint"><code class="language-java">
 import io.swagger.client.*;
 import io.swagger.client.auth.*;
@@ -10171,13 +10171,13 @@ public class ToolApiExample {
         
         ToolApi apiInstance = new ToolApi();
         Integer user_id = 56; // Integer | 用户ID
-        Integer selecter_id = 56; // Integer | 查询条件ID 更新时必须
-        String selecter = selecter_example; // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+        Integer selector_id = 56; // Integer | 查询条件ID 更新时必须
+        String selector = selector_example; // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         try {
-            success result = apiInstance.v2SelecterPost(user_id, selecter_id, selecter);
+            success result = apiInstance.v2SelectorPost(user_id, selector_id, selector);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ToolApi#v2SelecterPost");
+            System.err.println("Exception when calling ToolApi#v2SelectorPost");
             e.printStackTrace();
         }
     }
@@ -10187,7 +10187,7 @@ public class ToolApiExample {
           </div>
 
 
-                                                <div class="tab-pane" id="examples-Tool-v2SelecterPost-0-android">
+                                                <div class="tab-pane" id="examples-Tool-v2SelectorPost-0-android">
                                                   <pre class="prettyprint"><code class="language-java">
 import .ToolApi;
 
@@ -10196,13 +10196,13 @@ public class ToolApiExample {
     public static void main(String[] args) {
         ToolApi apiInstance = new ToolApi();
         Integer user_id = 56; // Integer | 用户ID
-        Integer selecter_id = 56; // Integer | 查询条件ID 更新时必须
-        String selecter = selecter_example; // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+        Integer selector_id = 56; // Integer | 查询条件ID 更新时必须
+        String selector = selector_example; // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         try {
-            success result = apiInstance.v2SelecterPost(user_id, selecter_id, selecter);
+            success result = apiInstance.v2SelectorPost(user_id, selector_id, selector);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ToolApi#v2SelecterPost");
+            System.err.println("Exception when calling ToolApi#v2SelectorPost");
             e.printStackTrace();
         }
     }
@@ -10212,24 +10212,24 @@ public class ToolApiExample {
           </div>
 
           <!--
-          <div class="tab-pane" id="examples-Tool-v2SelecterPost-0-groovy">
+          <div class="tab-pane" id="examples-Tool-v2SelectorPost-0-groovy">
             <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
           </div> -->
 
 
-                                                <div class="tab-pane" id="examples-Tool-v2SelecterPost-0-objc">
+                                                <div class="tab-pane" id="examples-Tool-v2SelectorPost-0-objc">
                                                     <pre class="prettyprint"><code class="language-cpp">
 
 Integer *user_id = 56; // 用户ID
-Integer *selecter_id = 56; // 查询条件ID 更新时必须
-String *selecter = selecter_example; // 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+Integer *selector_id = 56; // 查询条件ID 更新时必须
+String *selector = selector_example; // 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 
 ToolApi *apiInstance = [[ToolApi alloc] init];
 
 // 保存/更新查询条件
-[apiInstance v2SelecterPostWith:user_id
-    selecter_id:selecter_id
-    selecter:selecter
+[apiInstance v2SelectorPostWith:user_id
+    selector_id:selector_id
+    selector:selector
               completionHandler: ^(success output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -10241,7 +10241,7 @@ ToolApi *apiInstance = [[ToolApi alloc] init];
 
                                                     </code></pre>
                                                 </div>
-                                                <div class="tab-pane" id="examples-Tool-v2SelecterPost-0-javascript">
+                                                <div class="tab-pane" id="examples-Tool-v2SelectorPost-0-javascript">
                                                     <pre class="prettyprint"><code class="language-js">
 var  = require('');
 
@@ -10249,9 +10249,9 @@ var api = new .ToolApi()
 
 var user_id = 56; // {Integer} 用户ID
 
-var selecter_id = 56; // {Integer} 查询条件ID 更新时必须
+var selector_id = 56; // {Integer} 查询条件ID 更新时必须
 
-var selecter = selecter_example; // {String} 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+var selector = selector_example; // {String} 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 
 
 var callback = function(error, data, response) {
@@ -10261,16 +10261,16 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.v2SelecterPost(user_id, selecter_id, selecter, callback);
+api.v2SelectorPost(user_id, selector_id, selector, callback);
 
                                                     </code></pre>
                                                 </div>
 
-                                                <!--<div class="tab-pane" id="examples-Tool-v2SelecterPost-0-angular">
+                                                <!--<div class="tab-pane" id="examples-Tool-v2SelectorPost-0-angular">
             <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
           </div>-->
 
-                                                <div class="tab-pane" id="examples-Tool-v2SelecterPost-0-csharp">
+                                                <div class="tab-pane" id="examples-Tool-v2SelectorPost-0-csharp">
                                                     <pre class="prettyprint"><code class="language-cs">
 using System;
 using System.Diagnostics;
@@ -10280,25 +10280,25 @@ using ;
 
 namespace Example
 {
-    public class v2SelecterPostExample
+    public class v2SelectorPostExample
     {
         public void main()
         {
             
             var apiInstance = new ToolApi();
             var user_id = 56;  // Integer | 用户ID
-            var selecter_id = 56;  // Integer | 查询条件ID 更新时必须
-            var selecter = selecter_example;  // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+            var selector_id = 56;  // Integer | 查询条件ID 更新时必须
+            var selector = selector_example;  // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 
             try
             {
                 // 保存/更新查询条件
-                success result = apiInstance.v2SelecterPost(user_id, selecter_id, selecter);
+                success result = apiInstance.v2SelectorPost(user_id, selector_id, selector);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling ToolApi.v2SelecterPost: " + e.Message );
+                Debug.Print("Exception when calling ToolApi.v2SelectorPost: " + e.Message );
             }
         }
     }
@@ -10308,21 +10308,21 @@ namespace Example
                                                 </div>
 
 
-                                                <div class="tab-pane" id="examples-Tool-v2SelecterPost-0-php">
+                                                <div class="tab-pane" id="examples-Tool-v2SelectorPost-0-php">
                                                   <pre class="prettyprint"><code class="language-php">
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new io.swagger.client\Api\ToolApi();
 $user_id = 56; // Integer | 用户ID
-$selecter_id = 56; // Integer | 查询条件ID 更新时必须
-$selecter = selecter_example; // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+$selector_id = 56; // Integer | 查询条件ID 更新时必须
+$selector = selector_example; // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 
 try {
-    $result = $api_instance->v2SelecterPost($user_id, $selecter_id, $selecter);
+    $result = $api_instance->v2SelectorPost($user_id, $selector_id, $selector);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ToolApi->v2SelecterPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ToolApi->v2SelectorPost: ', $e->getMessage(), PHP_EOL;
 }
 
                                                   </code></pre>
@@ -10367,26 +10367,26 @@ try {
 
 
                 var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2SelecterPost_user_id');
+                var result = $('#d2e199_v2SelectorPost_user_id');
                 result.empty();
                 result.append(view.render());
 
 
             });
         </script>
-        <div id="d2e199_v2SelecterPost_user_id"></div>
+        <div id="d2e199_v2SelectorPost_user_id"></div>
     </td>
 </tr>
 
                                                         <tr>
-    <td style="width:150px;">selecter_id*</td>
+    <td style="width:150px;">selector_id*</td>
     <td>
 
 
         <script>
             $(document).ready(function () {
                 var schemaWrapper = {
-  "name" : "selecter_id",
+  "name" : "selector_id",
   "in" : "query",
   "description" : "查询条件ID 更新时必须",
   "required" : true,
@@ -10396,26 +10396,26 @@ try {
 
 
                 var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2SelecterPost_selecter_id');
+                var result = $('#d2e199_v2SelectorPost_selector_id');
                 result.empty();
                 result.append(view.render());
 
 
             });
         </script>
-        <div id="d2e199_v2SelecterPost_selecter_id"></div>
+        <div id="d2e199_v2SelectorPost_selector_id"></div>
     </td>
 </tr>
 
                                                         <tr>
-    <td style="width:150px;">selecter*</td>
+    <td style="width:150px;">selector*</td>
     <td>
 
 
         <script>
             $(document).ready(function () {
                 var schemaWrapper = {
-  "name" : "selecter",
+  "name" : "selector",
   "in" : "query",
   "description" : "查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
   "required" : true,
@@ -10425,14 +10425,14 @@ try {
 
 
                 var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2SelecterPost_selecter');
+                var result = $('#d2e199_v2SelectorPost_selector');
                 result.empty();
                 result.append(view.render());
 
 
             });
         </script>
-        <div id="d2e199_v2SelecterPost_selecter"></div>
+        <div id="d2e199_v2SelectorPost_selector"></div>
     </td>
 </tr>
 
@@ -10445,7 +10445,7 @@ try {
                                                 <ul class="nav nav-tabs nav-tabs-examples" >
 
                                                     <li class="active">
-                                                        <a href="#examples-Tool-v2SelecterPost-schema">返回类型</a>
+                                                        <a href="#examples-Tool-v2SelectorPost-schema">返回类型</a>
                                                     </li>
 
 
@@ -10461,12 +10461,12 @@ try {
 
 
 
-                                                    <div class="tab-pane active" id="examples-Tool-v2SelecterPost-schema">
+                                                    <div class="tab-pane active" id="examples-Tool-v2SelectorPost-schema">
 
 
 
 
-                                                        <div id='examples-Tool-v2SelecterPost-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                                        <div id='examples-Tool-v2SelectorPost-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
 
                                                             <script>
                                                                 $(document).ready(function() {
@@ -10490,8 +10490,8 @@ try {
 
 
                                                                         var view = new JSONSchemaView(resolved.schema, 3);
-                                                                        $('#examples-Tool-v2SelecterPost-schema-data').val(JSON.stringify(resolved.schema));
-                                                                        var result = $('#examples-Tool-v2SelecterPost-schema-200');
+                                                                        $('#examples-Tool-v2SelectorPost-schema-data').val(JSON.stringify(resolved.schema));
+                                                                        var result = $('#examples-Tool-v2SelectorPost-schema-200');
                                                                         result.empty();
                                                                         result.append(view.render());
                                                                     });
@@ -10502,7 +10502,7 @@ try {
                                                                 });
                                                             </script>
                                                         </div>
-                                                        <input id='examples-Tool-v2SelecterPost-schema-data' type='hidden' value=''></input>
+                                                        <input id='examples-Tool-v2SelectorPost-schema-data' type='hidden' value=''></input>
 
 
 

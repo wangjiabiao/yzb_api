@@ -9803,7 +9803,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Tool-v2SelectorConfGet-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> "http://cim.lbadvisor.com:8080/v2/selector_conf"
+curl -X <span style="text-transform: uppercase;">get</span> "http://cim.lbadvisor.com:8080/v2/selector_conf?field_item="
 
 
 </code></pre>
@@ -9824,8 +9824,9 @@ public class ToolApiExample {
     public static void main(String[] args) {
         
         ToolApi apiInstance = new ToolApi();
+        String field_item = fieldItem_example; // String | 查询器字段名称 user_location，user_channel，campaign_id
         try {
-            selectorConfSuccess result = apiInstance.v2SelectorConfGet();
+            selectorConfSuccess result = apiInstance.v2SelectorConfGet(field_item);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ToolApi#v2SelectorConfGet");
@@ -9846,8 +9847,9 @@ public class ToolApiExample {
 
     public static void main(String[] args) {
         ToolApi apiInstance = new ToolApi();
+        String field_item = fieldItem_example; // String | 查询器字段名称 user_location，user_channel，campaign_id
         try {
-            selectorConfSuccess result = apiInstance.v2SelectorConfGet();
+            selectorConfSuccess result = apiInstance.v2SelectorConfGet(field_item);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ToolApi#v2SelectorConfGet");
@@ -9868,12 +9870,13 @@ public class ToolApiExample {
                                                 <div class="tab-pane" id="examples-Tool-v2SelectorConfGet-0-objc">
                                                     <pre class="prettyprint"><code class="language-cpp">
 
+String *field_item = fieldItem_example; // 查询器字段名称 user_location，user_channel，campaign_id (optional)
 
 ToolApi *apiInstance = [[ToolApi alloc] init];
 
 // 查询器配置
-[apiInstance v2SelectorConfGetWithCompletionHandler: 
-              ^(selectorConfSuccess output, NSError* error) {
+[apiInstance v2SelectorConfGetWith:field_item
+              completionHandler: ^(selectorConfSuccess output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -9890,6 +9893,10 @@ var  = require('');
 
 var api = new .ToolApi()
 
+var opts = { 
+  'field_item': fieldItem_example // {String} 查询器字段名称 user_location，user_channel，campaign_id
+};
+
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -9897,7 +9904,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.v2SelectorConfGet(callback);
+api.v2SelectorConfGet(opts, callback);
 
                                                     </code></pre>
                                                 </div>
@@ -9922,11 +9929,12 @@ namespace Example
         {
             
             var apiInstance = new ToolApi();
+            var field_item = fieldItem_example;  // String | 查询器字段名称 user_location，user_channel，campaign_id (optional) 
 
             try
             {
                 // 查询器配置
-                selectorConfSuccess result = apiInstance.v2SelectorConfGet();
+                selectorConfSuccess result = apiInstance.v2SelectorConfGet(field_item);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -9947,9 +9955,10 @@ namespace Example
 require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new io.swagger.client\Api\ToolApi();
+$field_item = fieldItem_example; // String | 查询器字段名称 user_location，user_channel，campaign_id
 
 try {
-    $result = $api_instance->v2SelectorConfGet();
+    $result = $api_instance->v2SelectorConfGet($field_item);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ToolApi->v2SelectorConfGet: ', $e->getMessage(), PHP_EOL;
@@ -9972,6 +9981,44 @@ try {
 
 
 
+                                                <div class="methodsubtabletitle">查询参数</div>
+                                                <table id="methodsubtable">
+                                                    <tr>
+                                                        <th width="150px">名称</th>
+                                                        <th>描述</th>
+                                                    </tr>
+                                                    <!---->
+                                                        <tr>
+    <td style="width:150px;">field_item</td>
+    <td>
+
+
+        <script>
+            $(document).ready(function () {
+                var schemaWrapper = {
+  "name" : "field_item",
+  "in" : "query",
+  "description" : "查询器字段名称 user_location，user_channel，campaign_id",
+  "required" : false,
+  "type" : "string",
+  "enum" : [ "user_location", "user_channel", "campaign_id" ]
+};
+                var schema = schemaWrapper;
+
+
+                var view = new JSONSchemaView(schema, 0);
+                var result = $('#d2e199_v2SelectorConfGet_field_item');
+                result.empty();
+                result.append(view.render());
+
+
+            });
+        </script>
+        <div id="d2e199_v2SelectorConfGet_field_item"></div>
+    </td>
+</tr>
+
+                                                </table>
 
                                             <h2>响应</h2>
 

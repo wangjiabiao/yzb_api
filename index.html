@@ -10178,7 +10178,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Tool-v2SelectorGet-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> "http://cim.lbadvisor.com:8080/v2/selector?user_id=&selector="
+curl -X <span style="text-transform: uppercase;">get</span> "http://cim.lbadvisor.com:8080/v2/selector?user_id="
 
 
 </code></pre>
@@ -10200,9 +10200,8 @@ public class ToolApiExample {
         
         ToolApi apiInstance = new ToolApi();
         Integer user_id = 56; // Integer | 用户ID
-        String selector = selector_example; // String | 查询条件字符串
         try {
-            success result = apiInstance.v2SelectorGet(user_id, selector);
+            success result = apiInstance.v2SelectorGet(user_id);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ToolApi#v2SelectorGet");
@@ -10224,9 +10223,8 @@ public class ToolApiExample {
     public static void main(String[] args) {
         ToolApi apiInstance = new ToolApi();
         Integer user_id = 56; // Integer | 用户ID
-        String selector = selector_example; // String | 查询条件字符串
         try {
-            success result = apiInstance.v2SelectorGet(user_id, selector);
+            success result = apiInstance.v2SelectorGet(user_id);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ToolApi#v2SelectorGet");
@@ -10248,13 +10246,11 @@ public class ToolApiExample {
                                                     <pre class="prettyprint"><code class="language-cpp">
 
 Integer *user_id = 56; // 用户ID
-String *selector = selector_example; // 查询条件字符串
 
 ToolApi *apiInstance = [[ToolApi alloc] init];
 
 // 获取查询条件列表
 [apiInstance v2SelectorGetWith:user_id
-    selector:selector
               completionHandler: ^(success output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -10274,8 +10270,6 @@ var api = new .ToolApi()
 
 var user_id = 56; // {Integer} 用户ID
 
-var selector = selector_example; // {String} 查询条件字符串
-
 
 var callback = function(error, data, response) {
   if (error) {
@@ -10284,7 +10278,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.v2SelectorGet(user_id, selector, callback);
+api.v2SelectorGet(user_id, callback);
 
                                                     </code></pre>
                                                 </div>
@@ -10310,12 +10304,11 @@ namespace Example
             
             var apiInstance = new ToolApi();
             var user_id = 56;  // Integer | 用户ID
-            var selector = selector_example;  // String | 查询条件字符串
 
             try
             {
                 // 获取查询条件列表
-                success result = apiInstance.v2SelectorGet(user_id, selector);
+                success result = apiInstance.v2SelectorGet(user_id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -10337,10 +10330,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new io.swagger.client\Api\ToolApi();
 $user_id = 56; // Integer | 用户ID
-$selector = selector_example; // String | 查询条件字符串
 
 try {
-    $result = $api_instance->v2SelectorGet($user_id, $selector);
+    $result = $api_instance->v2SelectorGet($user_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ToolApi->v2SelectorGet: ', $e->getMessage(), PHP_EOL;
@@ -10396,35 +10388,6 @@ try {
             });
         </script>
         <div id="d2e199_v2SelectorGet_user_id"></div>
-    </td>
-</tr>
-
-                                                        <tr>
-    <td style="width:150px;">selector*</td>
-    <td>
-
-
-        <script>
-            $(document).ready(function () {
-                var schemaWrapper = {
-  "name" : "selector",
-  "in" : "query",
-  "description" : "查询条件字符串",
-  "required" : true,
-  "type" : "string"
-};
-                var schema = schemaWrapper;
-
-
-                var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2SelectorGet_selector');
-                result.empty();
-                result.append(view.render());
-
-
-            });
-        </script>
-        <div id="d2e199_v2SelectorGet_selector"></div>
     </td>
 </tr>
 
@@ -10584,7 +10547,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Tool-v2SelectorPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/selector?user_id=&selector_id=&selector="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/selector?user_id=&selector_id=&definition="
 
 
 </code></pre>
@@ -10606,10 +10569,10 @@ public class ToolApiExample {
         
         ToolApi apiInstance = new ToolApi();
         Integer user_id = 56; // Integer | 用户ID
+        String definition = definition_example; // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         Integer selector_id = 56; // Integer | 查询条件ID 更新时必须
-        String selector = selector_example; // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         try {
-            success result = apiInstance.v2SelectorPost(user_id, selector_id, selector);
+            success result = apiInstance.v2SelectorPost(user_id, definition, selector_id);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ToolApi#v2SelectorPost");
@@ -10631,10 +10594,10 @@ public class ToolApiExample {
     public static void main(String[] args) {
         ToolApi apiInstance = new ToolApi();
         Integer user_id = 56; // Integer | 用户ID
+        String definition = definition_example; // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         Integer selector_id = 56; // Integer | 查询条件ID 更新时必须
-        String selector = selector_example; // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         try {
-            success result = apiInstance.v2SelectorPost(user_id, selector_id, selector);
+            success result = apiInstance.v2SelectorPost(user_id, definition, selector_id);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ToolApi#v2SelectorPost");
@@ -10656,15 +10619,15 @@ public class ToolApiExample {
                                                     <pre class="prettyprint"><code class="language-cpp">
 
 Integer *user_id = 56; // 用户ID
-Integer *selector_id = 56; // 查询条件ID 更新时必须
-String *selector = selector_example; // 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+String *definition = definition_example; // 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+Integer *selector_id = 56; // 查询条件ID 更新时必须 (optional)
 
 ToolApi *apiInstance = [[ToolApi alloc] init];
 
 // 保存/更新查询条件
 [apiInstance v2SelectorPostWith:user_id
+    definition:definition
     selector_id:selector_id
-    selector:selector
               completionHandler: ^(success output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -10684,10 +10647,11 @@ var api = new .ToolApi()
 
 var user_id = 56; // {Integer} 用户ID
 
-var selector_id = 56; // {Integer} 查询条件ID 更新时必须
+var definition = definition_example; // {String} 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 
-var selector = selector_example; // {String} 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
-
+var opts = { 
+  'selector_id': 56 // {Integer} 查询条件ID 更新时必须
+};
 
 var callback = function(error, data, response) {
   if (error) {
@@ -10696,7 +10660,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.v2SelectorPost(user_id, selector_id, selector, callback);
+api.v2SelectorPost(user_id, definition, opts, callback);
 
                                                     </code></pre>
                                                 </div>
@@ -10722,13 +10686,13 @@ namespace Example
             
             var apiInstance = new ToolApi();
             var user_id = 56;  // Integer | 用户ID
-            var selector_id = 56;  // Integer | 查询条件ID 更新时必须
-            var selector = selector_example;  // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+            var definition = definition_example;  // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
+            var selector_id = 56;  // Integer | 查询条件ID 更新时必须 (optional) 
 
             try
             {
                 // 保存/更新查询条件
-                success result = apiInstance.v2SelectorPost(user_id, selector_id, selector);
+                success result = apiInstance.v2SelectorPost(user_id, definition, selector_id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -10750,11 +10714,11 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 $api_instance = new io.swagger.client\Api\ToolApi();
 $user_id = 56; // Integer | 用户ID
+$definition = definition_example; // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $selector_id = 56; // Integer | 查询条件ID 更新时必须
-$selector = selector_example; // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 
 try {
-    $result = $api_instance->v2SelectorPost($user_id, $selector_id, $selector);
+    $result = $api_instance->v2SelectorPost($user_id, $definition, $selector_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ToolApi->v2SelectorPost: ', $e->getMessage(), PHP_EOL;
@@ -10814,7 +10778,7 @@ try {
 </tr>
 
                                                         <tr>
-    <td style="width:150px;">selector_id*</td>
+    <td style="width:150px;">selector_id</td>
     <td>
 
 
@@ -10824,7 +10788,7 @@ try {
   "name" : "selector_id",
   "in" : "query",
   "description" : "查询条件ID 更新时必须",
-  "required" : true,
+  "required" : false,
   "type" : "integer"
 };
                 var schema = schemaWrapper;
@@ -10843,14 +10807,14 @@ try {
 </tr>
 
                                                         <tr>
-    <td style="width:150px;">selector*</td>
+    <td style="width:150px;">definition*</td>
     <td>
 
 
         <script>
             $(document).ready(function () {
                 var schemaWrapper = {
-  "name" : "selector",
+  "name" : "definition",
   "in" : "query",
   "description" : "查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}",
   "required" : true,
@@ -10860,14 +10824,14 @@ try {
 
 
                 var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2SelectorPost_selector');
+                var result = $('#d2e199_v2SelectorPost_definition');
                 result.empty();
                 result.append(view.render());
 
 
             });
         </script>
-        <div id="d2e199_v2SelectorPost_selector"></div>
+        <div id="d2e199_v2SelectorPost_definition"></div>
     </td>
 </tr>
 

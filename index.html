@@ -3304,7 +3304,10 @@ margin-bottom: 20px;
     },
     "values" : {
       "type" : "array",
-      "description" : "查询器配置单元"
+      "description" : "查询器配置单元",
+      "items" : {
+        "$ref" : "#/definitions/v_item"
+      }
     }
   },
   "description" : "查询器配置单元"
@@ -3778,6 +3781,20 @@ margin-bottom: 20px;
       "type" : "integer"
     }
   }
+};
+  defs.v_item = {
+  "type" : "object",
+  "properties" : {
+    "id" : {
+      "type" : "string",
+      "description" : "单元id"
+    },
+    "label" : {
+      "type" : "string",
+      "description" : "单元显示值"
+    }
+  },
+  "description" : "单元值"
 };
   defs.yzm = {
   "type" : "object",

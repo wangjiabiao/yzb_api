@@ -8730,7 +8730,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2TrendPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/trend?data_type=&start_time=&end_time=&selector=&granularity=&current_page=&page_size=&fields=&order=&chart_limit="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/trend?data_type=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order=&chart_limit="
 
 
 </code></pre>
@@ -8754,6 +8754,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
+        Integer selector_id = 56; // Integer | 用户已经保存的 查询条件ID
         String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
@@ -8762,7 +8763,7 @@ public class ReportApiExample {
         String order = order_example; // String | 排序字段
         String chart_limit = chartLimit_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         try {
-            trendSuccess result = apiInstance.v2TrendPost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order, chart_limit);
+            trendSuccess result = apiInstance.v2TrendPost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order, chart_limit);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2TrendPost");
@@ -8786,6 +8787,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
+        Integer selector_id = 56; // Integer | 用户已经保存的 查询条件ID
         String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
@@ -8794,7 +8796,7 @@ public class ReportApiExample {
         String order = order_example; // String | 排序字段
         String chart_limit = chartLimit_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         try {
-            trendSuccess result = apiInstance.v2TrendPost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order, chart_limit);
+            trendSuccess result = apiInstance.v2TrendPost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order, chart_limit);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2TrendPost");
@@ -8818,6 +8820,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
+Integer *selector_id = 56; // 用户已经保存的 查询条件ID (optional)
 String *selector = selector_example; // selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
@@ -8832,6 +8835,7 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
 [apiInstance v2TrendPostWith:data_type
     start_time:start_time
     end_time:end_time
+    selector_id:selector_id
     selector:selector
     granularity:granularity
     current_page:current_page
@@ -8863,6 +8867,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
+  'selector_id': 56, // {Integer} 用户已经保存的 查询条件ID
   'selector': selector_example, // {String} selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
@@ -8907,6 +8912,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
+            var selector_id = 56;  // Integer | 用户已经保存的 查询条件ID (optional) 
             var selector = selector_example;  // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
@@ -8918,7 +8924,7 @@ namespace Example
             try
             {
                 // 趋势分析页面接口
-                trendSuccess result = apiInstance.v2TrendPost(data_type, start_time, end_time, selector, granularity, current_page, page_size, fields, order, chart_limit);
+                trendSuccess result = apiInstance.v2TrendPost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order, chart_limit);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -8942,6 +8948,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
+$selector_id = 56; // Integer | 用户已经保存的 查询条件ID
 $selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
@@ -8951,7 +8958,7 @@ $order = order_example; // String | 排序字段
 $chart_limit = chartLimit_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
 
 try {
-    $result = $api_instance->v2TrendPost($data_type, $start_time, $end_time, $selector, $granularity, $current_page, $page_size, $fields, $order, $chart_limit);
+    $result = $api_instance->v2TrendPost($data_type, $start_time, $end_time, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order, $chart_limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportApi->v2TrendPost: ', $e->getMessage(), PHP_EOL;
@@ -9066,6 +9073,35 @@ try {
             });
         </script>
         <div id="d2e199_v2TrendPost_end_time"></div>
+    </td>
+</tr>
+
+                                                        <tr>
+    <td style="width:150px;">selector_id</td>
+    <td>
+
+
+        <script>
+            $(document).ready(function () {
+                var schemaWrapper = {
+  "name" : "selector_id",
+  "in" : "query",
+  "description" : "用户已经保存的 查询条件ID",
+  "required" : false,
+  "type" : "integer"
+};
+                var schema = schemaWrapper;
+
+
+                var view = new JSONSchemaView(schema, 0);
+                var result = $('#d2e199_v2TrendPost_selector_id');
+                result.empty();
+                result.append(view.render());
+
+
+            });
+        </script>
+        <div id="d2e199_v2TrendPost_selector_id"></div>
     </td>
 </tr>
 

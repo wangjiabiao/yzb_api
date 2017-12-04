@@ -9833,7 +9833,7 @@ public class ToolApiExample {
                                                     <pre class="prettyprint"><code class="language-cpp">
 
 String *data_type = dataType_example; // 指定要加载的数据类型 channel:渠道，account：账户,campaign：计划 adgroup:单元
-Integer *data_id = 56; // 指定加载数据的父ID（上一级） (optional)
+Integer *data_id = 56; // 指定加载数据的父ID（上一级）
 
 ToolApi *apiInstance = [[ToolApi alloc] init];
 
@@ -9859,9 +9859,8 @@ var api = new .ToolApi()
 
 var data_type = dataType_example; // {String} 指定要加载的数据类型 channel:渠道，account：账户,campaign：计划 adgroup:单元
 
-var opts = { 
-  'data_id': 56 // {Integer} 指定加载数据的父ID（上一级）
-};
+var data_id = 56; // {Integer} 指定加载数据的父ID（上一级）
+
 
 var callback = function(error, data, response) {
   if (error) {
@@ -9870,7 +9869,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.v2BreadCrumbGet(data_type, opts, callback);
+api.v2BreadCrumbGet(data_type, data_id, callback);
 
                                                     </code></pre>
                                                 </div>
@@ -9896,7 +9895,7 @@ namespace Example
             
             var apiInstance = new ToolApi();
             var data_type = dataType_example;  // String | 指定要加载的数据类型 channel:渠道，account：账户,campaign：计划 adgroup:单元
-            var data_id = 56;  // Integer | 指定加载数据的父ID（上一级） (optional) 
+            var data_id = 56;  // Integer | 指定加载数据的父ID（上一级）
 
             try
             {
@@ -9987,7 +9986,7 @@ try {
 </tr>
 
                                                         <tr>
-    <td style="width:150px;">data_id</td>
+    <td style="width:150px;">data_id*</td>
     <td>
 
 
@@ -9997,7 +9996,7 @@ try {
   "name" : "data_id",
   "in" : "query",
   "description" : "指定加载数据的父ID（上一级）",
-  "required" : false,
+  "required" : true,
   "type" : "integer"
 };
                 var schema = schemaWrapper;

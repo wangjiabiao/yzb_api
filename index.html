@@ -3277,10 +3277,31 @@ margin-bottom: 20px;
       "$ref" : "#/definitions/meta"
     },
     "data" : {
-      "$ref" : "#/definitions/trendSuccess_data"
+      "$ref" : "#/definitions/channelSuccess_data"
     }
   },
   "description" : "渠道分析成功响应结果"
+};
+  defs.channelSuccess_data = {
+  "properties" : {
+    "data_summary" : {
+      "$ref" : "#/definitions/channelSuccess_data_data_summary"
+    },
+    "pagination" : {
+      "$ref" : "#/definitions/trendSuccess_data_pagination"
+    },
+    "rows" : {
+      "$ref" : "#/definitions/trendSuccess_data_rows"
+    }
+  }
+};
+  defs.channelSuccess_data_data_summary = {
+  "properties" : {
+    "date_time" : {
+      "type" : "string",
+      "description" : "描述数据更新的时间"
+    }
+  }
 };
   defs.chart_report = {
   "type" : "object",
@@ -3359,7 +3380,7 @@ margin-bottom: 20px;
       "$ref" : "#/definitions/meta"
     },
     "data" : {
-      "$ref" : "#/definitions/trendSuccess_data"
+      "$ref" : "#/definitions/channelSuccess_data"
     }
   },
   "description" : "账号分析成功响应结果"
@@ -3598,14 +3619,14 @@ margin-bottom: 20px;
   defs.top = {
   "type" : "object",
   "properties" : {
-    "spend_top" : {
+    "spend" : {
       "type" : "array",
       "description" : "渠道花费TOP3",
       "items" : {
         "$ref" : "#/definitions/top_item"
       }
     },
-    "reg_count_top" : {
+    "reg_count" : {
       "type" : "array",
       "description" : "渠道注册数TOP3",
       "items" : {
@@ -3719,6 +3740,10 @@ margin-bottom: 20px;
     "date_time" : {
       "type" : "string",
       "description" : "描述数据更新的时间"
+    },
+    "level" : {
+      "type" : "string",
+      "description" : "描述返回数据的层级 取值:channel,account,campaign,adgroup,creative,keyword,landing_page"
     }
   }
 };
@@ -6250,7 +6275,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2ChannelPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/channel?data_type=&is_dl=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&order=&top_by=&top_limit=&fields="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/channel?data_type=&is_dl=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&order=&fields="
 
 
 </code></pre>
@@ -6281,11 +6306,9 @@ public class ReportApiExample {
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String order = order_example; // String | 排序字段
-        String top_by = topBy_example; // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
-        Integer top_limit = 56; // Integer | 指定获取排行榜截止名次 默认:3
         String fields = fields_example; // String | 指定自定义列  多个字段时使用英文 逗号分隔 如：impression,click,spend,ctr,cpc,visit_count,reg_count,visit_cost,reg_cost,reg_rate,arrival_rate,label 默认为空,服务端返回全部字段
         try {
-            channelSuccess result = apiInstance.v2ChannelPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, order, top_by, top_limit, fields);
+            channelSuccess result = apiInstance.v2ChannelPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, order, fields);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2ChannelPost");
@@ -6316,11 +6339,9 @@ public class ReportApiExample {
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String order = order_example; // String | 排序字段
-        String top_by = topBy_example; // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
-        Integer top_limit = 56; // Integer | 指定获取排行榜截止名次 默认:3
         String fields = fields_example; // String | 指定自定义列  多个字段时使用英文 逗号分隔 如：impression,click,spend,ctr,cpc,visit_count,reg_count,visit_cost,reg_cost,reg_rate,arrival_rate,label 默认为空,服务端返回全部字段
         try {
-            channelSuccess result = apiInstance.v2ChannelPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, order, top_by, top_limit, fields);
+            channelSuccess result = apiInstance.v2ChannelPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, order, fields);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2ChannelPost");
@@ -6351,8 +6372,6 @@ String *granularity = granularity_example; // 数据统计图表时间粒度，�
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
 String *order = order_example; // 排序字段 (optional)
-String *top_by = topBy_example; // 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend） (optional)
-Integer *top_limit = 56; // 指定获取排行榜截止名次 默认:3 (optional)
 String *fields = fields_example; // 指定自定义列  多个字段时使用英文 逗号分隔 如：impression,click,spend,ctr,cpc,visit_count,reg_count,visit_cost,reg_cost,reg_rate,arrival_rate,label 默认为空,服务端返回全部字段 (optional)
 
 ReportApi *apiInstance = [[ReportApi alloc] init];
@@ -6368,8 +6387,6 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
     current_page:current_page
     page_size:page_size
     order:order
-    top_by:top_by
-    top_limit:top_limit
     fields:fields
               completionHandler: ^(channelSuccess output, NSError* error) {
                             if (output) {
@@ -6402,8 +6419,6 @@ var opts = {
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
   'order': order_example, // {String} 排序字段
-  'top_by': topBy_example, // {String} 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
-  'top_limit': 56, // {Integer} 指定获取排行榜截止名次 默认:3
   'fields': fields_example // {String} 指定自定义列  多个字段时使用英文 逗号分隔 如：impression,click,spend,ctr,cpc,visit_count,reg_count,visit_cost,reg_cost,reg_rate,arrival_rate,label 默认为空,服务端返回全部字段
 };
 
@@ -6449,14 +6464,12 @@ namespace Example
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
             var order = order_example;  // String | 排序字段 (optional) 
-            var top_by = topBy_example;  // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend） (optional) 
-            var top_limit = 56;  // Integer | 指定获取排行榜截止名次 默认:3 (optional) 
             var fields = fields_example;  // String | 指定自定义列  多个字段时使用英文 逗号分隔 如：impression,click,spend,ctr,cpc,visit_count,reg_count,visit_cost,reg_cost,reg_rate,arrival_rate,label 默认为空,服务端返回全部字段 (optional) 
 
             try
             {
                 // 渠道分析页面接口
-                channelSuccess result = apiInstance.v2ChannelPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, order, top_by, top_limit, fields);
+                channelSuccess result = apiInstance.v2ChannelPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, order, fields);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -6487,12 +6500,10 @@ $granularity = granularity_example; // String | 数据统计图表时间粒度�
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
 $order = order_example; // String | 排序字段
-$top_by = topBy_example; // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
-$top_limit = 56; // Integer | 指定获取排行榜截止名次 默认:3
 $fields = fields_example; // String | 指定自定义列  多个字段时使用英文 逗号分隔 如：impression,click,spend,ctr,cpc,visit_count,reg_count,visit_cost,reg_cost,reg_rate,arrival_rate,label 默认为空,服务端返回全部字段
 
 try {
-    $result = $api_instance->v2ChannelPost($data_type, $start_time, $end_time, $is_dl, $selector_id, $selector, $granularity, $current_page, $page_size, $order, $top_by, $top_limit, $fields);
+    $result = $api_instance->v2ChannelPost($data_type, $start_time, $end_time, $is_dl, $selector_id, $selector, $granularity, $current_page, $page_size, $order, $fields);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportApi->v2ChannelPost: ', $e->getMessage(), PHP_EOL;
@@ -6818,64 +6829,6 @@ try {
 </tr>
 
                                                         <tr>
-    <td style="width:150px;">top_by</td>
-    <td>
-
-
-        <script>
-            $(document).ready(function () {
-                var schemaWrapper = {
-  "name" : "top_by",
-  "in" : "query",
-  "description" : "根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）",
-  "required" : false,
-  "type" : "string"
-};
-                var schema = schemaWrapper;
-
-
-                var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2ChannelPost_top_by');
-                result.empty();
-                result.append(view.render());
-
-
-            });
-        </script>
-        <div id="d2e199_v2ChannelPost_top_by"></div>
-    </td>
-</tr>
-
-                                                        <tr>
-    <td style="width:150px;">top_limit</td>
-    <td>
-
-
-        <script>
-            $(document).ready(function () {
-                var schemaWrapper = {
-  "name" : "top_limit",
-  "in" : "query",
-  "description" : "指定获取排行榜截止名次 默认:3",
-  "required" : false,
-  "type" : "integer"
-};
-                var schema = schemaWrapper;
-
-
-                var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2ChannelPost_top_limit');
-                result.empty();
-                result.append(view.render());
-
-
-            });
-        </script>
-        <div id="d2e199_v2ChannelPost_top_limit"></div>
-    </td>
-</tr>
-
-                                                        <tr>
     <td style="width:150px;">fields</td>
     <td>
 
@@ -7060,7 +7013,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2CreativePost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/creative?data_type=&is_dl=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order=&top_by=&top_limit="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/creative?data_type=&is_dl=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order="
 
 
 </code></pre>
@@ -7092,10 +7045,8 @@ public class ReportApiExample {
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
-        String top_by = topBy_example; // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
-        Integer top_limit = 56; // Integer | 指定获取排行榜截止名次 默认:3
         try {
-            dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, top_by, top_limit);
+            dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2CreativePost");
@@ -7127,10 +7078,8 @@ public class ReportApiExample {
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
-        String top_by = topBy_example; // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
-        Integer top_limit = 56; // Integer | 指定获取排行榜截止名次 默认:3
         try {
-            dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, top_by, top_limit);
+            dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2CreativePost");
@@ -7162,8 +7111,6 @@ Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
 String *fields = fields_example; // 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional)
 String *order = order_example; // 排序字段 (optional)
-String *top_by = topBy_example; // 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend） (optional)
-Integer *top_limit = 56; // 指定获取排行榜截止名次 默认:3 (optional)
 
 ReportApi *apiInstance = [[ReportApi alloc] init];
 
@@ -7179,8 +7126,6 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
     page_size:page_size
     fields:fields
     order:order
-    top_by:top_by
-    top_limit:top_limit
               completionHandler: ^(dataSuccess output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -7212,9 +7157,7 @@ var opts = {
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
   'fields': fields_example, // {String} 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-  'order': order_example, // {String} 排序字段
-  'top_by': topBy_example, // {String} 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
-  'top_limit': 56 // {Integer} 指定获取排行榜截止名次 默认:3
+  'order': order_example // {String} 排序字段
 };
 
 var callback = function(error, data, response) {
@@ -7260,13 +7203,11 @@ namespace Example
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
             var fields = fields_example;  // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional) 
             var order = order_example;  // String | 排序字段 (optional) 
-            var top_by = topBy_example;  // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend） (optional) 
-            var top_limit = 56;  // Integer | 指定获取排行榜截止名次 默认:3 (optional) 
 
             try
             {
                 // 创意分析页面接口
-                dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, top_by, top_limit);
+                dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -7298,11 +7239,9 @@ $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
 $fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
 $order = order_example; // String | 排序字段
-$top_by = topBy_example; // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
-$top_limit = 56; // Integer | 指定获取排行榜截止名次 默认:3
 
 try {
-    $result = $api_instance->v2CreativePost($data_type, $start_time, $end_time, $is_dl, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order, $top_by, $top_limit);
+    $result = $api_instance->v2CreativePost($data_type, $start_time, $end_time, $is_dl, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportApi->v2CreativePost: ', $e->getMessage(), PHP_EOL;
@@ -7655,64 +7594,6 @@ try {
     </td>
 </tr>
 
-                                                        <tr>
-    <td style="width:150px;">top_by</td>
-    <td>
-
-
-        <script>
-            $(document).ready(function () {
-                var schemaWrapper = {
-  "name" : "top_by",
-  "in" : "query",
-  "description" : "根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）",
-  "required" : false,
-  "type" : "string"
-};
-                var schema = schemaWrapper;
-
-
-                var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2CreativePost_top_by');
-                result.empty();
-                result.append(view.render());
-
-
-            });
-        </script>
-        <div id="d2e199_v2CreativePost_top_by"></div>
-    </td>
-</tr>
-
-                                                        <tr>
-    <td style="width:150px;">top_limit</td>
-    <td>
-
-
-        <script>
-            $(document).ready(function () {
-                var schemaWrapper = {
-  "name" : "top_limit",
-  "in" : "query",
-  "description" : "指定获取排行榜截止名次 默认:3",
-  "required" : false,
-  "type" : "integer"
-};
-                var schema = schemaWrapper;
-
-
-                var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2CreativePost_top_limit');
-                result.empty();
-                result.append(view.render());
-
-
-            });
-        </script>
-        <div id="d2e199_v2CreativePost_top_limit"></div>
-    </td>
-</tr>
-
                                                 </table>
 
                                             <h2>响应</h2>
@@ -7869,7 +7750,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2KeywordPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/keyword?data_type=&is_dl=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order=&search_text=&top_by=&top_limit="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/keyword?data_type=&is_dl=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order=&search_text="
 
 
 </code></pre>
@@ -7902,10 +7783,8 @@ public class ReportApiExample {
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
         String search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
-        String top_by = topBy_example; // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
-        Integer top_limit = 56; // Integer | 指定获取排行榜截止名次 默认:3
         try {
-            dataSuccess result = apiInstance.v2KeywordPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, search_text, top_by, top_limit);
+            dataSuccess result = apiInstance.v2KeywordPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, search_text);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2KeywordPost");
@@ -7938,10 +7817,8 @@ public class ReportApiExample {
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
         String search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
-        String top_by = topBy_example; // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
-        Integer top_limit = 56; // Integer | 指定获取排行榜截止名次 默认:3
         try {
-            dataSuccess result = apiInstance.v2KeywordPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, search_text, top_by, top_limit);
+            dataSuccess result = apiInstance.v2KeywordPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, search_text);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2KeywordPost");
@@ -7974,8 +7851,6 @@ Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100
 String *fields = fields_example; // 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional)
 String *order = order_example; // 排序字段 (optional)
 String *search_text = searchText_example; // 搜索关键词 搜索范围：关键词name (optional)
-String *top_by = topBy_example; // 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend） (optional)
-Integer *top_limit = 56; // 指定获取排行榜截止名次 默认:3 (optional)
 
 ReportApi *apiInstance = [[ReportApi alloc] init];
 
@@ -7992,8 +7867,6 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
     fields:fields
     order:order
     search_text:search_text
-    top_by:top_by
-    top_limit:top_limit
               completionHandler: ^(dataSuccess output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -8026,9 +7899,7 @@ var opts = {
   'page_size': 56, // {Integer} 每页显条数 默认100
   'fields': fields_example, // {String} 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
   'order': order_example, // {String} 排序字段
-  'search_text': searchText_example, // {String} 搜索关键词 搜索范围：关键词name
-  'top_by': topBy_example, // {String} 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
-  'top_limit': 56 // {Integer} 指定获取排行榜截止名次 默认:3
+  'search_text': searchText_example // {String} 搜索关键词 搜索范围：关键词name
 };
 
 var callback = function(error, data, response) {
@@ -8075,13 +7946,11 @@ namespace Example
             var fields = fields_example;  // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional) 
             var order = order_example;  // String | 排序字段 (optional) 
             var search_text = searchText_example;  // String | 搜索关键词 搜索范围：关键词name (optional) 
-            var top_by = topBy_example;  // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend） (optional) 
-            var top_limit = 56;  // Integer | 指定获取排行榜截止名次 默认:3 (optional) 
 
             try
             {
                 // 关键词分析页面接口
-                dataSuccess result = apiInstance.v2KeywordPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, search_text, top_by, top_limit);
+                dataSuccess result = apiInstance.v2KeywordPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, search_text);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -8114,11 +7983,9 @@ $page_size = 56; // Integer | 每页显条数 默认100
 $fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
 $order = order_example; // String | 排序字段
 $search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
-$top_by = topBy_example; // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
-$top_limit = 56; // Integer | 指定获取排行榜截止名次 默认:3
 
 try {
-    $result = $api_instance->v2KeywordPost($data_type, $start_time, $end_time, $is_dl, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order, $search_text, $top_by, $top_limit);
+    $result = $api_instance->v2KeywordPost($data_type, $start_time, $end_time, $is_dl, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order, $search_text);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportApi->v2KeywordPost: ', $e->getMessage(), PHP_EOL;
@@ -8498,64 +8365,6 @@ try {
             });
         </script>
         <div id="d2e199_v2KeywordPost_search_text"></div>
-    </td>
-</tr>
-
-                                                        <tr>
-    <td style="width:150px;">top_by</td>
-    <td>
-
-
-        <script>
-            $(document).ready(function () {
-                var schemaWrapper = {
-  "name" : "top_by",
-  "in" : "query",
-  "description" : "根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）",
-  "required" : false,
-  "type" : "string"
-};
-                var schema = schemaWrapper;
-
-
-                var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2KeywordPost_top_by');
-                result.empty();
-                result.append(view.render());
-
-
-            });
-        </script>
-        <div id="d2e199_v2KeywordPost_top_by"></div>
-    </td>
-</tr>
-
-                                                        <tr>
-    <td style="width:150px;">top_limit</td>
-    <td>
-
-
-        <script>
-            $(document).ready(function () {
-                var schemaWrapper = {
-  "name" : "top_limit",
-  "in" : "query",
-  "description" : "指定获取排行榜截止名次 默认:3",
-  "required" : false,
-  "type" : "integer"
-};
-                var schema = schemaWrapper;
-
-
-                var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2KeywordPost_top_limit');
-                result.empty();
-                result.append(view.render());
-
-
-            });
-        </script>
-        <div id="d2e199_v2KeywordPost_top_limit"></div>
     </td>
 </tr>
 

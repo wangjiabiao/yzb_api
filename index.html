@@ -4036,7 +4036,7 @@ margin-bottom: 20px;
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2AccountPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/account?data_type=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/account?data_type=&is_dl=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order="
 
 
 </code></pre>
@@ -4060,6 +4060,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
+        Integer is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
         Integer selector_id = 56; // Integer | 用户已经保存的 查询条件ID
         String selector = selector_example; // String | selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
@@ -4068,7 +4069,7 @@ public class ReportApiExample {
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
         try {
-            dataSuccess result = apiInstance.v2AccountPost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order);
+            dataSuccess result = apiInstance.v2AccountPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2AccountPost");
@@ -4092,6 +4093,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
+        Integer is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
         Integer selector_id = 56; // Integer | 用户已经保存的 查询条件ID
         String selector = selector_example; // String | selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
@@ -4100,7 +4102,7 @@ public class ReportApiExample {
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
         try {
-            dataSuccess result = apiInstance.v2AccountPost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order);
+            dataSuccess result = apiInstance.v2AccountPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2AccountPost");
@@ -4124,6 +4126,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
+Integer *is_dl = 56; // 下载数据标识：1下载，0非下载 默认0 (optional)
 Integer *selector_id = 56; // 用户已经保存的 查询条件ID (optional)
 String *selector = selector_example; // selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
@@ -4138,6 +4141,7 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
 [apiInstance v2AccountPostWith:data_type
     start_time:start_time
     end_time:end_time
+    is_dl:is_dl
     selector_id:selector_id
     selector:selector
     granularity:granularity
@@ -4169,6 +4173,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
+  'is_dl': 56, // {Integer} 下载数据标识：1下载，0非下载 默认0
   'selector_id': 56, // {Integer} 用户已经保存的 查询条件ID
   'selector': selector_example, // {String} selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
@@ -4213,6 +4218,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
+            var is_dl = 56;  // Integer | 下载数据标识：1下载，0非下载 默认0 (optional) 
             var selector_id = 56;  // Integer | 用户已经保存的 查询条件ID (optional) 
             var selector = selector_example;  // String | selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
@@ -4224,7 +4230,7 @@ namespace Example
             try
             {
                 // 账号分析页面接口
-                dataSuccess result = apiInstance.v2AccountPost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order);
+                dataSuccess result = apiInstance.v2AccountPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -4248,6 +4254,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
+$is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
 $selector_id = 56; // Integer | 用户已经保存的 查询条件ID
 $selector = selector_example; // String | selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
@@ -4257,7 +4264,7 @@ $fields = fields_example; // String | 数据表格需要获取的字段,默认�
 $order = order_example; // String | 排序字段
 
 try {
-    $result = $api_instance->v2AccountPost($data_type, $start_time, $end_time, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order);
+    $result = $api_instance->v2AccountPost($data_type, $start_time, $end_time, $is_dl, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportApi->v2AccountPost: ', $e->getMessage(), PHP_EOL;
@@ -4314,6 +4321,35 @@ try {
             });
         </script>
         <div id="d2e199_v2AccountPost_data_type"></div>
+    </td>
+</tr>
+
+                                                        <tr>
+    <td style="width:150px;">is_dl</td>
+    <td>
+
+
+        <script>
+            $(document).ready(function () {
+                var schemaWrapper = {
+  "name" : "is_dl",
+  "in" : "query",
+  "description" : "下载数据标识：1下载，0非下载 默认0",
+  "required" : false,
+  "type" : "integer"
+};
+                var schema = schemaWrapper;
+
+
+                var view = new JSONSchemaView(schema, 0);
+                var result = $('#d2e199_v2AccountPost_is_dl');
+                result.empty();
+                result.append(view.render());
+
+
+            });
+        </script>
+        <div id="d2e199_v2AccountPost_is_dl"></div>
     </td>
 </tr>
 
@@ -4738,7 +4774,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2AdgroupPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/adgroup?data_type=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/adgroup?data_type=&is_dl=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order="
 
 
 </code></pre>
@@ -4762,6 +4798,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
+        Integer is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
         Integer selector_id = 56; // Integer | 用户已经保存的 查询条件ID
         String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
@@ -4770,7 +4807,7 @@ public class ReportApiExample {
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
         try {
-            dataSuccess result = apiInstance.v2AdgroupPost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order);
+            dataSuccess result = apiInstance.v2AdgroupPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2AdgroupPost");
@@ -4794,6 +4831,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
+        Integer is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
         Integer selector_id = 56; // Integer | 用户已经保存的 查询条件ID
         String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
@@ -4802,7 +4840,7 @@ public class ReportApiExample {
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
         try {
-            dataSuccess result = apiInstance.v2AdgroupPost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order);
+            dataSuccess result = apiInstance.v2AdgroupPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2AdgroupPost");
@@ -4826,6 +4864,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
+Integer *is_dl = 56; // 下载数据标识：1下载，0非下载 默认0 (optional)
 Integer *selector_id = 56; // 用户已经保存的 查询条件ID (optional)
 String *selector = selector_example; // selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
@@ -4840,6 +4879,7 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
 [apiInstance v2AdgroupPostWith:data_type
     start_time:start_time
     end_time:end_time
+    is_dl:is_dl
     selector_id:selector_id
     selector:selector
     granularity:granularity
@@ -4871,6 +4911,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
+  'is_dl': 56, // {Integer} 下载数据标识：1下载，0非下载 默认0
   'selector_id': 56, // {Integer} 用户已经保存的 查询条件ID
   'selector': selector_example, // {String} selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
@@ -4915,6 +4956,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
+            var is_dl = 56;  // Integer | 下载数据标识：1下载，0非下载 默认0 (optional) 
             var selector_id = 56;  // Integer | 用户已经保存的 查询条件ID (optional) 
             var selector = selector_example;  // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
@@ -4926,7 +4968,7 @@ namespace Example
             try
             {
                 // 单元分析页面接口
-                dataSuccess result = apiInstance.v2AdgroupPost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order);
+                dataSuccess result = apiInstance.v2AdgroupPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -4950,6 +4992,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
+$is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
 $selector_id = 56; // Integer | 用户已经保存的 查询条件ID
 $selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
@@ -4959,7 +5002,7 @@ $fields = fields_example; // String | 数据表格需要获取的字段,默认�
 $order = order_example; // String | 排序字段
 
 try {
-    $result = $api_instance->v2AdgroupPost($data_type, $start_time, $end_time, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order);
+    $result = $api_instance->v2AdgroupPost($data_type, $start_time, $end_time, $is_dl, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportApi->v2AdgroupPost: ', $e->getMessage(), PHP_EOL;
@@ -5016,6 +5059,35 @@ try {
             });
         </script>
         <div id="d2e199_v2AdgroupPost_data_type"></div>
+    </td>
+</tr>
+
+                                                        <tr>
+    <td style="width:150px;">is_dl</td>
+    <td>
+
+
+        <script>
+            $(document).ready(function () {
+                var schemaWrapper = {
+  "name" : "is_dl",
+  "in" : "query",
+  "description" : "下载数据标识：1下载，0非下载 默认0",
+  "required" : false,
+  "type" : "integer"
+};
+                var schema = schemaWrapper;
+
+
+                var view = new JSONSchemaView(schema, 0);
+                var result = $('#d2e199_v2AdgroupPost_is_dl');
+                result.empty();
+                result.append(view.render());
+
+
+            });
+        </script>
+        <div id="d2e199_v2AdgroupPost_is_dl"></div>
     </td>
 </tr>
 
@@ -5440,7 +5512,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2CampaignPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/campaign?data_type=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/campaign?data_type=&is_dl=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order="
 
 
 </code></pre>
@@ -5464,6 +5536,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
+        Integer is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
         Integer selector_id = 56; // Integer | 用户已经保存的 查询条件ID
         String selector = selector_example; // String | selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
@@ -5472,7 +5545,7 @@ public class ReportApiExample {
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
         try {
-            dataSuccess result = apiInstance.v2CampaignPost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order);
+            dataSuccess result = apiInstance.v2CampaignPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2CampaignPost");
@@ -5496,6 +5569,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
+        Integer is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
         Integer selector_id = 56; // Integer | 用户已经保存的 查询条件ID
         String selector = selector_example; // String | selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
@@ -5504,7 +5578,7 @@ public class ReportApiExample {
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
         try {
-            dataSuccess result = apiInstance.v2CampaignPost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order);
+            dataSuccess result = apiInstance.v2CampaignPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2CampaignPost");
@@ -5528,6 +5602,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
+Integer *is_dl = 56; // 下载数据标识：1下载，0非下载 默认0 (optional)
 Integer *selector_id = 56; // 用户已经保存的 查询条件ID (optional)
 String *selector = selector_example; // selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
@@ -5542,6 +5617,7 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
 [apiInstance v2CampaignPostWith:data_type
     start_time:start_time
     end_time:end_time
+    is_dl:is_dl
     selector_id:selector_id
     selector:selector
     granularity:granularity
@@ -5573,6 +5649,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
+  'is_dl': 56, // {Integer} 下载数据标识：1下载，0非下载 默认0
   'selector_id': 56, // {Integer} 用户已经保存的 查询条件ID
   'selector': selector_example, // {String} selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
@@ -5617,6 +5694,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
+            var is_dl = 56;  // Integer | 下载数据标识：1下载，0非下载 默认0 (optional) 
             var selector_id = 56;  // Integer | 用户已经保存的 查询条件ID (optional) 
             var selector = selector_example;  // String | selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
@@ -5628,7 +5706,7 @@ namespace Example
             try
             {
                 // 计划分析页面接口
-                dataSuccess result = apiInstance.v2CampaignPost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order);
+                dataSuccess result = apiInstance.v2CampaignPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -5652,6 +5730,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
+$is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
 $selector_id = 56; // Integer | 用户已经保存的 查询条件ID
 $selector = selector_example; // String | selector json格式的字符串 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
@@ -5661,7 +5740,7 @@ $fields = fields_example; // String | 数据表格需要获取的字段,默认�
 $order = order_example; // String | 排序字段
 
 try {
-    $result = $api_instance->v2CampaignPost($data_type, $start_time, $end_time, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order);
+    $result = $api_instance->v2CampaignPost($data_type, $start_time, $end_time, $is_dl, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportApi->v2CampaignPost: ', $e->getMessage(), PHP_EOL;
@@ -5718,6 +5797,35 @@ try {
             });
         </script>
         <div id="d2e199_v2CampaignPost_data_type"></div>
+    </td>
+</tr>
+
+                                                        <tr>
+    <td style="width:150px;">is_dl</td>
+    <td>
+
+
+        <script>
+            $(document).ready(function () {
+                var schemaWrapper = {
+  "name" : "is_dl",
+  "in" : "query",
+  "description" : "下载数据标识：1下载，0非下载 默认0",
+  "required" : false,
+  "type" : "integer"
+};
+                var schema = schemaWrapper;
+
+
+                var view = new JSONSchemaView(schema, 0);
+                var result = $('#d2e199_v2CampaignPost_is_dl');
+                result.empty();
+                result.append(view.render());
+
+
+            });
+        </script>
+        <div id="d2e199_v2CampaignPost_is_dl"></div>
     </td>
 </tr>
 
@@ -6142,7 +6250,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2ChannelPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/channel?data_type=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/channel?data_type=&is_dl=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&order=&top_by=&top_limit=&fields="
 
 
 </code></pre>
@@ -6166,15 +6274,18 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
+        Integer is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
         Integer selector_id = 56; // Integer | 用户已经保存的 查询条件ID
         String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
-        String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
+        String top_by = topBy_example; // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
+        Integer top_limit = 56; // Integer | 指定获取排行榜截止名次 默认:3
+        String fields = fields_example; // String | 指定自定义列  多个字段时使用英文 逗号分隔 如：impression,click,spend,ctr,cpc,visit_count,reg_count,visit_cost,reg_cost,reg_rate,arrival_rate,label 默认为空,服务端返回全部字段
         try {
-            channelSuccess result = apiInstance.v2ChannelPost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order);
+            channelSuccess result = apiInstance.v2ChannelPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, order, top_by, top_limit, fields);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2ChannelPost");
@@ -6198,15 +6309,18 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
+        Integer is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
         Integer selector_id = 56; // Integer | 用户已经保存的 查询条件ID
         String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
         Integer current_page = 56; // Integer | 当前页码
         Integer page_size = 56; // Integer | 每页显条数 默认100
-        String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
+        String top_by = topBy_example; // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
+        Integer top_limit = 56; // Integer | 指定获取排行榜截止名次 默认:3
+        String fields = fields_example; // String | 指定自定义列  多个字段时使用英文 逗号分隔 如：impression,click,spend,ctr,cpc,visit_count,reg_count,visit_cost,reg_cost,reg_rate,arrival_rate,label 默认为空,服务端返回全部字段
         try {
-            channelSuccess result = apiInstance.v2ChannelPost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order);
+            channelSuccess result = apiInstance.v2ChannelPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, order, top_by, top_limit, fields);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2ChannelPost");
@@ -6230,13 +6344,16 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
+Integer *is_dl = 56; // 下载数据标识：1下载，0非下载 默认0 (optional)
 Integer *selector_id = 56; // 用户已经保存的 查询条件ID (optional)
 String *selector = selector_example; // selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
 Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
-String *fields = fields_example; // 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional)
 String *order = order_example; // 排序字段 (optional)
+String *top_by = topBy_example; // 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend） (optional)
+Integer *top_limit = 56; // 指定获取排行榜截止名次 默认:3 (optional)
+String *fields = fields_example; // 指定自定义列  多个字段时使用英文 逗号分隔 如：impression,click,spend,ctr,cpc,visit_count,reg_count,visit_cost,reg_cost,reg_rate,arrival_rate,label 默认为空,服务端返回全部字段 (optional)
 
 ReportApi *apiInstance = [[ReportApi alloc] init];
 
@@ -6244,13 +6361,16 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
 [apiInstance v2ChannelPostWith:data_type
     start_time:start_time
     end_time:end_time
+    is_dl:is_dl
     selector_id:selector_id
     selector:selector
     granularity:granularity
     current_page:current_page
     page_size:page_size
-    fields:fields
     order:order
+    top_by:top_by
+    top_limit:top_limit
+    fields:fields
               completionHandler: ^(channelSuccess output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -6275,13 +6395,16 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
+  'is_dl': 56, // {Integer} 下载数据标识：1下载，0非下载 默认0
   'selector_id': 56, // {Integer} 用户已经保存的 查询条件ID
   'selector': selector_example, // {String} selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
-  'fields': fields_example, // {String} 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-  'order': order_example // {String} 排序字段
+  'order': order_example, // {String} 排序字段
+  'top_by': topBy_example, // {String} 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
+  'top_limit': 56, // {Integer} 指定获取排行榜截止名次 默认:3
+  'fields': fields_example // {String} 指定自定义列  多个字段时使用英文 逗号分隔 如：impression,click,spend,ctr,cpc,visit_count,reg_count,visit_cost,reg_cost,reg_rate,arrival_rate,label 默认为空,服务端返回全部字段
 };
 
 var callback = function(error, data, response) {
@@ -6319,18 +6442,21 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
+            var is_dl = 56;  // Integer | 下载数据标识：1下载，0非下载 默认0 (optional) 
             var selector_id = 56;  // Integer | 用户已经保存的 查询条件ID (optional) 
             var selector = selector_example;  // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
             var current_page = 56;  // Integer | 当前页码 (optional)  (default to 1)
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
-            var fields = fields_example;  // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional) 
             var order = order_example;  // String | 排序字段 (optional) 
+            var top_by = topBy_example;  // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend） (optional) 
+            var top_limit = 56;  // Integer | 指定获取排行榜截止名次 默认:3 (optional) 
+            var fields = fields_example;  // String | 指定自定义列  多个字段时使用英文 逗号分隔 如：impression,click,spend,ctr,cpc,visit_count,reg_count,visit_cost,reg_cost,reg_rate,arrival_rate,label 默认为空,服务端返回全部字段 (optional) 
 
             try
             {
                 // 渠道分析页面接口
-                channelSuccess result = apiInstance.v2ChannelPost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order);
+                channelSuccess result = apiInstance.v2ChannelPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, order, top_by, top_limit, fields);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -6354,16 +6480,19 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
+$is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
 $selector_id = 56; // Integer | 用户已经保存的 查询条件ID
 $selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
 $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
-$fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
 $order = order_example; // String | 排序字段
+$top_by = topBy_example; // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
+$top_limit = 56; // Integer | 指定获取排行榜截止名次 默认:3
+$fields = fields_example; // String | 指定自定义列  多个字段时使用英文 逗号分隔 如：impression,click,spend,ctr,cpc,visit_count,reg_count,visit_cost,reg_cost,reg_rate,arrival_rate,label 默认为空,服务端返回全部字段
 
 try {
-    $result = $api_instance->v2ChannelPost($data_type, $start_time, $end_time, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order);
+    $result = $api_instance->v2ChannelPost($data_type, $start_time, $end_time, $is_dl, $selector_id, $selector, $granularity, $current_page, $page_size, $order, $top_by, $top_limit, $fields);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportApi->v2ChannelPost: ', $e->getMessage(), PHP_EOL;
@@ -6420,6 +6549,35 @@ try {
             });
         </script>
         <div id="d2e199_v2ChannelPost_data_type"></div>
+    </td>
+</tr>
+
+                                                        <tr>
+    <td style="width:150px;">is_dl</td>
+    <td>
+
+
+        <script>
+            $(document).ready(function () {
+                var schemaWrapper = {
+  "name" : "is_dl",
+  "in" : "query",
+  "description" : "下载数据标识：1下载，0非下载 默认0",
+  "required" : false,
+  "type" : "integer"
+};
+                var schema = schemaWrapper;
+
+
+                var view = new JSONSchemaView(schema, 0);
+                var result = $('#d2e199_v2ChannelPost_is_dl');
+                result.empty();
+                result.append(view.render());
+
+
+            });
+        </script>
+        <div id="d2e199_v2ChannelPost_is_dl"></div>
     </td>
 </tr>
 
@@ -6630,35 +6788,6 @@ try {
 </tr>
 
                                                         <tr>
-    <td style="width:150px;">fields</td>
-    <td>
-
-
-        <script>
-            $(document).ready(function () {
-                var schemaWrapper = {
-  "name" : "fields",
-  "in" : "query",
-  "description" : "数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔",
-  "required" : false,
-  "type" : "string"
-};
-                var schema = schemaWrapper;
-
-
-                var view = new JSONSchemaView(schema, 0);
-                var result = $('#d2e199_v2ChannelPost_fields');
-                result.empty();
-                result.append(view.render());
-
-
-            });
-        </script>
-        <div id="d2e199_v2ChannelPost_fields"></div>
-    </td>
-</tr>
-
-                                                        <tr>
     <td style="width:150px;">order</td>
     <td>
 
@@ -6685,6 +6814,93 @@ try {
             });
         </script>
         <div id="d2e199_v2ChannelPost_order"></div>
+    </td>
+</tr>
+
+                                                        <tr>
+    <td style="width:150px;">top_by</td>
+    <td>
+
+
+        <script>
+            $(document).ready(function () {
+                var schemaWrapper = {
+  "name" : "top_by",
+  "in" : "query",
+  "description" : "根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）",
+  "required" : false,
+  "type" : "string"
+};
+                var schema = schemaWrapper;
+
+
+                var view = new JSONSchemaView(schema, 0);
+                var result = $('#d2e199_v2ChannelPost_top_by');
+                result.empty();
+                result.append(view.render());
+
+
+            });
+        </script>
+        <div id="d2e199_v2ChannelPost_top_by"></div>
+    </td>
+</tr>
+
+                                                        <tr>
+    <td style="width:150px;">top_limit</td>
+    <td>
+
+
+        <script>
+            $(document).ready(function () {
+                var schemaWrapper = {
+  "name" : "top_limit",
+  "in" : "query",
+  "description" : "指定获取排行榜截止名次 默认:3",
+  "required" : false,
+  "type" : "integer"
+};
+                var schema = schemaWrapper;
+
+
+                var view = new JSONSchemaView(schema, 0);
+                var result = $('#d2e199_v2ChannelPost_top_limit');
+                result.empty();
+                result.append(view.render());
+
+
+            });
+        </script>
+        <div id="d2e199_v2ChannelPost_top_limit"></div>
+    </td>
+</tr>
+
+                                                        <tr>
+    <td style="width:150px;">fields</td>
+    <td>
+
+
+        <script>
+            $(document).ready(function () {
+                var schemaWrapper = {
+  "name" : "fields",
+  "in" : "query",
+  "description" : "指定自定义列  多个字段时使用英文 逗号分隔 如：impression,click,spend,ctr,cpc,visit_count,reg_count,visit_cost,reg_cost,reg_rate,arrival_rate,label 默认为空,服务端返回全部字段",
+  "required" : false,
+  "type" : "string"
+};
+                var schema = schemaWrapper;
+
+
+                var view = new JSONSchemaView(schema, 0);
+                var result = $('#d2e199_v2ChannelPost_fields');
+                result.empty();
+                result.append(view.render());
+
+
+            });
+        </script>
+        <div id="d2e199_v2ChannelPost_fields"></div>
     </td>
 </tr>
 
@@ -6844,7 +7060,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2CreativePost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/creative?data_type=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/creative?data_type=&is_dl=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order=&top_by=&top_limit="
 
 
 </code></pre>
@@ -6868,6 +7084,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
+        Integer is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
         Integer selector_id = 56; // Integer | 用户已经保存的 查询条件ID
         String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
@@ -6875,8 +7092,10 @@ public class ReportApiExample {
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
+        String top_by = topBy_example; // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
+        Integer top_limit = 56; // Integer | 指定获取排行榜截止名次 默认:3
         try {
-            dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order);
+            dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, top_by, top_limit);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2CreativePost");
@@ -6900,6 +7119,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
+        Integer is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
         Integer selector_id = 56; // Integer | 用户已经保存的 查询条件ID
         String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
@@ -6907,8 +7127,10 @@ public class ReportApiExample {
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
+        String top_by = topBy_example; // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
+        Integer top_limit = 56; // Integer | 指定获取排行榜截止名次 默认:3
         try {
-            dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order);
+            dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, top_by, top_limit);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2CreativePost");
@@ -6932,6 +7154,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
+Integer *is_dl = 56; // 下载数据标识：1下载，0非下载 默认0 (optional)
 Integer *selector_id = 56; // 用户已经保存的 查询条件ID (optional)
 String *selector = selector_example; // selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
@@ -6939,6 +7162,8 @@ Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
 String *fields = fields_example; // 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional)
 String *order = order_example; // 排序字段 (optional)
+String *top_by = topBy_example; // 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend） (optional)
+Integer *top_limit = 56; // 指定获取排行榜截止名次 默认:3 (optional)
 
 ReportApi *apiInstance = [[ReportApi alloc] init];
 
@@ -6946,6 +7171,7 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
 [apiInstance v2CreativePostWith:data_type
     start_time:start_time
     end_time:end_time
+    is_dl:is_dl
     selector_id:selector_id
     selector:selector
     granularity:granularity
@@ -6953,6 +7179,8 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
     page_size:page_size
     fields:fields
     order:order
+    top_by:top_by
+    top_limit:top_limit
               completionHandler: ^(dataSuccess output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -6977,13 +7205,16 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
+  'is_dl': 56, // {Integer} 下载数据标识：1下载，0非下载 默认0
   'selector_id': 56, // {Integer} 用户已经保存的 查询条件ID
   'selector': selector_example, // {String} selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
   'fields': fields_example, // {String} 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-  'order': order_example // {String} 排序字段
+  'order': order_example, // {String} 排序字段
+  'top_by': topBy_example, // {String} 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
+  'top_limit': 56 // {Integer} 指定获取排行榜截止名次 默认:3
 };
 
 var callback = function(error, data, response) {
@@ -7021,6 +7252,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
+            var is_dl = 56;  // Integer | 下载数据标识：1下载，0非下载 默认0 (optional) 
             var selector_id = 56;  // Integer | 用户已经保存的 查询条件ID (optional) 
             var selector = selector_example;  // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
@@ -7028,11 +7260,13 @@ namespace Example
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
             var fields = fields_example;  // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional) 
             var order = order_example;  // String | 排序字段 (optional) 
+            var top_by = topBy_example;  // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend） (optional) 
+            var top_limit = 56;  // Integer | 指定获取排行榜截止名次 默认:3 (optional) 
 
             try
             {
                 // 创意分析页面接口
-                dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order);
+                dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, top_by, top_limit);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -7056,6 +7290,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
+$is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
 $selector_id = 56; // Integer | 用户已经保存的 查询条件ID
 $selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
@@ -7063,9 +7298,11 @@ $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
 $fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
 $order = order_example; // String | 排序字段
+$top_by = topBy_example; // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
+$top_limit = 56; // Integer | 指定获取排行榜截止名次 默认:3
 
 try {
-    $result = $api_instance->v2CreativePost($data_type, $start_time, $end_time, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order);
+    $result = $api_instance->v2CreativePost($data_type, $start_time, $end_time, $is_dl, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order, $top_by, $top_limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportApi->v2CreativePost: ', $e->getMessage(), PHP_EOL;
@@ -7121,6 +7358,35 @@ try {
             });
         </script>
         <div id="d2e199_v2CreativePost_data_type"></div>
+    </td>
+</tr>
+
+                                                        <tr>
+    <td style="width:150px;">is_dl</td>
+    <td>
+
+
+        <script>
+            $(document).ready(function () {
+                var schemaWrapper = {
+  "name" : "is_dl",
+  "in" : "query",
+  "description" : "下载数据标识：1下载，0非下载 默认0",
+  "required" : false,
+  "type" : "integer"
+};
+                var schema = schemaWrapper;
+
+
+                var view = new JSONSchemaView(schema, 0);
+                var result = $('#d2e199_v2CreativePost_is_dl');
+                result.empty();
+                result.append(view.render());
+
+
+            });
+        </script>
+        <div id="d2e199_v2CreativePost_is_dl"></div>
     </td>
 </tr>
 
@@ -7389,6 +7655,64 @@ try {
     </td>
 </tr>
 
+                                                        <tr>
+    <td style="width:150px;">top_by</td>
+    <td>
+
+
+        <script>
+            $(document).ready(function () {
+                var schemaWrapper = {
+  "name" : "top_by",
+  "in" : "query",
+  "description" : "根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）",
+  "required" : false,
+  "type" : "string"
+};
+                var schema = schemaWrapper;
+
+
+                var view = new JSONSchemaView(schema, 0);
+                var result = $('#d2e199_v2CreativePost_top_by');
+                result.empty();
+                result.append(view.render());
+
+
+            });
+        </script>
+        <div id="d2e199_v2CreativePost_top_by"></div>
+    </td>
+</tr>
+
+                                                        <tr>
+    <td style="width:150px;">top_limit</td>
+    <td>
+
+
+        <script>
+            $(document).ready(function () {
+                var schemaWrapper = {
+  "name" : "top_limit",
+  "in" : "query",
+  "description" : "指定获取排行榜截止名次 默认:3",
+  "required" : false,
+  "type" : "integer"
+};
+                var schema = schemaWrapper;
+
+
+                var view = new JSONSchemaView(schema, 0);
+                var result = $('#d2e199_v2CreativePost_top_limit');
+                result.empty();
+                result.append(view.render());
+
+
+            });
+        </script>
+        <div id="d2e199_v2CreativePost_top_limit"></div>
+    </td>
+</tr>
+
                                                 </table>
 
                                             <h2>响应</h2>
@@ -7545,7 +7869,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2KeywordPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/keyword?data_type=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order=&search_text="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/keyword?data_type=&is_dl=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order=&search_text=&top_by=&top_limit="
 
 
 </code></pre>
@@ -7569,6 +7893,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
+        Integer is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
         Integer selector_id = 56; // Integer | 用户已经保存的 查询条件ID
         String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
@@ -7577,8 +7902,10 @@ public class ReportApiExample {
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
         String search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
+        String top_by = topBy_example; // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
+        Integer top_limit = 56; // Integer | 指定获取排行榜截止名次 默认:3
         try {
-            dataSuccess result = apiInstance.v2KeywordPost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order, search_text);
+            dataSuccess result = apiInstance.v2KeywordPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, search_text, top_by, top_limit);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2KeywordPost");
@@ -7602,6 +7929,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
+        Integer is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
         Integer selector_id = 56; // Integer | 用户已经保存的 查询条件ID
         String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
@@ -7610,8 +7938,10 @@ public class ReportApiExample {
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
         String search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
+        String top_by = topBy_example; // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
+        Integer top_limit = 56; // Integer | 指定获取排行榜截止名次 默认:3
         try {
-            dataSuccess result = apiInstance.v2KeywordPost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order, search_text);
+            dataSuccess result = apiInstance.v2KeywordPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, search_text, top_by, top_limit);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2KeywordPost");
@@ -7635,6 +7965,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
+Integer *is_dl = 56; // 下载数据标识：1下载，0非下载 默认0 (optional)
 Integer *selector_id = 56; // 用户已经保存的 查询条件ID (optional)
 String *selector = selector_example; // selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
@@ -7643,6 +7974,8 @@ Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100
 String *fields = fields_example; // 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional)
 String *order = order_example; // 排序字段 (optional)
 String *search_text = searchText_example; // 搜索关键词 搜索范围：关键词name (optional)
+String *top_by = topBy_example; // 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend） (optional)
+Integer *top_limit = 56; // 指定获取排行榜截止名次 默认:3 (optional)
 
 ReportApi *apiInstance = [[ReportApi alloc] init];
 
@@ -7650,6 +7983,7 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
 [apiInstance v2KeywordPostWith:data_type
     start_time:start_time
     end_time:end_time
+    is_dl:is_dl
     selector_id:selector_id
     selector:selector
     granularity:granularity
@@ -7658,6 +7992,8 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
     fields:fields
     order:order
     search_text:search_text
+    top_by:top_by
+    top_limit:top_limit
               completionHandler: ^(dataSuccess output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -7682,6 +8018,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
+  'is_dl': 56, // {Integer} 下载数据标识：1下载，0非下载 默认0
   'selector_id': 56, // {Integer} 用户已经保存的 查询条件ID
   'selector': selector_example, // {String} selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
@@ -7689,7 +8026,9 @@ var opts = {
   'page_size': 56, // {Integer} 每页显条数 默认100
   'fields': fields_example, // {String} 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
   'order': order_example, // {String} 排序字段
-  'search_text': searchText_example // {String} 搜索关键词 搜索范围：关键词name
+  'search_text': searchText_example, // {String} 搜索关键词 搜索范围：关键词name
+  'top_by': topBy_example, // {String} 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
+  'top_limit': 56 // {Integer} 指定获取排行榜截止名次 默认:3
 };
 
 var callback = function(error, data, response) {
@@ -7727,6 +8066,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
+            var is_dl = 56;  // Integer | 下载数据标识：1下载，0非下载 默认0 (optional) 
             var selector_id = 56;  // Integer | 用户已经保存的 查询条件ID (optional) 
             var selector = selector_example;  // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
@@ -7735,11 +8075,13 @@ namespace Example
             var fields = fields_example;  // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional) 
             var order = order_example;  // String | 排序字段 (optional) 
             var search_text = searchText_example;  // String | 搜索关键词 搜索范围：关键词name (optional) 
+            var top_by = topBy_example;  // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend） (optional) 
+            var top_limit = 56;  // Integer | 指定获取排行榜截止名次 默认:3 (optional) 
 
             try
             {
                 // 关键词分析页面接口
-                dataSuccess result = apiInstance.v2KeywordPost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order, search_text);
+                dataSuccess result = apiInstance.v2KeywordPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, search_text, top_by, top_limit);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -7763,6 +8105,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
+$is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
 $selector_id = 56; // Integer | 用户已经保存的 查询条件ID
 $selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
@@ -7771,9 +8114,11 @@ $page_size = 56; // Integer | 每页显条数 默认100
 $fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
 $order = order_example; // String | 排序字段
 $search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
+$top_by = topBy_example; // String | 根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）
+$top_limit = 56; // Integer | 指定获取排行榜截止名次 默认:3
 
 try {
-    $result = $api_instance->v2KeywordPost($data_type, $start_time, $end_time, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order, $search_text);
+    $result = $api_instance->v2KeywordPost($data_type, $start_time, $end_time, $is_dl, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order, $search_text, $top_by, $top_limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportApi->v2KeywordPost: ', $e->getMessage(), PHP_EOL;
@@ -7830,6 +8175,35 @@ try {
             });
         </script>
         <div id="d2e199_v2KeywordPost_data_type"></div>
+    </td>
+</tr>
+
+                                                        <tr>
+    <td style="width:150px;">is_dl</td>
+    <td>
+
+
+        <script>
+            $(document).ready(function () {
+                var schemaWrapper = {
+  "name" : "is_dl",
+  "in" : "query",
+  "description" : "下载数据标识：1下载，0非下载 默认0",
+  "required" : false,
+  "type" : "integer"
+};
+                var schema = schemaWrapper;
+
+
+                var view = new JSONSchemaView(schema, 0);
+                var result = $('#d2e199_v2KeywordPost_is_dl');
+                result.empty();
+                result.append(view.render());
+
+
+            });
+        </script>
+        <div id="d2e199_v2KeywordPost_is_dl"></div>
     </td>
 </tr>
 
@@ -8127,6 +8501,64 @@ try {
     </td>
 </tr>
 
+                                                        <tr>
+    <td style="width:150px;">top_by</td>
+    <td>
+
+
+        <script>
+            $(document).ready(function () {
+                var schemaWrapper = {
+  "name" : "top_by",
+  "in" : "query",
+  "description" : "根据给定的字段获取TOP n, 多个字段时使用英文 逗号分隔 如：spend,reg_count 可选值与自定义列一致，排序方式 带'-'号表示按数值从大到小排序（如：-spend）",
+  "required" : false,
+  "type" : "string"
+};
+                var schema = schemaWrapper;
+
+
+                var view = new JSONSchemaView(schema, 0);
+                var result = $('#d2e199_v2KeywordPost_top_by');
+                result.empty();
+                result.append(view.render());
+
+
+            });
+        </script>
+        <div id="d2e199_v2KeywordPost_top_by"></div>
+    </td>
+</tr>
+
+                                                        <tr>
+    <td style="width:150px;">top_limit</td>
+    <td>
+
+
+        <script>
+            $(document).ready(function () {
+                var schemaWrapper = {
+  "name" : "top_limit",
+  "in" : "query",
+  "description" : "指定获取排行榜截止名次 默认:3",
+  "required" : false,
+  "type" : "integer"
+};
+                var schema = schemaWrapper;
+
+
+                var view = new JSONSchemaView(schema, 0);
+                var result = $('#d2e199_v2KeywordPost_top_limit');
+                result.empty();
+                result.append(view.render());
+
+
+            });
+        </script>
+        <div id="d2e199_v2KeywordPost_top_limit"></div>
+    </td>
+</tr>
+
                                                 </table>
 
                                             <h2>响应</h2>
@@ -8283,7 +8715,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2LandingPagePost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/landing_page?data_type=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order=&search_text="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/landing_page?data_type=&is_dl=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order=&search_text="
 
 
 </code></pre>
@@ -8307,6 +8739,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
+        Integer is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
         Integer selector_id = 56; // Integer | 用户已经保存的 查询条件ID
         String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
@@ -8316,7 +8749,7 @@ public class ReportApiExample {
         String order = order_example; // String | 排序字段
         String search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
         try {
-            dataSuccess result = apiInstance.v2LandingPagePost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order, search_text);
+            dataSuccess result = apiInstance.v2LandingPagePost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, search_text);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2LandingPagePost");
@@ -8340,6 +8773,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
+        Integer is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
         Integer selector_id = 56; // Integer | 用户已经保存的 查询条件ID
         String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
@@ -8349,7 +8783,7 @@ public class ReportApiExample {
         String order = order_example; // String | 排序字段
         String search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
         try {
-            dataSuccess result = apiInstance.v2LandingPagePost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order, search_text);
+            dataSuccess result = apiInstance.v2LandingPagePost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, search_text);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2LandingPagePost");
@@ -8373,6 +8807,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
+Integer *is_dl = 56; // 下载数据标识：1下载，0非下载 默认0 (optional)
 Integer *selector_id = 56; // 用户已经保存的 查询条件ID (optional)
 String *selector = selector_example; // selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
@@ -8388,6 +8823,7 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
 [apiInstance v2LandingPagePostWith:data_type
     start_time:start_time
     end_time:end_time
+    is_dl:is_dl
     selector_id:selector_id
     selector:selector
     granularity:granularity
@@ -8420,6 +8856,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
+  'is_dl': 56, // {Integer} 下载数据标识：1下载，0非下载 默认0
   'selector_id': 56, // {Integer} 用户已经保存的 查询条件ID
   'selector': selector_example, // {String} selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
@@ -8465,6 +8902,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
+            var is_dl = 56;  // Integer | 下载数据标识：1下载，0非下载 默认0 (optional) 
             var selector_id = 56;  // Integer | 用户已经保存的 查询条件ID (optional) 
             var selector = selector_example;  // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
@@ -8477,7 +8915,7 @@ namespace Example
             try
             {
                 // 落地页分析页面接口
-                dataSuccess result = apiInstance.v2LandingPagePost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order, search_text);
+                dataSuccess result = apiInstance.v2LandingPagePost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, search_text);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -8501,6 +8939,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
+$is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
 $selector_id = 56; // Integer | 用户已经保存的 查询条件ID
 $selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
@@ -8511,7 +8950,7 @@ $order = order_example; // String | 排序字段
 $search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
 
 try {
-    $result = $api_instance->v2LandingPagePost($data_type, $start_time, $end_time, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order, $search_text);
+    $result = $api_instance->v2LandingPagePost($data_type, $start_time, $end_time, $is_dl, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order, $search_text);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportApi->v2LandingPagePost: ', $e->getMessage(), PHP_EOL;
@@ -8568,6 +9007,35 @@ try {
             });
         </script>
         <div id="d2e199_v2LandingPagePost_data_type"></div>
+    </td>
+</tr>
+
+                                                        <tr>
+    <td style="width:150px;">is_dl</td>
+    <td>
+
+
+        <script>
+            $(document).ready(function () {
+                var schemaWrapper = {
+  "name" : "is_dl",
+  "in" : "query",
+  "description" : "下载数据标识：1下载，0非下载 默认0",
+  "required" : false,
+  "type" : "integer"
+};
+                var schema = schemaWrapper;
+
+
+                var view = new JSONSchemaView(schema, 0);
+                var result = $('#d2e199_v2LandingPagePost_is_dl');
+                result.empty();
+                result.append(view.render());
+
+
+            });
+        </script>
+        <div id="d2e199_v2LandingPagePost_is_dl"></div>
     </td>
 </tr>
 
@@ -9021,7 +9489,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2TrendPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/trend?data_type=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order=&chart_limit="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/trend?data_type=&is_dl=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order=&chart_limit="
 
 
 </code></pre>
@@ -9045,6 +9513,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
+        Integer is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
         Integer selector_id = 56; // Integer | 用户已经保存的 查询条件ID
         String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
@@ -9054,7 +9523,7 @@ public class ReportApiExample {
         String order = order_example; // String | 排序字段
         String chart_limit = chartLimit_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         try {
-            trendSuccess result = apiInstance.v2TrendPost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order, chart_limit);
+            trendSuccess result = apiInstance.v2TrendPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, chart_limit);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2TrendPost");
@@ -9078,6 +9547,7 @@ public class ReportApiExample {
         String data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
         String start_time = startTime_example; // String | 开始时间
         String end_time = endTime_example; // String | 结束时间 截止到昨天
+        Integer is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
         Integer selector_id = 56; // Integer | 用户已经保存的 查询条件ID
         String selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         String granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
@@ -9087,7 +9557,7 @@ public class ReportApiExample {
         String order = order_example; // String | 排序字段
         String chart_limit = chartLimit_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         try {
-            trendSuccess result = apiInstance.v2TrendPost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order, chart_limit);
+            trendSuccess result = apiInstance.v2TrendPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, chart_limit);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2TrendPost");
@@ -9111,6 +9581,7 @@ public class ReportApiExample {
 String *data_type = dataType_example; // 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 String *start_time = startTime_example; // 开始时间
 String *end_time = endTime_example; // 结束时间 截止到昨天
+Integer *is_dl = 56; // 下载数据标识：1下载，0非下载 默认0 (optional)
 Integer *selector_id = 56; // 用户已经保存的 查询条件ID (optional)
 String *selector = selector_example; // selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional)
 String *granularity = granularity_example; // 数据统计图表时间粒度，默认daily (optional)
@@ -9126,6 +9597,7 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
 [apiInstance v2TrendPostWith:data_type
     start_time:start_time
     end_time:end_time
+    is_dl:is_dl
     selector_id:selector_id
     selector:selector
     granularity:granularity
@@ -9158,6 +9630,7 @@ var start_time = startTime_example; // {String} 开始时间
 var end_time = endTime_example; // {String} 结束时间 截止到昨天
 
 var opts = { 
+  'is_dl': 56, // {Integer} 下载数据标识：1下载，0非下载 默认0
   'selector_id': 56, // {Integer} 用户已经保存的 查询条件ID
   'selector': selector_example, // {String} selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
   'granularity': granularity_example, // {String} 数据统计图表时间粒度，默认daily
@@ -9203,6 +9676,7 @@ namespace Example
             var data_type = dataType_example;  // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
             var start_time = startTime_example;  // String | 开始时间
             var end_time = endTime_example;  // String | 结束时间 截止到昨天
+            var is_dl = 56;  // Integer | 下载数据标识：1下载，0非下载 默认0 (optional) 
             var selector_id = 56;  // Integer | 用户已经保存的 查询条件ID (optional) 
             var selector = selector_example;  // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]} (optional) 
             var granularity = granularity_example;  // String | 数据统计图表时间粒度，默认daily (optional) 
@@ -9215,7 +9689,7 @@ namespace Example
             try
             {
                 // 趋势分析页面接口
-                trendSuccess result = apiInstance.v2TrendPost(data_type, start_time, end_time, selector_id, selector, granularity, current_page, page_size, fields, order, chart_limit);
+                trendSuccess result = apiInstance.v2TrendPost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, chart_limit);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -9239,6 +9713,7 @@ $api_instance = new io.swagger.client\Api\ReportApi();
 $data_type = dataType_example; // String | 指定加载当数据类型 total:合计／平均／昨日，chart：图表数据,detail：表格数据 top:排行榜数据
 $start_time = startTime_example; // String | 开始时间
 $end_time = endTime_example; // String | 结束时间 截止到昨天
+$is_dl = 56; // Integer | 下载数据标识：1下载，0非下载 默认0
 $selector_id = 56; // Integer | 用户已经保存的 查询条件ID
 $selector = selector_example; // String | selector json格式的字符串{and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $granularity = granularity_example; // String | 数据统计图表时间粒度，默认daily
@@ -9249,7 +9724,7 @@ $order = order_example; // String | 排序字段
 $chart_limit = chartLimit_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
 
 try {
-    $result = $api_instance->v2TrendPost($data_type, $start_time, $end_time, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order, $chart_limit);
+    $result = $api_instance->v2TrendPost($data_type, $start_time, $end_time, $is_dl, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order, $chart_limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportApi->v2TrendPost: ', $e->getMessage(), PHP_EOL;
@@ -9306,6 +9781,35 @@ try {
             });
         </script>
         <div id="d2e199_v2TrendPost_data_type"></div>
+    </td>
+</tr>
+
+                                                        <tr>
+    <td style="width:150px;">is_dl</td>
+    <td>
+
+
+        <script>
+            $(document).ready(function () {
+                var schemaWrapper = {
+  "name" : "is_dl",
+  "in" : "query",
+  "description" : "下载数据标识：1下载，0非下载 默认0",
+  "required" : false,
+  "type" : "integer"
+};
+                var schema = schemaWrapper;
+
+
+                var view = new JSONSchemaView(schema, 0);
+                var result = $('#d2e199_v2TrendPost_is_dl');
+                result.empty();
+                result.append(view.render());
+
+
+            });
+        </script>
+        <div id="d2e199_v2TrendPost_is_dl"></div>
     </td>
 </tr>
 

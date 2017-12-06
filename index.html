@@ -3291,7 +3291,7 @@ margin-bottom: 20px;
       "$ref" : "#/definitions/trendSuccess_data_pagination"
     },
     "rows" : {
-      "$ref" : "#/definitions/trendSuccess_data_rows"
+      "$ref" : "#/definitions/channelSuccess_data_rows"
     }
   }
 };
@@ -3300,6 +3300,19 @@ margin-bottom: 20px;
     "date_time" : {
       "type" : "string",
       "description" : "描述数据更新的时间"
+    }
+  }
+};
+  defs.channelSuccess_data_rows = {
+  "properties" : {
+    "chart_report" : {
+      "$ref" : "#/definitions/chart_report"
+    },
+    "detail_report" : {
+      "$ref" : "#/definitions/detail_report"
+    },
+    "total_report" : {
+      "$ref" : "#/definitions/total_report"
     }
   }
 };
@@ -3326,6 +3339,31 @@ margin-bottom: 20px;
     }
   },
   "description" : "图表区域数据"
+};
+  defs.chart_report_detail = {
+  "type" : "object",
+  "properties" : {
+    "impression" : {
+      "$ref" : "#/definitions/chart_report_detail_impression"
+    }
+  },
+  "description" : "拆分渠道 图表区域数据"
+};
+  defs.chart_report_detail_impression = {
+  "properties" : {
+    "百度" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/chart_report_spend"
+      }
+    },
+    "搜狗" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/chart_report_spend"
+      }
+    }
+  }
 };
   defs.chart_report_impression = {
   "properties" : {
@@ -3763,6 +3801,9 @@ margin-bottom: 20px;
   "properties" : {
     "chart_report" : {
       "$ref" : "#/definitions/chart_report"
+    },
+    "chart_report_detail" : {
+      "$ref" : "#/definitions/chart_report_detail"
     },
     "detail_report" : {
       "$ref" : "#/definitions/detail_report"
@@ -7013,7 +7054,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Report-v2CreativePost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/creative?data_type=&is_dl=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/creative?data_type=&is_dl=&start_time=&end_time=&selector_id=&selector=&granularity=&current_page=&page_size=&fields=&order=&search_text="
 
 
 </code></pre>
@@ -7045,8 +7086,9 @@ public class ReportApiExample {
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
+        String search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
         try {
-            dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order);
+            dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, search_text);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2CreativePost");
@@ -7078,8 +7120,9 @@ public class ReportApiExample {
         Integer page_size = 56; // Integer | 每页显条数 默认100
         String fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
         String order = order_example; // String | 排序字段
+        String search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
         try {
-            dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order);
+            dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, search_text);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ReportApi#v2CreativePost");
@@ -7111,6 +7154,7 @@ Integer *current_page = 56; // 当前页码 (optional) (default to 1)
 Integer *page_size = 56; // 每页显条数 默认100 (optional) (default to 100)
 String *fields = fields_example; // 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional)
 String *order = order_example; // 排序字段 (optional)
+String *search_text = searchText_example; // 搜索关键词 搜索范围：关键词name (optional)
 
 ReportApi *apiInstance = [[ReportApi alloc] init];
 
@@ -7126,6 +7170,7 @@ ReportApi *apiInstance = [[ReportApi alloc] init];
     page_size:page_size
     fields:fields
     order:order
+    search_text:search_text
               completionHandler: ^(dataSuccess output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -7157,7 +7202,8 @@ var opts = {
   'current_page': 56, // {Integer} 当前页码
   'page_size': 56, // {Integer} 每页显条数 默认100
   'fields': fields_example, // {String} 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
-  'order': order_example // {String} 排序字段
+  'order': order_example, // {String} 排序字段
+  'search_text': searchText_example // {String} 搜索关键词 搜索范围：关键词name
 };
 
 var callback = function(error, data, response) {
@@ -7203,11 +7249,12 @@ namespace Example
             var page_size = 56;  // Integer | 每页显条数 默认100 (optional)  (default to 100)
             var fields = fields_example;  // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔 (optional) 
             var order = order_example;  // String | 排序字段 (optional) 
+            var search_text = searchText_example;  // String | 搜索关键词 搜索范围：关键词name (optional) 
 
             try
             {
                 // 创意分析页面接口
-                dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order);
+                dataSuccess result = apiInstance.v2CreativePost(data_type, start_time, end_time, is_dl, selector_id, selector, granularity, current_page, page_size, fields, order, search_text);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -7239,9 +7286,10 @@ $current_page = 56; // Integer | 当前页码
 $page_size = 56; // Integer | 每页显条数 默认100
 $fields = fields_example; // String | 数据表格需要获取的字段,默认为空，表示获取全部能提供的字段；指定多个字段时 使用英文逗号分隔
 $order = order_example; // String | 排序字段
+$search_text = searchText_example; // String | 搜索关键词 搜索范围：关键词name
 
 try {
-    $result = $api_instance->v2CreativePost($data_type, $start_time, $end_time, $is_dl, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order);
+    $result = $api_instance->v2CreativePost($data_type, $start_time, $end_time, $is_dl, $selector_id, $selector, $granularity, $current_page, $page_size, $fields, $order, $search_text);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReportApi->v2CreativePost: ', $e->getMessage(), PHP_EOL;
@@ -7591,6 +7639,35 @@ try {
             });
         </script>
         <div id="d2e199_v2CreativePost_order"></div>
+    </td>
+</tr>
+
+                                                        <tr>
+    <td style="width:150px;">search_text</td>
+    <td>
+
+
+        <script>
+            $(document).ready(function () {
+                var schemaWrapper = {
+  "name" : "search_text",
+  "in" : "query",
+  "description" : "搜索关键词 搜索范围：关键词name",
+  "required" : false,
+  "type" : "string"
+};
+                var schema = schemaWrapper;
+
+
+                var view = new JSONSchemaView(schema, 0);
+                var result = $('#d2e199_v2CreativePost_search_text');
+                result.empty();
+                result.append(view.render());
+
+
+            });
+        </script>
+        <div id="d2e199_v2CreativePost_search_text"></div>
     </td>
 </tr>
 

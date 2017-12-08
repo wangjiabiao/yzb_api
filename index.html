@@ -11674,7 +11674,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Tool-v2SelectorPost-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/selector?user_id=&selector_id=&definition="
+curl -X <span style="text-transform: uppercase;">post</span> "http://cim.lbadvisor.com:8080/v2/selector?user_id=&selector_id=&deleted=&definition="
 
 
 </code></pre>
@@ -11698,8 +11698,9 @@ public class ToolApiExample {
         Integer user_id = 56; // Integer | 用户ID
         String definition = definition_example; // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         Integer selector_id = 56; // Integer | 查询条件ID 更新时必须
+        Integer deleted = 56; // Integer | 删除 1表示删除，0表示正常，默认0
         try {
-            success result = apiInstance.v2SelectorPost(user_id, definition, selector_id);
+            success result = apiInstance.v2SelectorPost(user_id, definition, selector_id, deleted);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ToolApi#v2SelectorPost");
@@ -11723,8 +11724,9 @@ public class ToolApiExample {
         Integer user_id = 56; // Integer | 用户ID
         String definition = definition_example; // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
         Integer selector_id = 56; // Integer | 查询条件ID 更新时必须
+        Integer deleted = 56; // Integer | 删除 1表示删除，0表示正常，默认0
         try {
-            success result = apiInstance.v2SelectorPost(user_id, definition, selector_id);
+            success result = apiInstance.v2SelectorPost(user_id, definition, selector_id, deleted);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ToolApi#v2SelectorPost");
@@ -11748,6 +11750,7 @@ public class ToolApiExample {
 Integer *user_id = 56; // 用户ID
 String *definition = definition_example; // 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 Integer *selector_id = 56; // 查询条件ID 更新时必须 (optional)
+Integer *deleted = 56; // 删除 1表示删除，0表示正常，默认0 (optional)
 
 ToolApi *apiInstance = [[ToolApi alloc] init];
 
@@ -11755,6 +11758,7 @@ ToolApi *apiInstance = [[ToolApi alloc] init];
 [apiInstance v2SelectorPostWith:user_id
     definition:definition
     selector_id:selector_id
+    deleted:deleted
               completionHandler: ^(success output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -11777,7 +11781,8 @@ var user_id = 56; // {Integer} 用户ID
 var definition = definition_example; // {String} 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 
 var opts = { 
-  'selector_id': 56 // {Integer} 查询条件ID 更新时必须
+  'selector_id': 56, // {Integer} 查询条件ID 更新时必须
+  'deleted': 56 // {Integer} 删除 1表示删除，0表示正常，默认0
 };
 
 var callback = function(error, data, response) {
@@ -11815,11 +11820,12 @@ namespace Example
             var user_id = 56;  // Integer | 用户ID
             var definition = definition_example;  // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
             var selector_id = 56;  // Integer | 查询条件ID 更新时必须 (optional) 
+            var deleted = 56;  // Integer | 删除 1表示删除，0表示正常，默认0 (optional) 
 
             try
             {
                 // 保存/更新查询条件
-                success result = apiInstance.v2SelectorPost(user_id, definition, selector_id);
+                success result = apiInstance.v2SelectorPost(user_id, definition, selector_id, deleted);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -11843,9 +11849,10 @@ $api_instance = new io.swagger.client\Api\ToolApi();
 $user_id = 56; // Integer | 用户ID
 $definition = definition_example; // String | 查询条件字符串 json 格式 {and:[{field:vendor_id,operator:==,value:6},{field:impression,operator:>=,value:200}],or:[]}
 $selector_id = 56; // Integer | 查询条件ID 更新时必须
+$deleted = 56; // Integer | 删除 1表示删除，0表示正常，默认0
 
 try {
-    $result = $api_instance->v2SelectorPost($user_id, $definition, $selector_id);
+    $result = $api_instance->v2SelectorPost($user_id, $definition, $selector_id, $deleted);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ToolApi->v2SelectorPost: ', $e->getMessage(), PHP_EOL;
@@ -11930,6 +11937,35 @@ try {
             });
         </script>
         <div id="d2e199_v2SelectorPost_selector_id"></div>
+    </td>
+</tr>
+
+                                                        <tr>
+    <td style="width:150px;">deleted</td>
+    <td>
+
+
+        <script>
+            $(document).ready(function () {
+                var schemaWrapper = {
+  "name" : "deleted",
+  "in" : "query",
+  "description" : "删除 1表示删除，0表示正常，默认0",
+  "required" : false,
+  "type" : "integer"
+};
+                var schema = schemaWrapper;
+
+
+                var view = new JSONSchemaView(schema, 0);
+                var result = $('#d2e199_v2SelectorPost_deleted');
+                result.empty();
+                result.append(view.render());
+
+
+            });
+        </script>
+        <div id="d2e199_v2SelectorPost_deleted"></div>
     </td>
 </tr>
 
